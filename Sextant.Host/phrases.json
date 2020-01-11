@@ -10,10 +10,10 @@
       "I've completed scanning. "
     ],
     "AllScansComplete": [
-      "We've completed scanning the system, ready to move on commander",
-      "That was the last scan we needed commander",
-      "We've scanned all the celestials we need commander",
-      "All system celestials have now been scanned commander"
+      "We've completed discovering the system, ready to move on commander",
+      "That was the last discovery scan we needed commander",
+      "We've discovered all the celestials we need commander",
+      "All system celestials have now been discovered commander"
     ],
     "MultipleScansRemaining": [
       "{0} more scans to go. ",
@@ -137,11 +137,9 @@
       "All system celestials have been scanned commander"
     ],
     "NeedToScanSurface": [
-      "It can use a surface scan",
-      "It could use a surface scan",
-      "A surface scan would be profitable",
-      "Time permitting, you may scan the surface",
-      "You may switch over to surface scanning commander"
+      "We can begin surface scanning",
+      "Ready for surface scans",
+      "Ready to begin surface scanning"
     ]
   },
   "Initialized": {
@@ -185,11 +183,11 @@
       "We do not need to scan any of the celestials in this system"
     ],
     "Scanning": [
-      "We need to scan {0} celestial in this system. There ",
-      "{0} planets require a scan in this system. There ",
-      "{0} celestials require a scan in this system. There ",
-      "This system has {0} planets we need to scan. There ",
-      "This system has {0} celestial we need to scan. There "
+      "We need to scan {0} celestial{1} in this system. There ",
+      "{0} planet{1} require a scan in this system. There ",
+      "{0} celestial{1} require a scan in this system. There ",
+      "This system has {0} planet{1} we need to scan. There ",
+      "This system has {0} celestials{1} we need to scan. There "
     ],
     "AlreadyScanned": [
       "We've already been through here, nothing to scan",

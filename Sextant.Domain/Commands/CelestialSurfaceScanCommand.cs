@@ -30,7 +30,7 @@ namespace Sextant.Domain.Commands
             _navigator                 = navigator;
             _playerStatus              = playerStatus;
 
-            _surfaceScanCompletePhrases       = PhraseBook.Ingest(phrases.ScanComplete);
+            _surfaceScanCompletePhrases       = PhraseBook.Ingest(phrases.SurfaceScanComplete);
             _allSurfaceScansCompletePhrases   = PhraseBook.Ingest(phrases.AllSurfaceScansComplete);
             _oneSurfaceRemainingPhrases       = PhraseBook.Ingest(phrases.SingleSurfaceScanRemaining);
             _multipleSurfacesRemainingPhrases = PhraseBook.Ingest(phrases.MultipleSurfaceScansRemaining);

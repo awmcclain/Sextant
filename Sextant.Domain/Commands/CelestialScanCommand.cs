@@ -43,9 +43,9 @@ namespace Sextant.Domain.Commands
             string currentSystem                    = _playerStatus.Location;
             bool expeditionSystem                   = _navigator.SystemInExpedition(currentSystem);
 
-            bool wasInExpedition = _navigator.ScanCelestial(eventPayload["BodyName"].ToString());
+            bool celestialScanned = _navigator.ScanCelestial(eventPayload["BodyName"].ToString());
 
-            if (wasInExpedition) {
+            if (celestialScanned) {
                 // Only speak if the scanned body was actually one we were looking for (to prevent spam from autodiscovery)
                 string script = BuildScript(currentSystem, expeditionSystem);
 

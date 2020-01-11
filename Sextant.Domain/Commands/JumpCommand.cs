@@ -19,7 +19,7 @@ namespace Sextant.Domain.Commands
         private readonly string _isPhrase;
         private readonly string _arePhrase;
         private readonly string _andPhrase;
-        private readonly string _puralPhrase;
+        private readonly string _pluralPhrase;
 
         private readonly PhraseBook _jumpPhraseBook;
         private readonly PhraseBook _skipPhraseBook;
@@ -35,7 +35,7 @@ namespace Sextant.Domain.Commands
             _isPhrase                    = jumpPhrases.IsPhrase;
             _arePhrase                   = jumpPhrases.ArePhrase;
             _andPhrase                   = jumpPhrases.AndPhrase;
-            _puralPhrase                 = jumpPhrases.PluralPhrase;
+            _pluralPhrase                 = jumpPhrases.PluralPhrase;
 
             _jumpPhraseBook              = PhraseBook.Ingest(jumpPhrases.Jumping);
             _skipPhraseBook              = PhraseBook.Ingest(jumpPhrases.Skipping);
@@ -88,7 +88,7 @@ namespace Sextant.Domain.Commands
 
         private string BuildScanScript(StarSystem system)
         {
-            string script = string.Format(_scanPhraseBook.GetRandomPhrase(), system.Celestials.Count());
+            string script = string.Format(_scanPhraseBook.GetRandomPhrase(), system.Celestials.Count(), PhraseBook.PluralizedEnding(system.Celestials.Count(), _pluralPhrase));
 
             var celestialsByCategory = system.Celestials
                                              .Where(c => !c.Scanned)
@@ -110,8 +110,7 @@ namespace Sextant.Domain.Commands
 
                 script += $"{item.Value} {item.Key}";
 
-                if (item.Value > 1)
-                    script += $"{_puralPhrase} ";
+                script += PhraseBook.PluralizedEnding(item.Value, _pluralPhrase);
 
                 script += ", ";
             }

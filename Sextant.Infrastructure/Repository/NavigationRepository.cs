@@ -50,7 +50,13 @@ namespace Sextant.Infrastructure.Repository
             if (document == null)
                 return false;
 
-            document.Celestials.Single(c => c.Name.ToUpper() == celestial.ToUpper()).Scanned = true;
+            var celestialDocument = document.Celestials.Single(c => c.Name.ToUpper() == celestial.ToUpper());
+            if (celestialDocument.Scanned == true) {
+                // We've already scanned this celestial
+                return false;
+            } else {
+                celestialDocument.Scanned = true;
+            }
 
             if (document.Celestials.All(c => c.Scanned))
                 document.Scanned = true;
