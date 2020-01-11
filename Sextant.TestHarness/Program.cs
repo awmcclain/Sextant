@@ -13,7 +13,16 @@ namespace Sextant.TestHarness
             SextantHost sextant = new SextantHost(basePath: Environment.CurrentDirectory, pluginName: "TestHarness");
             sextant.Initialize();
 
-            Console.ReadKey();
+            string input;
+
+            while(true) {
+                input = Console.ReadLine();
+                if (input.StartsWith("q")) {
+                    break;
+                }
+
+                sextant.Handle(input);
+            } 
         }
     }
 }
