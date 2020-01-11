@@ -10,6 +10,7 @@ using Sextant.Tests.Builders;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Xunit.Abstractions;
 using FluentAssertions;
 
 namespace Sextant.Tests.Commands
@@ -23,8 +24,12 @@ namespace Sextant.Tests.Commands
         private readonly TestUserDataService _userDataService;
         private readonly JumpPhrases _phrases = TestPhraseBuilder.Build<JumpPhrases>();
 
-        public JumpCommandTests()
+        private readonly ITestOutputHelper _output;
+
+        public JumpCommandTests(ITestOutputHelper output)
         {
+            _output = output;
+
             Celestial celestial  = Build.A.Celestial.ThatHasNotBeenScanned();
             Celestial celestial2 = Build.A.Celestial.ThatHasNotBeenScanned();
             _starSystems         = Build.A.StarSystem.WithCelestials(celestial, celestial, celestial2).InAList();
@@ -44,6 +49,19 @@ namespace Sextant.Tests.Commands
 
             _communicator.MessagesCommunicated.Should().BeEmpty();
         }
+
+        [Fact]
+        public void JumpCommand_Does_Nothing_When_Disabled()
+        {
+            var preferences     = new Preferences() { OnlyCommunicateOnExpeditions = true };
+            var sut             = new JumpCommand(_communicator, _navigator, _phrases, preferences);
+            TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", "Test");
+
+            sut.Handle(testEvent);
+
+            _communicator.MessagesCommunicated.Should().BeEmpty();
+        }
+
 
         [Fact]
         public void JumpCommand_With_System_Not_In_Expedition_Skips_System_And_Communicates()
@@ -117,7 +135,7 @@ namespace Sextant.Tests.Commands
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", _starSystems.First().Name);
 
             _navigator.ExtendExpedition(_starSystems);
-
+            
             sut.Handle(testEvent);
 
             _communicator.MessagesCommunicated[0].Should().Be(_phrases.Jumping.Single());
