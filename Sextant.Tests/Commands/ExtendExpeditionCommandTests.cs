@@ -25,12 +25,13 @@ namespace Sextant.Tests.Commands
 
         public ExtendExpeditionCommandTests()
         {
+            PlayerStatusRepository playerStatus = CreatePlayerStatusRepository();
             Celestial celestial = Build.A.Celestial.ThatHasNotBeenScanned();
             _starSystems                  = Build.A.StarSystem.WithCelestial(celestial).InAList();
             _userDataService              = new TestUserDataService(_starSystems);
             _navigator                    = CreateNavigator(new MemoryDataStore<StarSystemDocument>());
             _communicator                 = CreateCommunicator();
-            _sut                          = new ExtendExpeditionCommand(_communicator, _navigator, _userDataService, BuildPhrases());
+            _sut                          = new ExtendExpeditionCommand(_communicator, _navigator, _userDataService, playerStatus, BuildPhrases());
         }
 
         private PlotExpeditionPhrases BuildPhrases() => new PlotExpeditionPhrases

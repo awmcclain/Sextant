@@ -31,7 +31,6 @@ namespace Sextant.Tests.Commands
             List<StarSystem> systems            = Build.A.StarSystem.WithCelestials(celestial).InAList();
 
             navigator.PlanExpedition(systems);
-            playerStatus.SetExpeditionStart(DateTimeOffset.Now);
 
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand);
 

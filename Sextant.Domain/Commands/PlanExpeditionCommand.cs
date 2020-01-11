@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Stickymaddness All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
 using System.Linq;
 using Sextant.Domain.Events;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Sextant.Domain.Commands
         protected readonly INavigator _navigator;
         protected readonly ICommunicator _communicator;
         protected readonly IUserDataService _userDataService;
+        private readonly IPlayerStatus _playerStatus;
     
         protected readonly string _expeditionExists;
         protected readonly string _unableToPlot;
@@ -25,11 +27,12 @@ namespace Sextant.Domain.Commands
 
         public virtual bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        public PlanExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, PlotExpeditionPhrases phrases)
+        public PlanExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases)
         {
             _navigator         = navigator;
             _communicator      = communicator;
             _userDataService   = userDataService;
+            _playerStatus      = playerStatus;
 
             _expeditionExists  = phrases.ExpeditionExists;
             _unableToPlot      = phrases.UnableToPlot;
@@ -56,6 +59,7 @@ namespace Sextant.Domain.Commands
                 return;
             }
 
+            _playerStatus.SetExpeditionStart(DateTimeOffset.Now);
             CommunicateExpedition();
         }
 
@@ -79,7 +83,9 @@ namespace Sextant.Domain.Commands
                 if (counter == celestialsByCategory.Count() && celestialsByCategory.Count() > 1)
                     script += $"{_andPhrase} ";
 
-                script += $"{item.Value.Count} {item.Key}{_pluralPhrase}, ";
+                string pluralized = item.Value.Count == 1 ? string.Empty : _pluralPhrase;
+                
+                script += $"{item.Value.Count} {item.Key}{pluralized}, ";
             }
 
             _communicator.Communicate(script);
