@@ -44,7 +44,7 @@ namespace Sextant.Tests.Commands
         [Fact]
         public void NextScan_With_System_In_Expedition_But_Everything_Scanned_Communicates_Complete_Phrase()
         {
-            Celestial celestial      = Build.A.Celestial.ThatHasBeenScanned();
+            Celestial celestial      = Build.A.Celestial.ThatHasBeenTotallyScanned();
             List<StarSystem> systems = Build.A.StarSystem.WithCelestial(celestial).InAList();
 
             _playerStatus.SetLocation(systems.Single().Name);
@@ -68,6 +68,21 @@ namespace Sextant.Tests.Commands
             _sut.Handle(_testEvent);
             _communicator.MessagesCommunicated.Single().Should().Be(_phrases.NextScan.Single());
         }
+
+        [Fact]
+        public void NextScan_With_System_In_Expedition_With_Incomplete_Surface_Scans_Communicates_Scan_Phrase()
+        {
+            Celestial celestial      = Build.A.Celestial.ThatHasBeenScanned();
+            List<StarSystem> systems = Build.A.StarSystem.WithCelestial(celestial).InAList();
+
+            _playerStatus.SetLocation(systems.Single().Name);
+
+            _navigator.PlanExpedition(systems);
+
+            _sut.Handle(_testEvent);
+            _communicator.MessagesCommunicated.Single().Should().Be(_phrases.NextScan.Single()+_phrases.NeedToScanSurface.Single());
+        }
+
 
     }
 }
