@@ -28,7 +28,8 @@ namespace Sextant.Tests
             }
         }
 
-        [Fact(Skip = "appveyor incorrectly parsing expeditionText")]
+        //[Fact(Skip = "appveyor incorrectly parsing expeditionText")]
+        [Fact]
         public void GetExpeditionData_With_Valid_ExpeditionText_Returns_StarSystems()
         {
             const string expeditionText =
@@ -36,7 +37,7 @@ namespace Sextant.Tests
 --- ------ ---------------
   1  69.53 Test System One
 	           1 (79) TWW
-  2  3.62  Test System Two
+  2  3.62  Test System Two *
 	           1 (267) ELW
   3  56.80 Test System Three
 	           2 (393) TWW

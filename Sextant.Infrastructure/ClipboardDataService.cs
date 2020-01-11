@@ -44,6 +44,9 @@ namespace Sextant.Infrastructure
                     {
                         var systemName = line.Substring(11);
 
+                        // Remove * at the end of the data (populated systems)
+                        systemName = systemName.TrimEnd(' ', '*');
+
                         currentSystem = new StarSystem(systemName);
                         systems.Add(currentSystem);
                         continue;
