@@ -11,6 +11,7 @@ namespace Sextant.Infrastructure.Repository
     {
         public int Id { get; set; }
         public bool Scanned { get; set; }
+        public bool SurfaceScanned { get; set; }
         public string Name { get; set; }
 
         public List<CelestialDocument> Celestials { get; set; }
@@ -23,6 +24,7 @@ namespace Sextant.Infrastructure.Repository
             Id         = system.Id;
             Name       = system.Name;
             Scanned    = system.Scanned;
+            SurfaceScanned = system.SurfaceScanned;
             Celestials = system.Celestials.Select(c => new CelestialDocument(c)).ToList();
         }
 

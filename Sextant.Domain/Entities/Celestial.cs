@@ -8,6 +8,7 @@ namespace Sextant.Domain.Entities
         public int Id { get; set; }
 
         public bool Scanned { get; }
+        public bool SurfaceScanned { get; }
 
         public string Name { get; }
         public string System { get; }
@@ -16,13 +17,14 @@ namespace Sextant.Domain.Entities
 
         public string ShortName => Name.Replace(System, string.Empty);
 
-        public Celestial(string name, string clasification, string system, bool scanned = false, int id = 0)
+        public Celestial(string name, string clasification, string system, bool scanned = false, int id = 0, bool surfaceScanned = false)
         {
-            Id            = id;
-            Name          = name;
-            System        = system;
-            Clasification = clasification;
-            Scanned       = scanned;
+            Id             = id;
+            Name           = name;
+            System         = system;
+            Clasification  = clasification;
+            Scanned        = scanned;
+            SurfaceScanned = surfaceScanned;
         }
     }
 }

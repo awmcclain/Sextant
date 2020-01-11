@@ -57,6 +57,21 @@ namespace Sextant.Infrastructure.Repository
 
             return _repository.Update(document);
         }
+        public bool ScanCelestialSurface(string celestial)
+        {
+            StarSystemDocument document = _repository.FindOne(s => s.Celestials.FirstOrDefault(c => c.Name == celestial) != null);
+
+            if (document == null)
+                return false;
+
+            document.Celestials.Single(c => c.Name.ToUpper() == celestial.ToUpper()).SurfaceScanned = true;
+
+            if (document.Celestials.All(c => c.SurfaceScanned))
+                document.SurfaceScanned = true;
+
+            return _repository.Update(document);
+        }
+
 
         public bool Store(IEnumerable<StarSystem> starSystems)
         {

@@ -80,6 +80,7 @@
     <Compile Include="CommandExecutorTests.cs" />
     <Compile Include="CommandRegistryTests.cs" />
     <Compile Include="Commands\CancelExpeditionCommandTests.cs" />
+    <Compile Include="Commands\CelestialSurfaceScanCommandTests.cs" />
     <Compile Include="Commands\CelestialScanCommandTests.cs" />
     <Compile Include="Commands\CommandTestBase.cs" />
     <Compile Include="Commands\DockSRVCommandTests.cs" />
@@ -117,9 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

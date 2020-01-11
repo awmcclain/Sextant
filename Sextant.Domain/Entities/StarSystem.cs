@@ -13,6 +13,7 @@ namespace Sextant.Domain.Entities
         public List<Celestial> Celestials { get; private set; }
 
         public bool Scanned => Celestials.All(c => c.Scanned);
+        public bool SurfaceScanned => Celestials.All(c => c.SurfaceScanned);
         public string Name { get; private set; }
 
         public StarSystem(string name)

@@ -52,6 +52,11 @@ namespace Sextant.Domain
             return _navigationRepository.ScanCelestial(celestial);
         }
 
+        public bool ScanCelestialSurface(string celestial)
+        {
+            return _navigationRepository.ScanCelestialSurface(celestial);
+        }
+
         public bool ScanSystem(string system)
         {
             return _navigationRepository.ScanSystem(system);

@@ -2,9 +2,9 @@
   "CelestialScan": {
     "ScanComplete": [
       "Scan complete. ",
-      "Surface scan complete. ",
+      "Discovery scan complete. ",
       "Scan completed. ",
-      "Surface scan completed. ",
+      "Discovery scan completed. ",
       "Celestial scan complete. ",
       "Celestial scan completed. ",
       "I've completed scanning. "
@@ -12,9 +12,8 @@
     "AllScansComplete": [
       "We've completed scanning the system, ready to move on commander",
       "That was the last scan we needed commander",
-      "And with that we're done in this system",
       "We've scanned all the celestials we need commander",
-      "All system celestial have now been scanned commander"
+      "All system celestials have now been scanned commander"
     ],
     "MultipleScansRemaining": [
       "{0} more scans to go. ",
@@ -29,6 +28,33 @@
       "one remaining. ",
       "we need one more. ",
       "one more scan remaining. "
+    ],
+    "SurfaceScanComplete": [
+      "Surface Scan complete. ",
+      "Detailed surface scan complete. ",
+      "Surface scan completed. ",
+      "Detailed surface scan completed. "
+    ],
+    "AllSurfaceScansComplete": [
+      "We've completed surface scanning the system, ready to move on commander",
+      "That was the last surface scan we needed commander",
+      "And with that we're done in this system",
+      "We've scanned all the celestial surfaces we need commander",
+      "All celestials surfaces have now been scanned commander"
+    ],
+    "MultipleSurfaceScansRemaining": [
+      "{0} more surface scans to go. ",
+      "{0} more surfaces to go. ",
+      "{0} surfaces remaining. ",
+      "we need {0} more surfaces. ",
+      "{0} more surface scans remaining. "
+    ],
+    "SingleSurfaceScanRemaining": [
+      "one more surface scan to go. ",
+      "one more surface to go. ",
+      "one surface remaining. ",
+      "we need one more surface. ",
+      "one more surface scan remaining. "
     ],
     "ExpeditionComplete": [
       "We've reached the final destination commander. Our expedition is complete.",
@@ -162,7 +188,7 @@
     ],
     "AlreadyScanned": [
       "We've already been through here, nothing to scan",
-      "We've been here before, nothing left to scan",
+      "We've been here before, nothing left to scan"
     ],
     "AndPhrase": "and",
     "IsPhrase": "is",
