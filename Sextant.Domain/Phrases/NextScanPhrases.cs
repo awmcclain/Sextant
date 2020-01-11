@@ -8,5 +8,7 @@ namespace Sextant.Domain.Phrases
         public string[] NextScan { get; set; }
         public string[] SkipSystem { get; set; }
         public string[] ScansComplete { get; set; }
+
+        public string[] NeedToScanSurface { get; set; }
     }
 }

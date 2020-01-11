@@ -68,5 +68,6 @@ namespace Sextant.Tests.Commands
             _sut.Handle(_testEvent);
             _communicator.MessagesCommunicated.Single().Should().Be(_phrases.NextScan.Single());
         }
+
     }
 }

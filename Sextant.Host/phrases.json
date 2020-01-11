@@ -40,7 +40,7 @@
       "That was the last surface scan we needed commander",
       "And with that we're done in this system",
       "We've scanned all the celestial surfaces we need commander",
-      "All celestials surfaces have now been scanned commander"
+      "All celestial surfaces have now been scanned commander"
     ],
     "MultipleSurfaceScansRemaining": [
       "{0} more surface scans to go. ",
@@ -58,7 +58,7 @@
     ],
     "ExpeditionComplete": [
       "We've reached the final destination commander. Our expedition is complete.",
-      "That was the last scan in the expedition. Always the journey, never the destination."
+      "That was the last scan in the expedition."
     ]
   },
   "DockSRV": {
@@ -106,20 +106,18 @@
   },
   "NextScan": {
     "NextScan": [
-      "Planet {0} is next to be scanned",
-      "We need to scan planet {0} next",
-      "Next on our list is planet {0}",
-      "Next stop planet {0}",
-      "Lets take a look at planet {0} next",
-      "Planet {0} is just dying to be scanned",
-      "Planet {0} is our next stop commander",
-      "I believe planet {0} is next commander",
-      "Planet {0} is the next on our list",
-      "Planet {0} needs a scan next",
-      "Next up, planet {0}",
-      "Lets head to planet {0} next",
-      "We need to head to planet {0} next",
-      "So many scans, so little time. We ought to head to planet {0} next"
+      "Planet {0} is next to be scanned. ",
+      "We need to scan planet {0} next. ",
+      "Next on our list is planet {0}. ",
+      "Next stop planet {0}. ",
+      "Lets take a look at planet {0} next. ",
+      "Planet {0} is our next stop commander. ",
+      "I believe planet {0} is next commander. ",
+      "Planet {0} is the next on our list. ",
+      "Planet {0} needs a scan next. ",
+      "Next up, planet {0}. ",
+      "Lets head to planet {0} next. ",
+      "We need to head to planet {0} next. "
     ],
     "SkipSystem": [
       "This system is not part of the expedition",
@@ -137,6 +135,13 @@
       "We can continue with our journey commander, we don't need any more scans",
       "We've scanned all the planets in this system commander",
       "All system celestials have been scanned commander"
+    ],
+    "NeedToScanSurface": [
+      "It can use a surface scan",
+      "It could use a surface scan",
+      "A surface scan would be profitable",
+      "Time permitting, you may scan the surface",
+      "You may switch over to surface scanning commander"
     ]
   },
   "Initialized": {

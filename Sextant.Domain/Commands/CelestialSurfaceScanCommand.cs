@@ -62,7 +62,7 @@ namespace Sextant.Domain.Commands
 
             if (_navigator.GetSystem(currentSystem).Celestials.Any(c => c.SurfaceScanned == false))
             {
-                int scansRemaining = _navigator.GetRemainingCelestials(currentSystem).Count();
+                int scansRemaining = _navigator.GetRemainingCelestials(currentSystem, onlySurfaceScans:true).Count();
 
                 if (scansRemaining == 1)
                     return script += _oneSurfaceRemainingPhrases.GetRandomPhrase();

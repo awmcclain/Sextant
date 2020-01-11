@@ -31,7 +31,7 @@ namespace Sextant.Infrastructure.Tests
         }
 
         [Fact]
-        public void GetNextCelestial_Returns_First_Unscanned_Celestial()
+        public void GetNextCelestial_Returns_First_Unscanned_Celestial_In_System()
         {
             Navigator sut = CreateSut();
 
@@ -41,7 +41,7 @@ namespace Sextant.Infrastructure.Tests
 
             sut.PlanExpedition(starSystems);
 
-            sut.GetNextCelestial().Name.Should().Be(unscannedCelestial.Name);
+            sut.GetNextCelestial(starSystems.First()).Name.Should().Be(unscannedCelestial.Name);
         }
 
         [Fact]
@@ -53,9 +53,38 @@ namespace Sextant.Infrastructure.Tests
 
             sut.PlanExpedition(starSystems);
 
-            sut.GetNextCelestial().Should().BeNull();
+            sut.GetNextCelestial(starSystems.First()).Should().BeNull();
             sut.ExpeditionComplete.Should().BeTrue();
         }
+
+        [Fact]
+        public void GetNextCelestial_Returns_Surface_Scan_When_All_Celestials_Have_Been_Scanned()
+        {
+            Navigator sut = CreateSut();
+
+            Celestial firstScannedCelestial = Build.A.Celestial.ThatHasBeenScanned();
+            Celestial secondScannedCelestial   = Build.A.Celestial.ThatHasBeenScanned();
+
+            List<StarSystem> starSystems = Build.A.StarSystem.WithCelestials(firstScannedCelestial, secondScannedCelestial).InAList();
+ 
+            sut.PlanExpedition(starSystems);
+            sut.GetNextCelestial(starSystems.First()).Name.Should().Be(firstScannedCelestial.Name);
+        }
+
+        [Fact]
+        public void GetNextCelestial_Returns_Null_When_All_Celestials_Have_Been_Surface_Scanned()
+        {
+            Navigator sut = CreateSut();
+
+            Celestial firstScannedCelestial = Build.A.Celestial.ThatHasBeenTotallyScanned();
+            Celestial secondScannedCelestial   = Build.A.Celestial.ThatHasBeenTotallyScanned();
+
+            List<StarSystem> starSystems = Build.A.StarSystem.WithCelestials(firstScannedCelestial, secondScannedCelestial).InAList();
+ 
+            sut.PlanExpedition(starSystems);
+            sut.GetNextCelestial(starSystems.First()).Should().BeNull();
+        }
+
 
         [Fact]
         public void ExpeditionComplete_With_All_Systems_Scanned_Returns_True()

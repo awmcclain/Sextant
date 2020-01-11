@@ -42,9 +42,13 @@ namespace Sextant.Domain
             return _navigationRepository.GetFirstUnscannedSystem();
         }
 
-        public Celestial GetNextCelestial()
+        public Celestial GetNextCelestial(StarSystem system)
         {
-            return GetNextSystem()?.Celestials.FirstOrDefault(c => c.Scanned == false);
+            var nextCelestial = system?.Celestials.FirstOrDefault(c => c.Scanned == false);
+            if (nextCelestial == null) {
+                nextCelestial = system?.Celestials.FirstOrDefault(c => c.SurfaceScanned == false);
+            }
+            return nextCelestial;
         }
 
         public bool ScanCelestial(string celestial)
@@ -97,9 +101,13 @@ namespace Sextant.Domain
             return _navigationRepository.GetAllExpeditionStarSystems();
         }
 
-        public List<Celestial> GetRemainingCelestials(string systemName)
+        public List<Celestial> GetRemainingCelestials(string systemName, bool onlySurfaceScans=false)
         {
-            return _navigationRepository.GetSystem(systemName).Celestials.Where(c => c.Scanned == false).ToList();
+            if (onlySurfaceScans) {
+                return _navigationRepository.GetSystem(systemName).Celestials.Where(c => c.SurfaceScanned == false).ToList();
+            } else {
+                return _navigationRepository.GetSystem(systemName).Celestials.Where(c => c.Scanned == false).ToList();
+            }
         }
 
         public bool SystemInExpedition(string system)

@@ -20,6 +20,7 @@ namespace Sextant.Domain.Commands
         private PhraseBook _skipPhrases;
         private PhraseBook _nextScanPhrases;
         private PhraseBook _completePhrases;
+        private PhraseBook _surfacePhrases;
 
         public NextScanCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, NextScanPhrases phrases)
         {
@@ -30,6 +31,7 @@ namespace Sextant.Domain.Commands
             _skipPhrases     = PhraseBook.Ingest(phrases.SkipSystem);
             _nextScanPhrases = PhraseBook.Ingest(phrases.NextScan);
             _completePhrases = PhraseBook.Ingest(phrases.ScansComplete);
+            _surfacePhrases  = PhraseBook.Ingest(phrases.NeedToScanSurface);
         }
 
         public void Handle(IEvent @event)
@@ -43,18 +45,25 @@ namespace Sextant.Domain.Commands
                 return;
             }
 
-            Celestial nextToScan = system.Celestials
-                                         .Where(c => c.Scanned == false)
-                                         .OrderBy(r => r.ShortName)
-                                         .FirstOrDefault();
+            Celestial nextToScan = _navigator.GetNextCelestial(system);
 
-            if (nextToScan == null)
-            {
-                _communicator.Communicate(_completePhrases.GetRandomPhrase());
-                return;
+            _communicator.Communicate(BuildScript(nextToScan));
+        }
+
+        private string BuildScript(Celestial nextToScan) {
+            if (nextToScan == null) {
+                return _completePhrases.GetRandomPhrase();
             }
 
-            _communicator.Communicate(_nextScanPhrases.GetRandomPhraseWith(nextToScan.ShortName));
+            string script = _nextScanPhrases.GetRandomPhraseWith(nextToScan.ShortName);
+            if (nextToScan.Scanned == true && nextToScan.SurfaceScanned == false) {
+                script += _surfacePhrases.GetRandomPhrase();
+            }
+
+            return script;
+            
         }
+
+
     }
 }
