@@ -39,6 +39,7 @@
       "We've completed surface scanning the system, ready to move on commander",
       "That was the last surface scan we needed commander",
       "And with that we're done in this system",
+      "We can continue with our journey commander, we don't need any more scans",
       "We've scanned all the celestial surfaces we need commander",
       "All celestial surfaces have now been scanned commander"
     ],
@@ -129,12 +130,11 @@
       "We do not need to scan any of the celestials in this system"
     ],
     "ScansComplete": [
-      "We've completed scanning the system, ready to move on commander",
-      "There are no more scans needed in this system commander",
-      "Nothing left to scan, we're done here commander",
-      "We can continue with our journey commander, we don't need any more scans",
-      "We've scanned all the planets in this system commander",
-      "All system celestials have been scanned commander"
+      "We've completed FSS scans in the system.",
+      "There are no more discovery scans needed in this system commander",
+      "Nothing left to discover commander",
+      "We've identified all the planets in this system, commander.",
+      "All system celestials have been discovered, commander."
     ],
     "NeedToScanSurface": [
       "We can begin surface scanning",
@@ -258,7 +258,7 @@
   },
   "CancelExpedition": {
     "Warning": "Warning. Cancelling the expedition will result in permanent loss of all expedition data. Please repeat the command to confirm",
-    "Complete": "Expedition data deleted. Ready to plot new expedition",
+    "Complete": "Expedition data deleted. Ready to plan new expedition",
     "Error": "Error deleting expedition data"
   },
   "Greeting": {
