@@ -19,18 +19,6 @@ namespace Sextant.Tests.Commands
         private CelestialSurfaceScanCommand CreateSut(Navigator navigator, PlayerStatusRepository playerStatusRepository, CelestialScanPhrases phrases) 
             => new CelestialSurfaceScanCommand(CreateCommunicator(), navigator, playerStatusRepository, phrases);
 
-        private CelestialData CreateCelestialData(string name)
-            => new CelestialData() { Name = name, FSS = _FSSValue, FSSPlusDSS = _DSSValue };
-        private CelestialValues CreateCelestialValues()
-        {
-            return new CelestialValues() { 
-                CelestialData = new Dictionary<string, CelestialData>() {
-                    { "Data1", CreateCelestialData("Data1Name") },
-                    { "Data2", CreateCelestialData("Data2Name") }
-                },
-                EfficiencyMultiplier = _EfficiencyMultiplier
-            };
-        }
         private const string _payloadKey = "BodyName";
         private const string _payloadProbe = "ProbesUsed";
         private const string _payloadTarget = "EfficiencyTarget";

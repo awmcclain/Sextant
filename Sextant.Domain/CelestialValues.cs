@@ -8,8 +8,6 @@ namespace Sextant.Domain
     public class CelestialValues
     {
         public Dictionary<string, CelestialData> CelestialData { get; set; }
-        public float EfficiencyMultiplier { get; set; }
-
         public string NameFromClassification(string classification) {
             CelestialData data;
             if (CelestialData != null && CelestialData.TryGetValue(classification, out data)) {
