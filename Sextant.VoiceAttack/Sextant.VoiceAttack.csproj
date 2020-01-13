@@ -44,5 +44,10 @@
       <Name>Sextant.Host</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+   <None Include="Sextant-Commands.vap">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

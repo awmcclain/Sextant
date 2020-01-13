@@ -1,0 +1,1386 @@
+<?xml version="1.0"?>
+<Profile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Id>be35ec93-e163-49d8-b8e1-4447b3a70c7a</Id>
+  <Name>Sextant</Name>
+  <Commands>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>cba97c02-1b04-435e-8a7e-d12eba04bf7d</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>e0236dc8-0c38-40aa-8600-eeb8d40b6497</Id>
+      <CommandString>cancel expedition</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>ae65710b-c93b-4816-a43d-95eca06127ac</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>cancel_expedition</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Permanently delete all route data, use with caution.</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>87759dc4-076a-4fb1-ad2e-6ff290385cd3</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>e2fcf9c5-5d2f-4fd6-90d8-21972f6cccfb</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>680633e2-784e-46a8-a4d8-131c99b5192d</Id>
+      <CommandString>clear coms</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>7bc38e0d-d097-436a-bca0-04adef2c16d2</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>clear-coms</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Tells Sextant to stop talking</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>040b1688-8bb2-49d6-bff3-ea4c5d631ccb</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>85a95d93-ccc4-4172-ba72-4e220231a3c0</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>f29bc589-dc95-44e8-a6cd-1da8052bb68f</Id>
+      <CommandString>expedition progress</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>fa12de81-0eed-4565-b2af-cf7ee3bafee6</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>expedition_progress</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Sextant will respond with a breakdown of the expedition, how long it has been in progress, the number of planets/systems that have been scanned, and the number remaining as well as a progress percentage.</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>eebb6536-f5ce-4643-83c5-f1c86a311b10</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>49e628ef-5078-45ba-b5d4-29b22c7fd54c</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>bbe6fa23-089b-4b02-9a55-56bfd9e16eb2</Id>
+      <CommandString>extend expedition</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>3ee9aed1-6b83-4d64-adec-649f28275867</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>extend_expedition</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Similar to plan_expedition, import Road to Riches route data from clipboard, and add systems to the existing expedition</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>7574cf26-950a-4d9b-82fb-6316d9b3f1c0</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>227ebd9d-e562-4c9b-9edf-4c3bc2d16189</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>135a6c9e-4fa2-4cc7-becc-9540261c30af</Id>
+      <CommandString>find next system</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>420f762a-c07c-4fc7-9f23-5ae02d507408</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>find_next_system</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Sextant will acknowledge the command via text-to-speech, open the galaxy map, enter the next system that you need to scan and search for it. The galaxy sub navigation menu for creating a route to the system will be open, but you will need to manually sele</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>15afb989-e917-42b3-a737-ea0f05e14dd0</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>46f1fcb8-8804-4bb3-8280-01f4de4d2355</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>cc5d336c-6136-44dd-8652-811fd59e5bd3</Id>
+      <CommandString>get next system</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>9796486f-1358-42ca-90a0-507d1515b2a5</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>get_next_system</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Sextant will respond with the name of the next system needing to be scanned</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>d0449e1d-fa23-41d7-96ff-6804384aeef4</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>c3f4cf83-eea8-41a0-8f42-f3c6cb99b0e9</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>359310d6-c51d-4ea9-8b8e-808a497639db</Id>
+      <CommandString>hello sextant</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>e4edc547-8c57-424c-bc5f-31f50e4b38ec</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>hello</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Testing command, sextant will respond with a greeting.</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>00000000-0000-0000-0000-000000000000</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>b30bf2c0-f70c-4c04-8075-fb89fb0f624f</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>98a7bd75-8e9c-4ba0-9076-fbba0350c62e</Id>
+      <CommandString>next scan</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>144ee551-5aa3-4913-bab4-45864e5c3754</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>next_scan</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Sextant will respond with the next planet in the system that needs to be surface scanned.</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>00000000-0000-0000-0000-000000000000</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>0480cbd6-5ab1-403a-a6fa-408cab99d29d</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>bdd7c99a-7ee2-4c13-b6aa-93ef0190c554</Id>
+      <CommandString>plan expedition</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>8279d5a8-2e3a-4814-a262-d7a1ed0f7816</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>plan_expedition</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Sextant will import Road to Riches route data from clipboard, and respond with a breakdown of the expedition, detailing the number of planets, their classifications and the total number of systems.</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>e7d15733-6df7-4125-ae27-5c406d1b8e2c</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>dea002e4-f8dc-498e-ac26-c5da61ebfdde</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>920bdd83-266f-46c1-971b-f43d361b3107</Id>
+      <CommandString>rescan system</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>92c56147-0a4a-4af2-a302-a286b944d2c0</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>rescan_system</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Tells Sextant to mark the current system as needing surface scans. For example, if for some reason sextant thinks a system does not need any surface scans, but you do (eg: due to death).</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>00000000-0000-0000-0000-000000000000</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>653d6620-bd6b-472c-bef9-ac3b790fef0f</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>7d7da70f-5d1b-45cc-baeb-3e20b961a8b4</Id>
+      <CommandString>scans remaining</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>26e85d6f-5247-4cf3-a464-b99a8f79a2f8</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>scans_remaining</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Sextant will respond listing all planets in the current system still need to be surface scanned</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>00000000-0000-0000-0000-000000000000</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+    <Command>
+      <Referrer xsi:nil="true" />
+      <ExecType>3</ExecType>
+      <Confidence>0</Confidence>
+      <PrefixActionCount>0</PrefixActionCount>
+      <IsDynamicallyCreated>false</IsDynamicallyCreated>
+      <TargetProcessSet>false</TargetProcessSet>
+      <TargetProcessType>0</TargetProcessType>
+      <TargetProcessLevel>0</TargetProcessLevel>
+      <CompareType>0</CompareType>
+      <ExecFromWildcard>false</ExecFromWildcard>
+      <IsSubCommand>false</IsSubCommand>
+      <IsOverride>false</IsOverride>
+      <BaseId>1b94999f-8c4b-4277-a576-70d9181deadb</BaseId>
+      <OriginId>00000000-0000-0000-0000-000000000000</OriginId>
+      <Id>79ef0c3b-70af-40ec-9138-aeeeb7d8ed97</Id>
+      <CommandString>skip system</CommandString>
+      <ActionSequence>
+        <CommandAction>
+          <_caption>Execute external plugin, 'Sextant v1.0.0'</_caption>
+          <PairingSet>false</PairingSet>
+          <PairingSetElse>false</PairingSetElse>
+          <Ordinal>0</Ordinal>
+          <ConditionMet xsi:nil="true" />
+          <IndentLevel>0</IndentLevel>
+          <ConditionSkip>false</ConditionSkip>
+          <IsSuffixAction>false</IsSuffixAction>
+          <DecimalTransient1>0</DecimalTransient1>
+          <Caption>Execute external plugin, 'Sextant v1.0.0'</Caption>
+          <Id>7d03108d-b777-4b19-af28-9dfbe2c0da3e</Id>
+          <ActionType>ExternalInvoke</ActionType>
+          <Duration>0</Duration>
+          <Delay>0</Delay>
+          <KeyCodes />
+          <Context>3a7ac4cc-aaee-407a-a496-b29df1937ad1</Context>
+          <Context2 />
+          <Context3 />
+          <Context4>skip_system</Context4>
+          <X>0</X>
+          <Y>0</Y>
+          <Z>0</Z>
+          <InputMode>0</InputMode>
+          <ConditionSetName />
+          <ConditionSetCondition />
+          <ConditionPairing>0</ConditionPairing>
+          <ConditionGroup>0</ConditionGroup>
+          <ConditionStartNameFrom />
+          <ConditionStartOperator>0</ConditionStartOperator>
+          <ConditionStartValue>0</ConditionStartValue>
+          <ConditionStartValueType>0</ConditionStartValueType>
+          <ConditionStartCompareToCondtion />
+          <ConditionStartType>0</ConditionStartType>
+          <DecimalContext1>0</DecimalContext1>
+          <DecimalContext2>0</DecimalContext2>
+          <DateContext1>0001-01-01T00:00:00</DateContext1>
+          <DateContext2>0001-01-01T00:00:00</DateContext2>
+          <Disabled>false</Disabled>
+          <RandomSounds />
+        </CommandAction>
+      </ActionSequence>
+      <Async>true</Async>
+      <Enabled>true</Enabled>
+      <Description>Tells Sextant to mark the current system as scanned (even though it might not be)</Description>
+      <Category>Sextant</Category>
+      <UseShortcut>false</UseShortcut>
+      <keyValue>0</keyValue>
+      <keyShift>0</keyShift>
+      <keyAlt>0</keyAlt>
+      <keyCtrl>0</keyCtrl>
+      <keyWin>0</keyWin>
+      <keyPassthru>true</keyPassthru>
+      <UseSpokenPhrase>true</UseSpokenPhrase>
+      <onlyKeyUp>false</onlyKeyUp>
+      <RepeatNumber>2</RepeatNumber>
+      <RepeatType>0</RepeatType>
+      <CommandType>0</CommandType>
+      <SourceProfile>00000000-0000-0000-0000-000000000000</SourceProfile>
+      <UseConfidence>false</UseConfidence>
+      <minimumConfidenceLevel>0</minimumConfidenceLevel>
+      <UseJoystick>false</UseJoystick>
+      <joystickNumber>0</joystickNumber>
+      <joystickButton>0</joystickButton>
+      <joystickNumber2>0</joystickNumber2>
+      <joystickButton2>0</joystickButton2>
+      <joystickUp>false</joystickUp>
+      <KeepRepeating>false</KeepRepeating>
+      <UseProcessOverride>false</UseProcessOverride>
+      <ProcessOverrideActiveWindow>true</ProcessOverrideActiveWindow>
+      <LostFocusStop>false</LostFocusStop>
+      <PauseLostFocus>false</PauseLostFocus>
+      <LostFocusBackCompat>true</LostFocusBackCompat>
+      <UseMouse>false</UseMouse>
+      <Mouse1>false</Mouse1>
+      <Mouse2>false</Mouse2>
+      <Mouse3>false</Mouse3>
+      <Mouse4>false</Mouse4>
+      <Mouse5>false</Mouse5>
+      <Mouse6>false</Mouse6>
+      <Mouse7>false</Mouse7>
+      <Mouse8>false</Mouse8>
+      <Mouse9>false</Mouse9>
+      <MouseUpOnly>false</MouseUpOnly>
+      <MousePassThru>true</MousePassThru>
+      <joystickExclusive>false</joystickExclusive>
+      <lastEditedAction>00000000-0000-0000-0000-000000000000</lastEditedAction>
+      <UseProfileProcessOverride>false</UseProfileProcessOverride>
+      <ProfileProcessOverrideActiveWindow>false</ProfileProcessOverrideActiveWindow>
+      <RepeatIfKeysDown>false</RepeatIfKeysDown>
+      <RepeatIfMouseDown>false</RepeatIfMouseDown>
+      <RepeatIfJoystickDown>false</RepeatIfJoystickDown>
+    </Command>
+  </Commands>
+  <OverrideGlobal>false</OverrideGlobal>
+  <GlobalHotkeyIndex>0</GlobalHotkeyIndex>
+  <GlobalHotkeyEnabled>false</GlobalHotkeyEnabled>
+  <GlobalHotkeyValue>0</GlobalHotkeyValue>
+  <GlobalHotkeyShift>0</GlobalHotkeyShift>
+  <GlobalHotkeyAlt>0</GlobalHotkeyAlt>
+  <GlobalHotkeyCtrl>0</GlobalHotkeyCtrl>
+  <GlobalHotkeyWin>0</GlobalHotkeyWin>
+  <GlobalHotkeyPassThru>false</GlobalHotkeyPassThru>
+  <OverrideMouse>false</OverrideMouse>
+  <MouseIndex>0</MouseIndex>
+  <OverrideStop>false</OverrideStop>
+  <StopCommandHotkeyEnabled>false</StopCommandHotkeyEnabled>
+  <StopCommandHotkeyValue>0</StopCommandHotkeyValue>
+  <StopCommandHotkeyShift>0</StopCommandHotkeyShift>
+  <StopCommandHotkeyAlt>0</StopCommandHotkeyAlt>
+  <StopCommandHotkeyCtrl>0</StopCommandHotkeyCtrl>
+  <StopCommandHotkeyWin>0</StopCommandHotkeyWin>
+  <StopCommandHotkeyPassThru>false</StopCommandHotkeyPassThru>
+  <DisableShortcuts>false</DisableShortcuts>
+  <UseOverrideListening>false</UseOverrideListening>
+  <OverrideJoystickGlobal>false</OverrideJoystickGlobal>
+  <GlobalJoystickIndex>0</GlobalJoystickIndex>
+  <GlobalJoystickButton>0</GlobalJoystickButton>
+  <GlobalJoystickNumber>0</GlobalJoystickNumber>
+  <GlobalJoystickButton2>0</GlobalJoystickButton2>
+  <GlobalJoystickNumber2>0</GlobalJoystickNumber2>
+  <ReferencedProfile xsi:nil="true" />
+  <ExportVAVersion>1.6.9</ExportVAVersion>
+  <ExportOSVersionMajor>6</ExportOSVersionMajor>
+  <ExportOSVersionMinor>2</ExportOSVersionMinor>
+  <OverrideConfidence>false</OverrideConfidence>
+  <Confidence>0</Confidence>
+  <CatchAllEnabled>false</CatchAllEnabled>
+  <CatchAllId xsi:nil="true" />
+  <InitializeCommandEnabled>false</InitializeCommandEnabled>
+  <InitializeCommandId xsi:nil="true" />
+  <UseProcessOverride>false</UseProcessOverride>
+  <ProcessOverrideAciveWindow>true</ProcessOverrideAciveWindow>
+  <DictationCommandEnabled>false</DictationCommandEnabled>
+  <DictationCommandId xsi:nil="true" />
+  <EnableProfileSwitch>false</EnableProfileSwitch>
+  <GroupCategory>false</GroupCategory>
+  <LastEditedCommand>26fddff1-acb8-47fb-ace7-ac11be7f84f4</LastEditedCommand>
+  <IS>0</IS>
+  <IO>0</IO>
+  <IP>0</IP>
+</Profile>
