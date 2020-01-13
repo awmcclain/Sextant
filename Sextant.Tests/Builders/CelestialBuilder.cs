@@ -25,6 +25,11 @@ namespace Sextant.Tests.Builders
             Classification = Guid.NewGuid().ToString();
         }
 
+        public CelestialBuilder WithClassification(string classification)
+        {
+            Classification = classification;
+            return this;
+        }
         public CelestialBuilder ThatHasBeenScanned()
         {
             Scanned = true;

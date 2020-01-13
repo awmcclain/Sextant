@@ -18,6 +18,9 @@ namespace Sextant.Domain
         int SystemsRemaining();
         int CelestialsRemaining();
 
+        int ValueForSystem(string systemName);
+        int ValueForExpedition();
+
         bool PlanExpedition(IEnumerable<StarSystem> systems);
         bool ExtendExpedition(IEnumerable<StarSystem> systems);
 

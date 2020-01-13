@@ -10,10 +10,12 @@ namespace Sextant.Domain
     public class Navigator : INavigator
     {
         private readonly INavigationRepository _navigationRepository;
+        private readonly CelestialValues _celestialValues;
 
-        public Navigator(INavigationRepository navigationRepository)
+        public Navigator(INavigationRepository navigationRepository, CelestialValues celestialValues)
         {
             _navigationRepository = navigationRepository;
+            _celestialValues = celestialValues;
         }
 
         public bool ExpeditionComplete => _navigationRepository.GetSystems().All(s => s.Scanned);
@@ -114,5 +116,38 @@ namespace Sextant.Domain
         {
             return _navigationRepository.GetSystem(system) != null;
         }
-    }
+
+        private int ValueForCelestial(Celestial celestial)
+        {
+            CelestialData data;
+            if (_celestialValues.CelestialData.TryGetValue(celestial.Clasification, out data) == false) {
+                return 0;
+            }
+
+            if (celestial.Scanned) {
+                if (celestial.SurfaceScanned) {
+                    return data.FSSPlusDSS;
+                } else {
+                    return data.FSS;
+                }
+            }
+            return 0;
+        }
+  
+        public int ValueForSystem(string systemName)
+        {
+            var system = _navigationRepository.GetSystem(systemName);
+            if (system == null) {
+                return 0;
+            }
+
+            return system.Celestials.Sum(c => ValueForCelestial(c));
+        }
+
+        public int ValueForExpedition()
+        {
+            return _navigationRepository.GetSystems().SelectMany(s => s.Celestials.Where(c => c.Scanned == true)).Sum(c => ValueForCelestial(c));
+        }
+
+   }
 }

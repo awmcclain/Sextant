@@ -54,14 +54,17 @@ namespace Sextant.Host
             IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(basePath)
                                                                          .AddJsonFile("settings.json")
                                                                          .AddJsonFile("phrases.json")
+                                                                         .AddJsonFile("celestials.json")
                                                                          .Build();
 
             RegisterPhrases(container, configuration);
 
             container.Register(() => configuration.LoadSettings<JournalWatcherSettings>("JournalWatcher"));
+            container.Register(() => configuration.LoadSettings<JournalWatcherSettings>("JournalWatcher"));
             container.Register(() => configuration.LoadSettings<GalaxyMapInteractorSettings>("GalaxyMapInteractor"));
             container.Register(() => configuration.LoadSettings<VoiceCommunicatorSettings>("VoiceCommunicator"), Lifestyle.Singleton);
             container.Register(() => configuration.LoadSettings<Preferences>("Preferences"), Lifestyle.Singleton);
+            container.Register(() => configuration.LoadSettings<CelestialValues>("CelestialValues"), Lifestyle.Singleton);
         }
 
         private static void RegisterPhrases(Container container, IConfigurationRoot configuration)

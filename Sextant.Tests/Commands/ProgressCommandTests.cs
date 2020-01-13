@@ -38,6 +38,7 @@ namespace Sextant.Tests.Commands
 
             communicator.MessagesCommunicated[0].Should().Be(phrases.Progress.Single());
             communicator.MessagesCommunicated[1].Should().Be(phrases.SystemsScanned.Single());
+            communicator.MessagesCommunicated[2].Should().Be(phrases.CreditsEarned.Single());
         }
     }
 }

@@ -161,12 +161,19 @@
       "Our trip is approximately {3} percent complete. We have been out here for {0} days, {1} hours and {2} minutes."
     ],
     "SystemsScanned": [
-      "We have finished scanning {0} out of {1} total systems",
-      "We are done scanning {0} out of {1} total systems",
-      "In total we've scanned {0} out of {1} systems",
-      "We have finished scanning {0} out of {1} total systems",
-      "We've finished scanning {0} out of {1} total systems",
-      "In total we have scanned {4} out of {1} systems"
+      "We have finished scanning {0} out of {1} total systems.",
+      "We are done scanning {0} out of {1} total systems.",
+      "In total we've scanned {0} out of {1} systems.",
+      "We have finished scanning {0} out of {1} total systems.",
+      "We've finished scanning {0} out of {1} total systems.",
+      "In total we have scanned {4} out of {1} systems."
+    ],
+    "CreditsEarned": [
+      "We have earned approximately {0} credits.",
+      "We have earned roughly {0} credits.",
+      "We have made around {0} credits.",
+      "Our exploration data is worth about {0} credits.",
+      "In total, we've made around {0} credits."
     ]
   },
   "Jump": {

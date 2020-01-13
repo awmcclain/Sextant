@@ -56,7 +56,7 @@ namespace Sextant.Infrastructure
                     var planet = line.Substring(12, length);
 
                     var index = line.IndexOf(')') + 2;
-                    var classification = GetClassification(line.Substring(index));
+                    var classification = line.Substring(index);
 
                     currentSystem.AddCelestial(string.Join(" ", currentSystem.Name, planet), classification);
                 }
@@ -67,17 +67,6 @@ namespace Sextant.Infrastructure
             {
                 _logger.Error(ex, "Exception parsing expedition data");
                 return null;
-            }
-        }
-
-        private string GetClassification(string code)
-        {
-            switch (code)
-            {
-                case "TWW": return "Water World";
-                case "HMC": return "High metal content world";
-                case "ELW": return "Earth world";
-                default: return "Unknown";
             }
         }
 

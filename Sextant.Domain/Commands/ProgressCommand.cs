@@ -21,6 +21,7 @@ namespace Sextant.Domain.Commands
 
         private PhraseBook _progressPhrases;
         private PhraseBook _systemsScannedPhrases;
+        private PhraseBook _creditsEarnedPhrases;
 
         public ProgressCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, ProgressPhrases phrases)
         {
@@ -30,6 +31,7 @@ namespace Sextant.Domain.Commands
 
             _progressPhrases       = PhraseBook.Ingest(phrases.Progress);
             _systemsScannedPhrases = PhraseBook.Ingest(phrases.SystemsScanned);
+            _creditsEarnedPhrases  = PhraseBook.Ingest(phrases.CreditsEarned);
         }
 
         public void Handle(IEvent @event)
@@ -45,6 +47,7 @@ namespace Sextant.Domain.Commands
 
             _communicator.Communicate(_progressPhrases.GetRandomPhraseWith(expeditionLength.Days, expeditionLength.Hours, expeditionLength.Minutes, progressPercentage));
             _communicator.Communicate(_systemsScannedPhrases.GetRandomPhraseWith(scannedSystems, totalSystems));
+            _communicator.Communicate(_creditsEarnedPhrases.GetRandomPhraseWith(_navigator.ValueForExpedition()));
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Sextant.Domain.Commands
         protected readonly IUserDataService _userDataService;
         private readonly IPlayerStatus _playerStatus;
     
+        private readonly CelestialValues _celestialValues;
         protected readonly string _expeditionExists;
         protected readonly string _unableToPlot;
         protected readonly string _expeditionPlotted;
@@ -27,12 +28,13 @@ namespace Sextant.Domain.Commands
 
         public virtual bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        public PlanExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases)
+        public PlanExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, CelestialValues celestialValues)
         {
             _navigator         = navigator;
             _communicator      = communicator;
             _userDataService   = userDataService;
             _playerStatus      = playerStatus;
+            _celestialValues   = celestialValues;
 
             _expeditionExists  = phrases.ExpeditionExists;
             _unableToPlot      = phrases.UnableToPlot;
@@ -85,7 +87,7 @@ namespace Sextant.Domain.Commands
 
                 string pluralized = item.Value.Count == 1 ? string.Empty : _pluralPhrase;
                 
-                script += $"{item.Value.Count} {item.Key}{pluralized}, ";
+                script += $"{item.Value.Count} {_celestialValues.NameFromClassification(item.Key)}{pluralized}, ";
             }
 
             _communicator.Communicate(script);

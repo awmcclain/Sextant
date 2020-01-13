@@ -1,0 +1,22 @@
+﻿{
+  "CelestialValues": {
+    "CelestialData" : {
+        "ELW": {
+            "Name": "Earth-like world",
+            "FSS": 0,
+            "FSSPlusDSS": 0
+        },
+        "TWW": {
+            "Name": "Terraformable water world",
+            "FSS": 0,
+            "FSSPlusDSS": 0
+        },
+        "HMC": {
+            "Name": "Terraformable high metal-content world",
+            "FSS": 0,
+            "FSSPlusDSS": 0
+        }
+    },
+    "EfficiencyMultiplier": 1.25
+  }
+}

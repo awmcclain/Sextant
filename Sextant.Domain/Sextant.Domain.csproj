@@ -92,6 +92,8 @@
     <Compile Include="Preferences.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Commands\CelestialSurfaceScanCommand.cs" />
+    <Compile Include="CelestialValues.cs" />
+    <Compile Include="CelestialData.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

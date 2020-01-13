@@ -19,7 +19,22 @@ namespace Sextant.Tests.Commands
         private CelestialSurfaceScanCommand CreateSut(Navigator navigator, PlayerStatusRepository playerStatusRepository, CelestialScanPhrases phrases) 
             => new CelestialSurfaceScanCommand(CreateCommunicator(), navigator, playerStatusRepository, phrases);
 
+        private CelestialData CreateCelestialData(string name)
+            => new CelestialData() { Name = name, FSS = _FSSValue, FSSPlusDSS = _DSSValue };
+        private CelestialValues CreateCelestialValues()
+        {
+            return new CelestialValues() { 
+                CelestialData = new Dictionary<string, CelestialData>() {
+                    { "Data1", CreateCelestialData("Data1Name") },
+                    { "Data2", CreateCelestialData("Data2Name") }
+                },
+                EfficiencyMultiplier = _EfficiencyMultiplier
+            };
+        }
         private const string _payloadKey = "BodyName";
+        private const int _FSSValue = 10;
+        private const int _DSSValue = 20;
+        private const float _EfficiencyMultiplier = 1.25f;
 
         private CelestialScanPhrases _phrases = TestPhraseBuilder.Build<CelestialScanPhrases>();
 
@@ -133,6 +148,13 @@ namespace Sextant.Tests.Commands
 
             thirdSystemStored.SurfaceScanned.Should().BeFalse();
             thirdSystemStored.Celestials.All(c => c.SurfaceScanned == false).Should().BeTrue();
+        }
+
+        [Fact]
+        public void ScannedEvent_ShouldUpdateEfficientProperty()
+        {
+            IDataStore<StarSystemDocument> dataStore = CreateDataStore();
+            Navigator navigator                      = CreateNavigator();
         }
     }
 }
