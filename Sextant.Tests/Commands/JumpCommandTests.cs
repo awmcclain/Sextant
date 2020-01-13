@@ -62,6 +62,27 @@ namespace Sextant.Tests.Commands
             _communicator.MessagesCommunicated.Should().BeEmpty();
         }
 
+        [Fact]
+        public void JumpCommand_Does_Not_Communicate_When_Disabled_and_Complete()
+        {
+            var preferences     = new Preferences() { OnlyCommunicateDuringExpedition = true };
+            var sut             = new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues());
+            TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", "Test");
+
+            var celestial   = Build.A.Celestial.ThatHasBeenScanned();
+            var system      = Build.A.StarSystem.WithCelestial(celestial);
+            var systems     = Build.Many.StarSystems(system);
+
+            _navigator.ExtendExpedition(systems);
+            Assert.True(_navigator.ExpeditionStarted);
+            Assert.True(_navigator.ExpeditionComplete);
+
+            sut.Handle(testEvent);
+
+            _communicator.MessagesCommunicated.Should().BeEmpty();
+        }
+
+
 
         [Fact]
         public void JumpCommand_With_System_Not_In_Expedition_Skips_System_And_Communicates()

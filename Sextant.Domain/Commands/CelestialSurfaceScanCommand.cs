@@ -87,8 +87,10 @@ namespace Sextant.Domain.Commands
                 return script += _multipleSurfacesRemainingPhrases.GetRandomPhraseWith(scansRemaining);
             }
 
-            if (_navigator.ExpeditionComplete)
-                return script += _expeditionCompletePhrases.GetRandomPhrase();
+            if (_navigator.ExpeditionComplete) {
+                script += _expeditionCompletePhrases.GetRandomPhrase();
+                return script += _systemValuePhrases.GetRandomPhraseWith(_navigator.ValueForSystem(currentSystem));
+            }
 
             script += _allSurfaceScansCompletePhrases.GetRandomPhrase();
             return script += _systemValuePhrases.GetRandomPhraseWith(_navigator.ValueForSystem(currentSystem));

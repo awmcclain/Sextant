@@ -28,6 +28,17 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _alreadyScannedBook;
         private readonly bool _communicateSkippableSystems, _onlyCommunicateDuringExpedition;
 
+        private bool ShouldCommunicate
+        {
+            get {
+                if (_onlyCommunicateDuringExpedition) {
+                    if (!_navigator.ExpeditionStarted || _navigator.ExpeditionComplete) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
         public JumpCommand(ICommunicator communicator, INavigator navigator, JumpPhrases jumpPhrases, Preferences preferences, CelestialValues values)
         {
             _communicator                = communicator;
@@ -48,6 +59,7 @@ namespace Sextant.Domain.Commands
             _onlyCommunicateDuringExpedition = preferences.OnlyCommunicateDuringExpedition;
         }
 
+
         public void Handle(IEvent @event)
         {
             Dictionary<string, object> payload = @event.Payload;
@@ -57,7 +69,7 @@ namespace Sextant.Domain.Commands
 
             string systemName = payload["StarSystem"].ToString();
 
-            if (_onlyCommunicateDuringExpedition == false || _navigator.ExpeditionStarted) {
+            if (ShouldCommunicate) {
                 _communicator.Communicate(string.Format(_jumpPhraseBook.GetRandomPhrase(), systemName));
             }
 
@@ -65,25 +77,23 @@ namespace Sextant.Domain.Commands
 
             if (system == null)
             {
-                if (_communicateSkippableSystems)
-                    if (_onlyCommunicateDuringExpedition == false || _navigator.ExpeditionStarted) {
-                        _communicator.Communicate(_skipPhraseBook.GetRandomPhrase());
-                    }
+                if (_communicateSkippableSystems && ShouldCommunicate) {
+                    _communicator.Communicate(_skipPhraseBook.GetRandomPhrase());
+                }
 
                 return;
             }
             if (system.Celestials.All(c => c.Scanned))
             {
-                if (_communicateSkippableSystems)
-                    if (_onlyCommunicateDuringExpedition == false || _navigator.ExpeditionStarted) {
-                        _communicator.Communicate(_alreadyScannedBook.GetRandomPhrase());
-                    }
+                if (_communicateSkippableSystems && ShouldCommunicate) {
+                    _communicator.Communicate(_alreadyScannedBook.GetRandomPhrase());
+                }
                 return;
             }
 
             string script = BuildScanScript(system);
 
-            if (_onlyCommunicateDuringExpedition == false || _navigator.ExpeditionStarted) {
+            if (ShouldCommunicate) {
                 _communicator.Communicate(script);
             }
         }
