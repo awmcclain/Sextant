@@ -53,7 +53,7 @@ namespace Sextant.Tests.Commands
         [Fact]
         public void JumpCommand_Does_Nothing_When_Disabled()
         {
-            var preferences     = new Preferences() { OnlyCommunicateOnExpeditions = true };
+            var preferences     = new Preferences() { OnlyCommunicateDuringExpedition = true };
             var sut             = new JumpCommand(_communicator, _navigator, _phrases, preferences);
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", "Test");
 

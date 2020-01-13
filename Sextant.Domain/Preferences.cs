@@ -6,7 +6,7 @@ namespace Sextant.Domain
     public class Preferences
     {
         public bool CommunicateSkippableSystems { get; set; }
-        public bool OnlyCommunicateOnExpeditions { get; set; }
+        public bool OnlyCommunicateDuringExpedition { get; set; }
         public bool EnableSRVCommands { get; set; }
     }
 }
