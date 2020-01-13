@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Stickymaddness All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
 using System.Linq;
+
 using Sextant.Domain.Events;
 using System.Collections.Generic;
 using Sextant.Domain.Phrases;
@@ -43,13 +45,26 @@ namespace Sextant.Domain.Commands
             string currentSystem                    = _playerStatus.Location;
             bool expeditionSystem                   = _navigator.SystemInExpedition(currentSystem);
 
-            bool wasInExpedition = _navigator.ScanCelestialSurface(eventPayload["BodyName"].ToString());
+            bool efficient = ConvertPayloadKeyToInt(eventPayload, "ProbesUsed") <= ConvertPayloadKeyToInt(eventPayload, "EfficiencyTarget");
+            bool wasInExpedition = _navigator.ScanCelestialSurface(eventPayload["BodyName"].ToString(), efficient);
 
             if (wasInExpedition) {
                 // Only speak if the scanned body was actually one we were looking for (to prevent spam from autodiscovery)
                 string script = BuildScript(currentSystem, expeditionSystem);
 
                 _communicator.Communicate(script);
+            }
+        }
+
+        private int ConvertPayloadKeyToInt(Dictionary<string, object> payload, string key)
+        {
+            object value;
+            if (payload.TryGetValue(key, out value)) {
+                int intValue;
+                Int32.TryParse(value.ToString(), out intValue);
+                return intValue;
+            } else {
+                return 0;
             }
         }
 

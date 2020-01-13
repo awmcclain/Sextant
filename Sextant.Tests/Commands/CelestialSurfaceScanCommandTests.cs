@@ -32,6 +32,8 @@ namespace Sextant.Tests.Commands
             };
         }
         private const string _payloadKey = "BodyName";
+        private const string _payloadProbe = "ProbesUsed";
+        private const string _payloadTarget = "EfficiencyTarget";
         private const int _FSSValue = 10;
         private const int _DSSValue = 20;
         private const float _EfficiencyMultiplier = 1.25f;
@@ -151,10 +153,54 @@ namespace Sextant.Tests.Commands
         }
 
         [Fact]
-        public void ScannedEvent_ShouldUpdateEfficientProperty()
+        public void ScannedEvent_WithProbesLessThanTarget_ShouldUpdateEfficient_True()
         {
             IDataStore<StarSystemDocument> dataStore = CreateDataStore();
-            Navigator navigator                      = CreateNavigator();
+            Navigator navigator                      = CreateNavigator(dataStore);
+            PlayerStatusRepository playerStatus       = CreatePlayerStatusRepository();
+            CelestialSurfaceScanCommand sut           = CreateSut(navigator, playerStatus, _phrases);
+
+            Celestial celestial                      = Build.A.Celestial;
+            StarSystem currentSystem                 = Build.A.StarSystem.WithCelestial(celestial);
+            List<StarSystem> starSystems             = Build.Many.StarSystems(currentSystem);
+
+            navigator.PlanExpedition(starSystems);
+            playerStatus.SetLocation(currentSystem.Name);
+
+            TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand)
+                                                .WithPayload(_payloadKey, celestial.Name)
+                                                .WithPayload(_payloadProbe, 5)
+                                                .WithPayload(_payloadTarget, 7);
+
+            sut.Handle(testEvent);
+
+            dataStore.FindOne(s => s.Name == currentSystem.Name).Celestials.Single().Efficient.Should().BeTrue();
         }
+
+        [Fact]
+        public void ScannedEvent_WithProbesGreaterThanTarget_ShouldUpdateEfficient_False()
+        {
+            IDataStore<StarSystemDocument> dataStore = CreateDataStore();
+            Navigator navigator                      = CreateNavigator(dataStore);
+            PlayerStatusRepository playerStatus       = CreatePlayerStatusRepository();
+            CelestialSurfaceScanCommand sut           = CreateSut(navigator, playerStatus, _phrases);
+
+            Celestial celestial                      = Build.A.Celestial;
+            StarSystem currentSystem                 = Build.A.StarSystem.WithCelestial(celestial);
+            List<StarSystem> starSystems             = Build.Many.StarSystems(currentSystem);
+
+            navigator.PlanExpedition(starSystems);
+            playerStatus.SetLocation(currentSystem.Name);
+
+            TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand)
+                                                .WithPayload(_payloadKey, celestial.Name)
+                                                .WithPayload(_payloadProbe, 8)
+                                                .WithPayload(_payloadTarget, 4);
+
+            sut.Handle(testEvent);
+
+            dataStore.FindOne(s => s.Name == currentSystem.Name).Celestials.Single().Efficient.Should().BeFalse();
+        }
+
     }
 }

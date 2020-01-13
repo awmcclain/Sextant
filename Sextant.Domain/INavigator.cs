@@ -30,7 +30,7 @@ namespace Sextant.Domain
 
         bool CancelExpedition();
         bool ScanCelestial(string celestial);
-        bool ScanCelestialSurface(string celestial);
+        bool ScanCelestialSurface(string celestial, bool efficient);
         bool ScanSystem(string system);
         bool UnscanSystem(string system);
         bool SystemInExpedition(string currentSystem);
