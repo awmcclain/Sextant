@@ -12,7 +12,7 @@ namespace Sextant.Domain
 
         public string NameFromClassification(string classification) {
             CelestialData data;
-            if (CelestialData.TryGetValue(classification, out data) {
+            if (CelestialData != null && CelestialData.TryGetValue(classification, out data)) {
                 return data.Name;
             } else {
                 return "Unknown";

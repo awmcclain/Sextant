@@ -60,7 +60,6 @@ namespace Sextant.Host
             RegisterPhrases(container, configuration);
 
             container.Register(() => configuration.LoadSettings<JournalWatcherSettings>("JournalWatcher"));
-            container.Register(() => configuration.LoadSettings<JournalWatcherSettings>("JournalWatcher"));
             container.Register(() => configuration.LoadSettings<GalaxyMapInteractorSettings>("GalaxyMapInteractor"));
             container.Register(() => configuration.LoadSettings<VoiceCommunicatorSettings>("VoiceCommunicator"), Lifestyle.Singleton);
             container.Register(() => configuration.LoadSettings<Preferences>("Preferences"), Lifestyle.Singleton);

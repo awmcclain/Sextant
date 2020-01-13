@@ -32,7 +32,7 @@ namespace Sextant.Tests.Commands
             _userDataService    = new TestUserDataService(_starSystems);
             _navigator          = CreateNavigator(new MemoryDataStore<StarSystemDocument>());
             _communicator       = CreateCommunicator();
-            _sut                = new PlanExpeditionCommand(_communicator, _navigator, _userDataService, playerStatus, BuildPhrases());
+            _sut                = new PlanExpeditionCommand(_communicator, _navigator, _userDataService, playerStatus, BuildPhrases(), new CelestialValues());
         }
 
         private PlotExpeditionPhrases BuildPhrases() => new PlotExpeditionPhrases

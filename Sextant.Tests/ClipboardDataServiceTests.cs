@@ -66,15 +66,15 @@ namespace Sextant.Tests
 
             planetOne.Name.Should().Be("Test System One 1");
             planetOne.Scanned.Should().BeFalse();
-            planetOne.Clasification.Should().Be("Water World");
+            planetOne.Clasification.Should().Be("TWW");
 
             planetTwo.Name.Should().Be("Test System Two 1");
             planetTwo.Scanned.Should().BeFalse();
-            planetTwo.Clasification.Should().Be("Earth world");
+            planetTwo.Clasification.Should().Be("ELW");
 
            planetThree.Name.Should().Be("Test System Three 3");
            planetThree.Scanned.Should().BeFalse();
-           planetThree.Clasification.Should().Be("High metal content world");
+           planetThree.Clasification.Should().Be("HMC");
         }
 
         [Fact]
