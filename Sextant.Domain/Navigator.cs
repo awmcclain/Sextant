@@ -120,7 +120,7 @@ namespace Sextant.Domain
         private int ValueForCelestial(Celestial celestial)
         {
             CelestialData data;
-            if (_celestialValues.CelestialData.TryGetValue(celestial.Clasification, out data) == false) {
+            if (_celestialValues.CelestialData.TryGetValue(celestial.Classification, out data) == false) {
                 return 0;
             }
 

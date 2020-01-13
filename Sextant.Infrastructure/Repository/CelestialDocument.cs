@@ -24,7 +24,7 @@ namespace Sextant.Infrastructure.Repository
             Id             = celestial.Id;
             Name           = celestial.Name;
             System         = celestial.System;
-            Clasification  = celestial.Clasification;
+            Clasification  = celestial.Classification;
             Scanned        = celestial.Scanned;
             SurfaceScanned = celestial.SurfaceScanned;
             Landable       = celestial.Landable;

@@ -16,6 +16,7 @@ namespace Sextant.Domain.Commands
 
         private readonly ICommunicator _communicator;
         private readonly INavigator _navigator;
+        private readonly CelestialValues _values;
         private readonly string _isPhrase;
         private readonly string _arePhrase;
         private readonly string _andPhrase;
@@ -27,10 +28,11 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _alreadyScannedBook;
         private readonly bool _communicateSkippableSystems, _onlyCommunicateDuringExpedition;
 
-        public JumpCommand(ICommunicator communicator, INavigator navigator, JumpPhrases jumpPhrases, Preferences preferences)
+        public JumpCommand(ICommunicator communicator, INavigator navigator, JumpPhrases jumpPhrases, Preferences preferences, CelestialValues values)
         {
             _communicator                = communicator;
             _navigator                   = navigator;
+            _values                      = values;
 
             _isPhrase                    = jumpPhrases.IsPhrase;
             _arePhrase                   = jumpPhrases.ArePhrase;
@@ -92,7 +94,7 @@ namespace Sextant.Domain.Commands
 
             var celestialsByCategory = system.Celestials
                                              .Where(c => !c.Scanned)
-                                             .GroupBy(c => c.Clasification)
+                                             .GroupBy(c => c.Classification)
                                              .ToDictionary(grp => grp.Key, grp => grp.Count());
 
             int counter = 0;
@@ -108,7 +110,7 @@ namespace Sextant.Domain.Commands
                 if (counter == celestialsByCategory.Count() && celestialsByCategory.Count() > 1)
                     script += $"{_andPhrase} ";
 
-                script += $"{item.Value} {item.Key}";
+                script += $"{item.Value} {_values.NameFromClassification(item.Key)}";
 
                 script += PhraseBook.PluralizedEnding(item.Value, _pluralPhrase);
 

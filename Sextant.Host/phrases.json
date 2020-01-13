@@ -36,12 +36,12 @@
       "Detailed surface scan completed. "
     ],
     "AllSurfaceScansComplete": [
-      "We've completed surface scanning the system, ready to move on commander.",
-      "That was the last surface scan we needed commander.",
-      "And with that we're done in this system.",
-      "We can continue with our journey commander, we don't need any more scans.",
-      "We've scanned all the celestial surfaces we need commander.",
-      "All celestial surfaces have now been scanned commander."
+      "We've completed surface scanning the system, ready to move on commander. ",
+      "That was the last surface scan we needed commander. ",
+      "And with that we're done in this system. ",
+      "We can continue with our journey commander, we don't need any more scans. ",
+      "We've scanned all the celestial surfaces we need commander. ",
+      "All celestial surfaces have now been scanned commander. "
     ],
     "MultipleSurfaceScansRemaining": [
       "{0} more surface scans to go. ",
@@ -58,13 +58,13 @@
       "one more surface scan remaining. "
     ],
     "ExpeditionComplete": [
-      "We've reached the final destination commander. Our expedition is complete.",
-      "That was the last scan in the expedition."
+      "We've reached the final destination commander. Our expedition is complete. ",
+      "That was the last scan in the expedition. "
     ],
     "SystemValue": [
-      "You made approximately {0} credits in this system.",
-      "Your scans for this system are worth about {0} credits.",
-      "This system was worth around {0} credits."
+      "You made approximately {0:n0} credits in this system.",
+      "Your scans for this system are worth about {0:n0} credits.",
+      "This system was worth around {0:n0} credits."
     ]
   },
   "DockSRV": {
@@ -167,25 +167,25 @@
     ],
     "SystemsScanned": [
       "We have finished scanning {0} out of {1} total systems.",
-      "We are done scanning {0} out of {1} total systems.",
-      "In total we've scanned {0} out of {1} systems.",
-      "We have finished scanning {0} out of {1} total systems.",
-      "We've finished scanning {0} out of {1} total systems.",
-      "In total we have scanned {4} out of {1} systems."
+      "We are done scanning {0} out of {1} total systems. ",
+      "In total we've scanned {0} out of {1} systems. ",
+      "We have finished scanning {0} out of {1} total systems. ",
+      "We've finished scanning {0} out of {1} total systems. ",
+      "In total we have scanned {4} out of {1} systems. "
     ],
     "CreditsEarned": [
-      "We have earned approximately {0} credits.",
-      "We have earned roughly {0} credits.",
-      "We have made around {0} credits.",
-      "Our exploration data is worth about {0} credits.",
-      "In total, we've made around {0} credits."
+      "We have earned approximately {0:n0} credits. ",
+      "We have earned roughly {0:n0} credits. ",
+      "We have made around {0:n0} credits. ",
+      "Our exploration data is worth about {0:n0} credits. ",
+      "In total, we've made around {0:n0} credits. "
     ]
   },
   "Jump": {
     "Jumping": [
       "Jumping to {0}",
       "On route to {0}",
-      "Folding space to {0}"
+      "Proceeding to {0}"
     ],
     "Skipping": [
       "This system is not part of the expedition",

@@ -73,7 +73,7 @@ namespace Sextant.Domain.Commands
             string script = string.Format(_expeditionPlotted, totalSystems, totalPlanets);
 
             var celestialsByCategory = _navigator.GetAllRemainingCelestials()
-                                                 .GroupBy(c => c.Clasification)
+                                                 .GroupBy(c => c.Classification)
                                                  .ToDictionary(grp => grp.Key, grp => grp.ToList());
 
             int counter = 0;
