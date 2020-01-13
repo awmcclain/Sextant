@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
+using Xunit.Abstractions;
 using Sextant.Tests.Builders;
 using Sextant.Tests;
 using Sextant.Infrastructure.Repository;
@@ -34,6 +35,11 @@ namespace Sextant.Infrastructure.Tests
         private int _DSSValue = 25;
         private float _EfficiencyMultiplier = 1.25f;
 
+        private ITestOutputHelper _output;
+
+        public NavigatorTests(ITestOutputHelper output) {
+            _output = output;
+        }
 
         [Fact]
         public void GetNextSystem_Returns_First_Unscanned_System()
@@ -282,7 +288,17 @@ namespace Sextant.Infrastructure.Tests
             sut.ValueForExpedition().Should().Be(correctValue);
         }
 
+        [Fact]
+        public void ValueForSystem_Uses_EfficiencyMultiplier()
+        {
+            Navigator sut = CreateSut();
+            Celestial efficientCelestial = Build.A.Celestial.WithClassification("Data1").ThatHasBeenTotallyScanned().Efficiently();
 
+            List<StarSystem> starSystems = Build.A.StarSystem.WithCelestial(efficientCelestial).InAList();
 
+            sut.PlanExpedition(starSystems);
+            int correctValue = (int)(_DSSValue * _EfficiencyMultiplier);
+            sut.ValueForSystem(starSystems.First().Name).Should().Be(correctValue);
+        }
     }
 }

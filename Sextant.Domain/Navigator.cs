@@ -126,7 +126,11 @@ namespace Sextant.Domain
 
             if (celestial.Scanned) {
                 if (celestial.SurfaceScanned) {
-                    return data.FSSPlusDSS;
+                    if (celestial.Efficient) {
+                        return (int)(data.FSSPlusDSS * _celestialValues.EfficiencyMultiplier);
+                    } else {
+                        return data.FSSPlusDSS;
+                    }
                 } else {
                     return data.FSS;
                 }

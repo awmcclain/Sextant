@@ -14,8 +14,9 @@ namespace Sextant.Tests.Builders
         private string Name;
         private string System;
         private string Classification;
+        private bool Efficient;
 
-        public static implicit operator Celestial(CelestialBuilder b) => new Celestial(b.Name, b.Classification, b.System, b.Scanned, b.Id, b.SurfaceScanned);
+        public static implicit operator Celestial(CelestialBuilder b) => new Celestial(b.Name, b.Classification, b.System, b.Scanned, b.Id, b.SurfaceScanned, b.Efficient);
 
         public CelestialBuilder()
         {
@@ -41,6 +42,12 @@ namespace Sextant.Tests.Builders
         {
             Scanned = true;
             SurfaceScanned = true;
+            return this;
+        }
+
+        public CelestialBuilder Efficiently()
+        {
+            Efficient = true;
             return this;
         }
 
