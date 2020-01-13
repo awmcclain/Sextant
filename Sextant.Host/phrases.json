@@ -36,12 +36,12 @@
       "Detailed surface scan completed. "
     ],
     "AllSurfaceScansComplete": [
-      "We've completed surface scanning the system, ready to move on commander",
-      "That was the last surface scan we needed commander",
-      "And with that we're done in this system",
-      "We can continue with our journey commander, we don't need any more scans",
-      "We've scanned all the celestial surfaces we need commander",
-      "All celestial surfaces have now been scanned commander"
+      "We've completed surface scanning the system, ready to move on commander.",
+      "That was the last surface scan we needed commander.",
+      "And with that we're done in this system.",
+      "We can continue with our journey commander, we don't need any more scans.",
+      "We've scanned all the celestial surfaces we need commander.",
+      "All celestial surfaces have now been scanned commander."
     ],
     "MultipleSurfaceScansRemaining": [
       "{0} more surface scans to go. ",
@@ -60,6 +60,11 @@
     "ExpeditionComplete": [
       "We've reached the final destination commander. Our expedition is complete.",
       "That was the last scan in the expedition."
+    ],
+    "SystemValue": [
+      "You made approximately {0} credits in this system.",
+      "Your scans for this system are worth about {0} credits.",
+      "This system was worth around {0} credits."
     ]
   },
   "DockSRV": {

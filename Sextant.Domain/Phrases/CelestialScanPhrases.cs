@@ -14,5 +14,6 @@ namespace Sextant.Domain.Phrases
         public string[] MultipleScansRemaining        { get; set; }
         public string[] MultipleSurfaceScansRemaining { get; set; }
         public string[] ExpeditionComplete            { get; set; }
+        public string[] SystemValue                   { get; set; }
     }
 }
