@@ -10,10 +10,15 @@
       "I've completed scanning. "
     ],
     "AllScansComplete": [
-      "We've completed discovering the system, ready to move on commander",
-      "That was the last discovery scan we needed commander",
-      "We've discovered all the celestials we need commander",
-      "All system celestials have now been discovered commander"
+      "We've completed discovering the system, commander. ",
+      "That was the last discovery scan we needed, commander. ",
+      "We've discovered all the celestials we need, commander. ",
+      "All system celestials have now been discovered, commander. "
+    ],
+    "SwitchToSurfaces": [
+      "We're ready to scan surfaces.",
+      "Ready to scan surfaces.",
+      "We can scan surfaces if you'd like."
     ],
     "MultipleScansRemaining": [
       "{0} more scans to go. ",

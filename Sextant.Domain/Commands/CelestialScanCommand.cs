@@ -21,6 +21,7 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _scanCompletePhrases;
         private readonly PhraseBook _oneRemainingPhrases;
         private readonly PhraseBook _allScansCompletePhrases;
+        private readonly PhraseBook _switchtoSurfacesPhrases;
         private readonly PhraseBook _multipleRemainingPhrases;
         private readonly PhraseBook _expeditionCompletePhrases;
 
@@ -32,6 +33,7 @@ namespace Sextant.Domain.Commands
 
             _scanCompletePhrases       = PhraseBook.Ingest(phrases.ScanComplete);
             _allScansCompletePhrases   = PhraseBook.Ingest(phrases.AllScansComplete);
+            _switchtoSurfacesPhrases   = PhraseBook.Ingest(phrases.SwitchToSurfaces);
             _oneRemainingPhrases       = PhraseBook.Ingest(phrases.SingleScanRemaining);
             _multipleRemainingPhrases  = PhraseBook.Ingest(phrases.MultipleScansRemaining);
             _expeditionCompletePhrases = PhraseBook.Ingest(phrases.ExpeditionComplete);
@@ -73,7 +75,8 @@ namespace Sextant.Domain.Commands
             if (_navigator.ExpeditionComplete)
                 return script += _expeditionCompletePhrases.GetRandomPhrase();
 
-            return script += _allScansCompletePhrases.GetRandomPhrase();
+            script += _allScansCompletePhrases.GetRandomPhrase();
+            return script += _switchtoSurfacesPhrases.GetRandomPhrase();
         }
     }
 }

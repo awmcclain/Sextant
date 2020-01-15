@@ -8,6 +8,7 @@ namespace Sextant.Domain.Phrases
         public string[] ScanComplete                  { get; set; }
         public string[] SurfaceScanComplete           { get; set; }
         public string[] AllScansComplete              { get; set; }
+        public string[] SwitchToSurfaces              { get; set; }
         public string[] AllSurfaceScansComplete       { get; set; }
         public string[] SingleScanRemaining           { get; set; }
         public string[] SingleSurfaceScanRemaining    { get; set; }
