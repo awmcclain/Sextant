@@ -9,6 +9,12 @@
       "Celestial scan completed. ",
       "I've completed scanning. "
     ],
+    "ClassificationComplete": [
+      "You have scanned all {0}s. ",
+      "You have found every {0}.",
+      "You are done scanning {0}s.",
+      "You have found all the {0}s."
+    ],
     "AllScansComplete": [
       "We've completed discovering the system, commander. ",
       "That was the last discovery scan we needed, commander. ",
@@ -41,11 +47,11 @@
       "Detailed surface scan completed. "
     ],
     "AllSurfaceScansComplete": [
-      "We've completed surface scanning the system, ready to move on commander. ",
-      "That was the last surface scan we needed commander. ",
+      "We've completed surface scanning the system, ready to move on, commander. ",
+      "That was the last surface scan we needed, commander. ",
       "And with that we're done in this system. ",
-      "We can continue with our journey commander, we don't need any more scans. ",
-      "We've scanned all the celestial surfaces we need commander. ",
+      "We can continue with our journey, commander, we don't need any more scans. ",
+      "We've scanned all the celestial surfaces we need, commander. ",
       "All celestial surfaces have now been scanned commander. "
     ],
     "MultipleSurfaceScansRemaining": [
@@ -64,7 +70,7 @@
     ],
     "ExpeditionComplete": [
       "We've reached the final destination commander. Our expedition is complete. ",
-      "That was the last scan in the expedition. "
+      "That was the last discovery scan in the expedition. "
     ],
     "SystemValue": [
       "You made approximately {0:n0} credits in this system.",

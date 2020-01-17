@@ -34,5 +34,7 @@ namespace Sextant.Domain
         bool ScanSystem(string system);
         bool UnscanSystem(string system);
         bool SystemInExpedition(string currentSystem);
+
+        string SpokenCelestialList(List<Celestial> celestials);
     }
 }

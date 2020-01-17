@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Linq;
+using Sextant.Domain.Entities;
 using Sextant.Domain.Events;
 using System.Collections.Generic;
 using Sextant.Domain.Phrases;
@@ -24,6 +25,7 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _switchtoSurfacesPhrases;
         private readonly PhraseBook _multipleRemainingPhrases;
         private readonly PhraseBook _expeditionCompletePhrases;
+        private readonly PhraseBook _classificationCompletePhrases;
 
         public CelestialScanCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, CelestialScanPhrases phrases)
         {
@@ -31,12 +33,13 @@ namespace Sextant.Domain.Commands
             _navigator                 = navigator;
             _playerStatus              = playerStatus;
 
-            _scanCompletePhrases       = PhraseBook.Ingest(phrases.ScanComplete);
-            _allScansCompletePhrases   = PhraseBook.Ingest(phrases.AllScansComplete);
-            _switchtoSurfacesPhrases   = PhraseBook.Ingest(phrases.SwitchToSurfaces);
-            _oneRemainingPhrases       = PhraseBook.Ingest(phrases.SingleScanRemaining);
-            _multipleRemainingPhrases  = PhraseBook.Ingest(phrases.MultipleScansRemaining);
-            _expeditionCompletePhrases = PhraseBook.Ingest(phrases.ExpeditionComplete);
+            _scanCompletePhrases            = PhraseBook.Ingest(phrases.ScanComplete);
+            _allScansCompletePhrases        = PhraseBook.Ingest(phrases.AllScansComplete);
+            _switchtoSurfacesPhrases        = PhraseBook.Ingest(phrases.SwitchToSurfaces);
+            _oneRemainingPhrases            = PhraseBook.Ingest(phrases.SingleScanRemaining);
+            _multipleRemainingPhrases       = PhraseBook.Ingest(phrases.MultipleScansRemaining);
+            _expeditionCompletePhrases      = PhraseBook.Ingest(phrases.ExpeditionComplete);
+            _classificationCompletePhrases  = PhraseBook.Ingest(phrases.ClassificationComplete);
         }
 
         public void Handle(IEvent @event)
@@ -44,32 +47,55 @@ namespace Sextant.Domain.Commands
             Dictionary<string, object> eventPayload = @event.Payload;
             string currentSystem                    = _playerStatus.Location;
             bool expeditionSystem                   = _navigator.SystemInExpedition(currentSystem);
+            string celestialName                    = eventPayload["BodyName"].ToString();
 
-            bool celestialScanned = _navigator.ScanCelestial(eventPayload["BodyName"].ToString());
+            bool celestialScanned = _navigator.ScanCelestial(celestialName);
 
             if (celestialScanned) {
                 // Only speak if the scanned body was actually one we were looking for (to prevent spam from autodiscovery)
-                string script = BuildScript(currentSystem, expeditionSystem);
+                string script = BuildScript(currentSystem, celestialName);
 
                 _communicator.Communicate(script);
             }
         }
 
-        private string BuildScript(string currentSystem, bool expeditionSystem)
+        private string BuildScript(string currentSystem, string celestialName)
         {
             string script = _scanCompletePhrases.GetRandomPhrase();
 
-            if (!expeditionSystem)
+            StarSystem system = _navigator.GetSystem(currentSystem);
+            bool exhaustedCelestialType;
+            if (system.Celestials.Any(c => c.Scanned == false)) {
+                Celestial celestial = system.Celestials.First(c => c.Name == celestialName);
+                if (celestial != null) {
+                    // See if there are any more of the same celestial type
+                    if (!system.Celestials.Any(c => c.Scanned == false && c.Classification == celestial.Classification)) {
+                        // We've scanned all the planets of this classification
+
+                        exhaustedCelestialType = true;
+                        // "You've completed all the Terraformable water worlds."
+                        script += _classificationCompletePhrases.GetRandomPhraseWith(celestial.Classification);
+                    }
+                }
+
+                List<Celestials> remainingCelestials = _navigator.GetRemainingCelestials(currentSystem);
+                int scansRemaining = remainingCelestials.Count();
+
+                if (scansRemaining == 1) {
+                    script += _oneRemainingPhrases.GetRandomPhrase();
+                    if (exhaustedCelestialType) {
+                        // "1 scan remains, a high metal content planet."
+                        script += "a " + remainingCelestials.First().Classification;
+                    }
+                } else {
+                    script += _multipleRemainingPhrases.GetRandomPhraseWith(scansRemaining);
+                    if (exhaustedCelestialType) {
+                        // "2 scans remain, 2 high metal content planets."
+                        script += _navigator.SpokenCelestialList(remainingCelestials);
+                    }
+                }
+
                 return script;
-
-            if (_navigator.GetSystem(currentSystem).Celestials.Any(c => c.Scanned == false))
-            {
-                int scansRemaining = _navigator.GetRemainingCelestials(currentSystem).Count();
-
-                if (scansRemaining == 1)
-                    return script += _oneRemainingPhrases.GetRandomPhrase();
-
-                return script += _multipleRemainingPhrases.GetRandomPhraseWith(scansRemaining);
             }
 
             if (_navigator.ExpeditionComplete)

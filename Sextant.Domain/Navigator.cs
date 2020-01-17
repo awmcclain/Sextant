@@ -12,6 +12,8 @@ namespace Sextant.Domain
         private readonly INavigationRepository _navigationRepository;
         private readonly CelestialValues _celestialValues;
 
+        protected readonly string _andPhrase;
+        protected readonly string _pluralPhrase;
         public Navigator(INavigationRepository navigationRepository, CelestialValues celestialValues)
         {
             _navigationRepository = navigationRepository;
@@ -151,6 +153,30 @@ namespace Sextant.Domain
         public int ValueForExpedition()
         {
             return _navigationRepository.GetSystems().SelectMany(s => s.Celestials.Where(c => c.Scanned == true)).Sum(c => ValueForCelestial(c));
+        }
+
+        public string SpokenCelestialList(List<Celestial> celestials)
+        {
+            string script;
+
+            var celestialsByCategory = celestials.GroupBy(c => c.Classification)
+                                                 .ToDictionary(grp => grp.Key, grp => grp.ToList());
+
+            int counter = 0;
+
+            foreach (var item in celestialsByCategory)
+            {
+                counter++;
+
+                if (counter == celestialsByCategory.Count() && celestialsByCategory.Count() > 1)
+                    script += $"{_andPhrase} ";
+
+                string pluralized = item.Value.Count == 1 ? string.Empty : _pluralPhrase;
+                
+                script += $"{item.Value.Count} {_celestialValues.NameFromClassification(item.Key)}{pluralized}, ";
+            }
+
+
         }
 
    }

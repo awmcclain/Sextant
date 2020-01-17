@@ -21,8 +21,6 @@ namespace Sextant.Domain.Commands
         protected readonly string _expeditionExists;
         protected readonly string _unableToPlot;
         protected readonly string _expeditionPlotted;
-        protected readonly string _andPhrase;
-        protected readonly string _pluralPhrase;
 
         public virtual string SupportedCommand => "plan_expedition";
 
@@ -39,8 +37,6 @@ namespace Sextant.Domain.Commands
             _expeditionExists  = phrases.ExpeditionExists;
             _unableToPlot      = phrases.UnableToPlot;
             _expeditionPlotted = phrases.ExpeditionPlotted;
-            _andPhrase         = phrases.AndPhrase;
-            _pluralPhrase      = phrases.PluralPhrase;
         }
 
         public virtual void Handle(IEvent @event)
@@ -72,24 +68,7 @@ namespace Sextant.Domain.Commands
 
             string script = string.Format(_expeditionPlotted, totalSystems, totalPlanets);
 
-            var celestialsByCategory = _navigator.GetAllRemainingCelestials()
-                                                 .GroupBy(c => c.Classification)
-                                                 .ToDictionary(grp => grp.Key, grp => grp.ToList());
-
-            int counter = 0;
-
-            foreach (var item in celestialsByCategory)
-            {
-                counter++;
-
-                if (counter == celestialsByCategory.Count() && celestialsByCategory.Count() > 1)
-                    script += $"{_andPhrase} ";
-
-                string pluralized = item.Value.Count == 1 ? string.Empty : _pluralPhrase;
-                
-                script += $"{item.Value.Count} {_celestialValues.NameFromClassification(item.Key)}{pluralized}, ";
-            }
-
+            script += _navigator.SpokenCelestialList(_navigator.GetAllRemainingCelestials());
             _communicator.Communicate(script);
         }
     }
