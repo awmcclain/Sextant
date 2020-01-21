@@ -16,5 +16,23 @@ namespace Sextant.Domain
                 return "Unknown";
             }
         }
+
+        public int ScanValue(string classification) {
+            CelestialData data;
+            if (CelestialData != null && CelestialData.TryGetValue(classification, out data)) {
+                return data.FSS;
+            } else {
+                return 0;
+            }
+        }
+        public int SurfaceScanValue(string classification) {
+            CelestialData data;
+            if (CelestialData != null && CelestialData.TryGetValue(classification, out data)) {
+                return data.FSSPlusDSSEfficient;
+            } else {
+                return 0;
+            }
+        }
+
     }
 }

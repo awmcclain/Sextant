@@ -26,6 +26,8 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _skipPhraseBook;
         private readonly PhraseBook _scanPhraseBook;
         private readonly PhraseBook _alreadyScannedBook;
+        private readonly PhraseBook _systemValueBook;
+
         private readonly bool _communicateSkippableSystems, _onlyCommunicateDuringExpedition;
 
         private bool ShouldCommunicate
@@ -54,6 +56,7 @@ namespace Sextant.Domain.Commands
             _skipPhraseBook              = PhraseBook.Ingest(jumpPhrases.Skipping);
             _scanPhraseBook              = PhraseBook.Ingest(jumpPhrases.Scanning);
             _alreadyScannedBook          = PhraseBook.Ingest(jumpPhrases.AlreadyScanned);
+            _systemValueBook             = PhraseBook.Ingest(jumpPhrases.SystemValue);
 
             _communicateSkippableSystems =  preferences.CommunicateSkippableSystems;
             _onlyCommunicateDuringExpedition = preferences.OnlyCommunicateDuringExpedition;
@@ -96,6 +99,12 @@ namespace Sextant.Domain.Commands
             if (ShouldCommunicate) {
                 _communicator.Communicate(script);
             }
+
+            script = BuildSystemValueScript(system);
+
+            if (ShouldCommunicate) {
+                _communicator.Communicate(script);
+            }
         }
 
         private string BuildScanScript(StarSystem system)
@@ -129,5 +138,19 @@ namespace Sextant.Domain.Commands
 
             return script;
         }
+
+        private string BuildSystemValueScript(StarSystem system)
+        {
+            var scanOnlyValue  = system.Celestials
+                                       .Where(c => !c.Scanned)
+                                       .Sum(c => _values.ScanValue(c.Classification));
+
+            var totalValue  = system.Celestials
+                                    .Where(c => !c.Scanned)
+                                    .Sum(c => _values.SurfaceScanValue(c.Classification));
+
+            return _systemValueBook.GetRandomPhraseWith(totalValue, scanOnlyValue);
+        }
+
     }
 }

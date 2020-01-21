@@ -9,6 +9,7 @@ namespace Sextant.Domain.Phrases
         public string[] Skipping       { get; set; }
         public string[] Scanning       { get; set; }
         public string[] AlreadyScanned { get; set; }
+        public string[] SystemValue    { get; set; }
         public string AndPhrase        { get; set; }
         public string IsPhrase         { get; set; }
         public string ArePhrase        { get; set; }
