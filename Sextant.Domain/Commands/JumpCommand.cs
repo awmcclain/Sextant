@@ -16,6 +16,7 @@ namespace Sextant.Domain.Commands
 
         private readonly ICommunicator _communicator;
         private readonly INavigator _navigator;
+        private readonly ILogger _logger;
         private readonly CelestialValues _values;
         private readonly string _isPhrase;
         private readonly string _arePhrase;
@@ -41,11 +42,12 @@ namespace Sextant.Domain.Commands
                 return true;
             }
         }
-        public JumpCommand(ICommunicator communicator, INavigator navigator, JumpPhrases jumpPhrases, Preferences preferences, CelestialValues values)
+        public JumpCommand(ICommunicator communicator, INavigator navigator, JumpPhrases jumpPhrases, Preferences preferences, CelestialValues values, ILogger logger)
         {
             _communicator                = communicator;
             _navigator                   = navigator;
             _values                      = values;
+            _logger                      = logger;
 
             _isPhrase                    = jumpPhrases.IsPhrase;
             _arePhrase                   = jumpPhrases.ArePhrase;
@@ -67,6 +69,7 @@ namespace Sextant.Domain.Commands
         {
             Dictionary<string, object> payload = @event.Payload;
 
+            _logger.Information($"OnlyCommunicate: {_onlyCommunicateDuringExpedition} ExpeditionStarted: {_navigator.ExpeditionStarted}  ExpeditionComplete: {_navigator.ExpeditionComplete}");
             if (payload.ContainsKey("JumpType") && payload["JumpType"].ToString() == "Supercruise")
                 return;
 
