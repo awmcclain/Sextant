@@ -5,6 +5,6 @@ namespace Sextant.Infrastructure.Settings
 {
     public class JournalWatcherSettings
     {
-        public string JournalDirectory { get; set; }
+        public string JournalDirectoryOverride { get; set; }
     }
 }
