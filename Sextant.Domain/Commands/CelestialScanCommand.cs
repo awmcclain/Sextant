@@ -64,7 +64,7 @@ namespace Sextant.Domain.Commands
             string script = _scanCompletePhrases.GetRandomPhrase();
 
             StarSystem system = _navigator.GetSystem(currentSystem);
-            bool exhaustedCelestialType;
+            bool exhaustedCelestialType = false;
             if (system.Celestials.Any(c => c.Scanned == false)) {
                 Celestial celestial = system.Celestials.First(c => c.Name == celestialName);
                 if (celestial != null) {
@@ -78,7 +78,7 @@ namespace Sextant.Domain.Commands
                     }
                 }
 
-                List<Celestials> remainingCelestials = _navigator.GetRemainingCelestials(currentSystem);
+                List<Celestial> remainingCelestials = _navigator.GetRemainingCelestials(currentSystem);
                 int scansRemaining = remainingCelestials.Count();
 
                 if (scansRemaining == 1) {

@@ -13,61 +13,19 @@ namespace Sextant.Infrastructure
 {
     public class ClipboardDataService : IUserDataService
     {
-        private const string Header = "  #   Jump System/Planets";
         private static ILogger _logger;
+        private static IExpeditionParser _parser;
 
-        public ClipboardDataService(ILogger logger)
+        public ClipboardDataService(ILogger logger, IExpeditionParser parser)
         {
             _logger = logger;
+            _parser = parser;
         }
 
         public IEnumerable<StarSystem> GetExpeditionData()
         {
-            try
-            {
-                string clipboardData = GetClipboard();
-
-                string[] lines = clipboardData.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
-
-                List<StarSystem> systems = new List<StarSystem>();
-                StarSystem currentSystem = null;
-
-                if (!lines.First().Contains(Header))
-                    return null;
-
-                foreach (var line in lines.Skip(2))
-                {
-                    if (string.IsNullOrWhiteSpace(line))
-                        continue;
-
-                    if (!line.StartsWith("\t"))
-                    {
-                        var systemName = line.Substring(11);
-
-                        // Remove * at the end of the data (populated systems)
-                        systemName = systemName.TrimEnd(' ', '*');
-
-                        currentSystem = new StarSystem(systemName);
-                        systems.Add(currentSystem);
-                        continue;
-                    }
-
-                    var length = line.IndexOf('(') - 13;
-                    var planet = line.Substring(12, length);
-
-                    var index = line.IndexOf(')') + 2;
-                    var classification = line.Substring(index);
-
-                    currentSystem.AddCelestial(string.Join(" ", currentSystem.Name, planet), classification);
-                }
-
-                return systems;
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(ex, "Exception parsing expedition data");
-                return null;
-            }
+            string clipboardData = GetClipboard();
+            return _parser.ParseExpeditionData(clipboardData);
         }
 
         protected virtual string GetClipboard()

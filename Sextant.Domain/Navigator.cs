@@ -157,8 +157,8 @@ namespace Sextant.Domain
 
         public string SpokenCelestialList(List<Celestial> celestials)
         {
-            string script;
-
+            string script = string.Empty;
+ 
             var celestialsByCategory = celestials.GroupBy(c => c.Classification)
                                                  .ToDictionary(grp => grp.Key, grp => grp.ToList());
 
@@ -175,6 +175,8 @@ namespace Sextant.Domain
                 
                 script += $"{item.Value.Count} {_celestialValues.NameFromClassification(item.Key)}{pluralized}, ";
             }
+
+            return script;
 
 
         }
