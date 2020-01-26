@@ -14,8 +14,8 @@ namespace Sextant.Domain.Commands
 
         public override bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        public ExtendExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, CelestialValues values)
-            : base(communicator, navigator, userDataService, playerStatus, phrases, values)
+        public ExtendExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, CelestialValues values, IDetourPlanner detourPlanner)
+            : base(communicator, navigator, userDataService, playerStatus, phrases, values, detourPlanner)
         { }
 
         public override void Handle(IEvent @event)

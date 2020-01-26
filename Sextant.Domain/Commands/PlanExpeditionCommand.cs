@@ -16,6 +16,7 @@ namespace Sextant.Domain.Commands
         protected readonly ICommunicator _communicator;
         protected readonly IUserDataService _userDataService;
         private readonly IPlayerStatus _playerStatus;
+        private readonly IDetourPlanner _detourPlanner;
     
         private readonly CelestialValues _celestialValues;
         protected readonly string _expeditionExists;
@@ -26,13 +27,14 @@ namespace Sextant.Domain.Commands
 
         public virtual bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        public PlanExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, CelestialValues celestialValues)
+        public PlanExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, CelestialValues celestialValues, IDetourPlanner detourPlanner)
         {
             _navigator         = navigator;
             _communicator      = communicator;
             _userDataService   = userDataService;
             _playerStatus      = playerStatus;
             _celestialValues   = celestialValues;
+            _detourPlanner     = detourPlanner;
 
             _expeditionExists  = phrases.ExpeditionExists;
             _unableToPlot      = phrases.UnableToPlot;
@@ -41,15 +43,21 @@ namespace Sextant.Domain.Commands
 
         public virtual void Handle(IEvent @event)
         {
-            IEnumerable<StarSystem> expeditionData = _userDataService.GetExpeditionData();
 
-            if (_navigator.ExpeditionStarted)
+            if (_navigator.OnExpedition)
             {
                 _communicator.Communicate(_expeditionExists);
                 return;
             }
 
-            bool success = _navigator.PlanExpedition(expeditionData);
+            bool success;
+
+            if (_detourPlanner.DetourPlanned) {
+                success = _detourPlanner.ConfirmDetour();
+            } else {
+                IEnumerable<StarSystem> expeditionData = _userDataService.GetExpeditionData();
+                success = _navigator.PlanExpedition(expeditionData);
+            }
 
             if (!success)
             {

@@ -14,16 +14,38 @@ namespace Sextant.Domain
 
         protected readonly string _andPhrase;
         protected readonly string _pluralPhrase;
+
+        private  IEnumerable<StarSystem> _detourData;
         public Navigator(INavigationRepository navigationRepository, CelestialValues celestialValues)
         {
             _navigationRepository = navigationRepository;
             _celestialValues = celestialValues;
         }
 
+        public bool OnExpedition => ExpeditionStarted && !ExpeditionComplete;
         public bool ExpeditionComplete => _navigationRepository.GetSystems().All(s => s.Scanned);
         public bool ExpeditionStarted  => !_navigationRepository.IsEmpty();
+        public bool DetourSaved => _detourData != null;
 
+        public void SaveDetour(IEnumerable<StarSystem> detour) {
+            _detourData = detour;
+        }
         public bool CancelExpedition() => _navigationRepository.Clear();
+
+        public bool PlanDetour()
+        {
+            if (_detourData == null) {
+                return false;
+            }
+
+            if (ExpeditionStarted) {
+                return false;
+            }
+
+            bool result = ExtendExpedition(_detourData);
+            _detourData = null;
+            return result;
+        }
 
         public bool PlanExpedition(IEnumerable<StarSystem> systems)
         {
