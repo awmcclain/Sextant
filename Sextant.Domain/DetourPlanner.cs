@@ -3,10 +3,8 @@
 
 using System;
 using System.Linq;
-using Sextant.Domain.Events;
 using System.Collections.Generic;
 using Sextant.Domain.Entities;
-using Sextant.Domain.Phrases;
 
 namespace Sextant.Domain
 {

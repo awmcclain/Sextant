@@ -1,12 +1,13 @@
 ﻿// Copyright (c) Stickymaddness All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using Sextant.Domain;
 using Sextant.Domain.Entities;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace Sextant.Domain
+namespace Sextant.Infrastructure
 {
     public class ExpeditionParser : IExpeditionParser
     {

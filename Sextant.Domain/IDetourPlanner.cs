@@ -1,9 +1,6 @@
 ﻿// Copyright (c) Stickymaddness All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
-using System.Collections.Generic;
-using Sextant.Domain.Entities;
-
 namespace Sextant.Domain
 {
     public interface IDetourPlanner
@@ -11,7 +8,7 @@ namespace Sextant.Domain
         int DetourAmount { get; }
 
         void IncreaseDetourAmount();
-        void DecreaseDetourAmount();        
+        void DecreaseDetourAmount();
 
         bool DetourPlanned { get; }
         int SystemsInDetour { get; }

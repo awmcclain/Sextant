@@ -4,7 +4,7 @@
 using Sextant.Domain.Entities;
 using System.Collections.Generic;
 
-namespace Sextant.Domain
+namespace Sextant.Infrastructure
 {
     public interface IExpeditionParser
     {

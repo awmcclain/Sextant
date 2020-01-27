@@ -15,7 +15,9 @@ namespace Sextant.Infrastructure.Repository
         private PlayerStatus _playerStatus;
         private readonly IDataStore<PlayerStatus> _dataStore;
 
+
         public string Location           => _playerStatus.Location;
+        public string Destination        => _playerStatus.Destination;
         public double FuelCapacity       => _playerStatus.FuelCapacity;
         public TimeSpan ExpeditionLength => DateTimeOffset.Now - _playerStatus.ExpeditionStart;
 
@@ -61,6 +63,15 @@ namespace Sextant.Infrastructure.Repository
                 return true;
 
             _playerStatus.Location = location;
+            return Store();
+        }
+
+        public bool SetDestination(string location)
+        {
+            if (_playerStatus.Destination == location)
+                return true;
+
+            _playerStatus.Destination = location;
             return Store();
         }
     }

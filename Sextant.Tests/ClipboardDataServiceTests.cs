@@ -21,7 +21,7 @@ namespace Sextant.Tests
             protected override string GetClipboard() => _clipboardText;
 
             public ClipboardDataServiceStub(string clipboardText)
-                : base(new SerilogWrapper())
+                : base(new SerilogWrapper(), new ExpeditionParser(new SerilogWrapper()))
             {
                 Log.Logger = new LoggerConfiguration().WriteTo.TestCorrelator().CreateLogger();
                 _clipboardText = clipboardText;

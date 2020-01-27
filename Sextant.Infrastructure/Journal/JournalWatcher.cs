@@ -45,7 +45,7 @@ namespace Sextant.Infrastructure.Journal
             _logger         = logger;
             _journalHandler = journalHandler;
             if (String.IsNullOrEmpty(settings.JournalDirectoryOverride)) {
-                _directory      = Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Saved Games", "Frontier Developments", "Elite Dangerous");
+                _directory      = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Saved Games", "Frontier Developments", "Elite Dangerous");
             } else {
                 _directory      = settings.JournalDirectoryOverride;
             }

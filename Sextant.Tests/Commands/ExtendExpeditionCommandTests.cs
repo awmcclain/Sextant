@@ -20,6 +20,7 @@ namespace Sextant.Tests.Commands
         private readonly Navigator _navigator;
         private readonly TestCommunicator _communicator;
         private readonly List<StarSystem> _starSystems;
+        private readonly DetourPlanner _detourPlanner;
 
         private readonly TestUserDataService _userDataService;
 
@@ -31,7 +32,8 @@ namespace Sextant.Tests.Commands
             _userDataService              = new TestUserDataService(_starSystems);
             _navigator                    = CreateNavigator(new MemoryDataStore<StarSystemDocument>());
             _communicator                 = CreateCommunicator();
-            _sut                          = new ExtendExpeditionCommand(_communicator, _navigator, _userDataService, playerStatus, BuildPhrases(), new CelestialValues());
+            _detourPlanner                = new DetourPlanner(_navigator, null, playerStatus, null);
+            _sut                          = new ExtendExpeditionCommand(_communicator, _navigator, _userDataService, playerStatus, BuildPhrases(), new CelestialValues(), _detourPlanner);
         }
 
         private PlotExpeditionPhrases BuildPhrases() => new PlotExpeditionPhrases

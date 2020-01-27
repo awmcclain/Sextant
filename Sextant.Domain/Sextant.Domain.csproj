@@ -94,6 +94,10 @@
     <Compile Include="Commands\CelestialSurfaceScanCommand.cs" />
     <Compile Include="CelestialValues.cs" />
     <Compile Include="CelestialData.cs" />
+    <Compile Include="Commands\TakeADetourCommand.cs" />
+    <Compile Include="IDetourPlanner.cs" />
+    <Compile Include="DetourPlanner.cs" />
+    <Compile Include="IDetourDataService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
