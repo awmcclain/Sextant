@@ -5,6 +5,7 @@ using Sextant.Domain;
 using Sextant.Domain.Commands;
 using Sextant.Domain.Entities;
 using Sextant.Domain.Phrases;
+using Sextant.Infrastructure;
 using Sextant.Infrastructure.Repository;
 using Sextant.Tests.Builders;
 using System.Collections.Generic;
@@ -12,11 +13,22 @@ using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 using FluentAssertions;
+using Serilog;
 
 namespace Sextant.Tests.Commands
 {
+
     public class JumpCommandTests : CommandTestBase
     {
+        private JumpCommand CreateSut(Preferences preferences=null) {
+            if (preferences == null) {
+                preferences = new Preferences();
+            }
+
+            Log.Logger = new LoggerConfiguration().WriteTo.TestCorrelator().CreateLogger();
+            return new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues(), new SerilogWrapper());
+        }
+
         private readonly Navigator _navigator;
         private readonly TestCommunicator _communicator;
         private readonly List<StarSystem> _starSystems;
@@ -41,8 +53,7 @@ namespace Sextant.Tests.Commands
         [Fact]
         public void JumpCommand_With_Supercruise_Payload_Does_Nothing()
         {
-            var sut = new JumpCommand(_communicator, _navigator, _phrases, new Preferences(), CreateCelestialValues());
-
+            var sut = CreateSut();
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("JumpType", "Supercruise");
 
             sut.Handle(testEvent);
@@ -54,7 +65,7 @@ namespace Sextant.Tests.Commands
         public void JumpCommand_Does_Nothing_When_Disabled()
         {
             var preferences     = new Preferences() { OnlyCommunicateDuringExpedition = true };
-            var sut             = new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues());
+            var sut             = CreateSut(preferences);
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", "Test");
 
             sut.Handle(testEvent);
@@ -66,7 +77,7 @@ namespace Sextant.Tests.Commands
         public void JumpCommand_Does_Not_Communicate_When_Disabled_and_Complete()
         {
             var preferences     = new Preferences() { OnlyCommunicateDuringExpedition = true };
-            var sut             = new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues());
+            var sut             = CreateSut(preferences);
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", "Test");
 
             var celestial   = Build.A.Celestial.ThatHasBeenScanned();
@@ -88,7 +99,7 @@ namespace Sextant.Tests.Commands
         public void JumpCommand_With_System_Not_In_Expedition_Skips_System_And_Communicates()
         {
             var preferences     = new Preferences() { CommunicateSkippableSystems = true };
-            var sut             = new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues());
+            var sut             = CreateSut(preferences);
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", "Test");
 
             sut.Handle(testEvent);
@@ -101,7 +112,7 @@ namespace Sextant.Tests.Commands
         public void JumpCommand_With_System_Not_In_Expedition_Skips_System_And_Does_Not_Communicate()
         {
             var preferences = new Preferences() { CommunicateSkippableSystems = false };
-            var sut = new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues());
+            var sut         = CreateSut(preferences);
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", "Test");
 
             sut.Handle(testEvent);
@@ -113,7 +124,7 @@ namespace Sextant.Tests.Commands
         public void JumpCommand_With_System_Already_Scanned_Skips_System_And_Communicates()
         {
             var preferences = new Preferences() { CommunicateSkippableSystems = true };
-            var sut         = new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues());
+            var sut         = CreateSut(preferences);
 
             var celestial   = Build.A.Celestial.ThatHasBeenScanned();
             var system      = Build.A.StarSystem.WithCelestial(celestial);
@@ -133,7 +144,7 @@ namespace Sextant.Tests.Commands
         public void JumpCommand_With_Already_Scanned_Skips_System_And_Does_Not_Communicate()
         {
             var preferences = new Preferences() { CommunicateSkippableSystems = false };
-            var sut         = new JumpCommand(_communicator, _navigator, _phrases, preferences, CreateCelestialValues());
+            var sut         = CreateSut(preferences);
 
             var celestial   = Build.A.Celestial.ThatHasBeenScanned();
             var system      = Build.A.StarSystem.WithCelestial(celestial);
@@ -151,7 +162,7 @@ namespace Sextant.Tests.Commands
         [Fact]
         public void JumpCommand_With_Unscanned_System_In_Expedition_Communicates()
         {
-            var sut = new JumpCommand(_communicator, _navigator, _phrases, new Preferences(), CreateCelestialValues());
+            var sut             = CreateSut();
 
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand).WithPayload("StarSystem", _starSystems.First().Name);
 

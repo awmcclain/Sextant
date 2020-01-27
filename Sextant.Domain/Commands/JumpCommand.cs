@@ -16,6 +16,7 @@ namespace Sextant.Domain.Commands
 
         private readonly ICommunicator _communicator;
         private readonly INavigator _navigator;
+        private readonly ILogger _logger;
         private readonly CelestialValues _values;
         private readonly string _isPhrase;
         private readonly string _arePhrase;
@@ -26,6 +27,8 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _skipPhraseBook;
         private readonly PhraseBook _scanPhraseBook;
         private readonly PhraseBook _alreadyScannedBook;
+        private readonly PhraseBook _systemValueBook;
+
         private readonly bool _communicateSkippableSystems, _onlyCommunicateDuringExpedition;
 
         private bool ShouldCommunicate
@@ -39,11 +42,12 @@ namespace Sextant.Domain.Commands
                 return true;
             }
         }
-        public JumpCommand(ICommunicator communicator, INavigator navigator, JumpPhrases jumpPhrases, Preferences preferences, CelestialValues values)
+        public JumpCommand(ICommunicator communicator, INavigator navigator, JumpPhrases jumpPhrases, Preferences preferences, CelestialValues values, ILogger logger)
         {
             _communicator                = communicator;
             _navigator                   = navigator;
             _values                      = values;
+            _logger                      = logger;
 
             _isPhrase                    = jumpPhrases.IsPhrase;
             _arePhrase                   = jumpPhrases.ArePhrase;
@@ -54,6 +58,7 @@ namespace Sextant.Domain.Commands
             _skipPhraseBook              = PhraseBook.Ingest(jumpPhrases.Skipping);
             _scanPhraseBook              = PhraseBook.Ingest(jumpPhrases.Scanning);
             _alreadyScannedBook          = PhraseBook.Ingest(jumpPhrases.AlreadyScanned);
+            _systemValueBook             = PhraseBook.Ingest(jumpPhrases.SystemValue);
 
             _communicateSkippableSystems =  preferences.CommunicateSkippableSystems;
             _onlyCommunicateDuringExpedition = preferences.OnlyCommunicateDuringExpedition;
@@ -64,6 +69,7 @@ namespace Sextant.Domain.Commands
         {
             Dictionary<string, object> payload = @event.Payload;
 
+            _logger.Information($"OnlyCommunicate: {_onlyCommunicateDuringExpedition} ExpeditionStarted: {_navigator.ExpeditionStarted}  ExpeditionComplete: {_navigator.ExpeditionComplete}");
             if (payload.ContainsKey("JumpType") && payload["JumpType"].ToString() == "Supercruise")
                 return;
 
@@ -92,6 +98,12 @@ namespace Sextant.Domain.Commands
             }
 
             string script = BuildScanScript(system);
+
+            if (ShouldCommunicate) {
+                _communicator.Communicate(script);
+            }
+
+            script = BuildSystemValueScript(system);
 
             if (ShouldCommunicate) {
                 _communicator.Communicate(script);
@@ -129,5 +141,19 @@ namespace Sextant.Domain.Commands
 
             return script;
         }
+
+        private string BuildSystemValueScript(StarSystem system)
+        {
+            var scanOnlyValue  = system.Celestials
+                                       .Where(c => !c.Scanned)
+                                       .Sum(c => _values.ScanValue(c.Classification));
+
+            var totalValue  = system.Celestials
+                                    .Where(c => !c.Scanned)
+                                    .Sum(c => _values.SurfaceScanValue(c.Classification));
+
+            return _systemValueBook.GetRandomPhraseWith(totalValue, scanOnlyValue);
+        }
+
     }
 }

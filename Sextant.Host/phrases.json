@@ -216,6 +216,11 @@
       "We've already been through here, nothing to scan",
       "We've been here before, nothing left to scan"
     ],
+    "SystemValue": [
+      "The system is worth roughly {0} credits, {0} if we skip surfaces.",
+      "The system is worth around {0} credits, or {0} if we skip surfaces.",
+      "The system is worth over {0} credits if we scan everything, or {0} credits without surfaces."
+    ],
     "AndPhrase": "and",
     "IsPhrase": "is",
     "ArePhrase": "are",
@@ -232,7 +237,7 @@
       "We do not need to scan any of the celestials in this system"
     ],
     "SystemComplete": [
-      "We've completed scanning the system, ready to move on commander",
+      "We've completed scanning the system, ready to move on, commander",
       "There are no more scans needed in this system commander",
       "Nothing left to scan, we're done here commander",
       "We can continue with our journey commander, we don't need any more scans",
