@@ -35,6 +35,7 @@ namespace Sextant.Host
             container.Register<IExpeditionParser, ExpeditionParser>(Lifestyle.Singleton);
             container.Register<IUserDataService, ClipboardDataService>(Lifestyle.Singleton);
             container.Register<IDetourDataService, RoadToRichesDataService>(Lifestyle.Singleton);
+            container.Register<IDetourPlanner, DetourPlanner>(Lifestyle.Singleton);
             container.Register<INavigationRepository, NavigationRepository>(Lifestyle.Singleton);
             container.Register<IPlayerStatus, PlayerStatusRepository>(Lifestyle.Singleton);
 
