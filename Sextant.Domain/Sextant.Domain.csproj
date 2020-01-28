@@ -60,6 +60,7 @@
     <Compile Include="Commands\ResponseCommandBase.cs" />
     <Compile Include="Commands\ScansRemainingCommand.cs" />
     <Compile Include="Commands\SkipSystemCommand.cs" />
+    <Compile Include="Commands\FSDTargetCommand.cs" />
     <Compile Include="Entities\Celestial.cs" />
     <Compile Include="Entities\StarSystem.cs" />
     <Compile Include="Events\IEvent.cs" />

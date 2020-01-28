@@ -21,7 +21,14 @@ namespace Sextant.TestHarness
                     break;
                 }
 
-                sextant.Handle(input);
+                string[] parts = input.Split(' ');
+                if (parts.Length > 1) {
+                    // Create a journal entry
+                    sextant.HandleDebug(parts);
+                } else {
+                    sextant.Handle(input);
+                }
+
             } 
         }
     }

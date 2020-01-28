@@ -28,9 +28,11 @@ namespace Sextant.Infrastructure
             // Read the website
             var result = GetRoadToRichesData(startSystem, endSystem, detourAmount);
             if (String.IsNullOrEmpty(result)) {
+                //_logger.Error("Nothing returned from data");
                 return null;
             }
 
+            _logger.Information("Parsing results...");
             return _parser.ParseExpeditionData(result);
         }
 
@@ -57,6 +59,8 @@ namespace Sextant.Infrastructure
                     return null;
                 }
                 var result = textArea.InnerText;
+                _logger.Information($"Got back {result}");
+
                 return result;
             }
             catch (System.Exception e)

@@ -8,6 +8,7 @@ using Sextant.Infrastructure;
 using Sextant.Infrastructure.Journal;
 using SimpleInjector;
 using System;
+using System.Collections.Generic;
 
 namespace Sextant.Host
 {
@@ -59,6 +60,18 @@ namespace Sextant.Host
             }
         }
 
+        public void HandleDebug(string[] parts)
+        {
+            try
+            {
+                _executor.Handle(new JournalEvent(parts[0], new Dictionary<string, object> { { parts[1], parts[2]} }));
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"Exception handling Journal command. Context : {String.Join(" ", parts)}");
+            }
+ 
+        }
         private void InitializeLogging()
         {
             Log.Logger = new LoggerConfiguration()

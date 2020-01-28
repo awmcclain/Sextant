@@ -56,6 +56,8 @@ namespace Sextant.Domain
             _playerStatus      = playerStatus;
             _logger            = logger;
 
+            _detourAmount      = _defaultDetourAmount;
+
         }
 
         public bool PlanDetour()
@@ -76,8 +78,10 @@ namespace Sextant.Domain
             // try...catch here?
             _detourData = _detourDataService.GetExpeditionData(_playerStatus.Location, _playerStatus.Destination, _detourAmount);
             if (_detourData == null) {
+                _logger.Error("Nothing returned from data service");
                 return false;
             }
+            _logger.Information("Success!");
 
             return true;
         }

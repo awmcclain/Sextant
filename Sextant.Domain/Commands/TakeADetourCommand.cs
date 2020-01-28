@@ -26,8 +26,9 @@ namespace Sextant.Domain.Commands
 
         public virtual bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        public TakeADetourCommand(ICommunicator communicator, IDetourPlanner detourPlanner, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, ILogger logger)
+        public TakeADetourCommand(INavigator navigator, ICommunicator communicator, IDetourPlanner detourPlanner, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, ILogger logger)
         {
+            _navigator         = navigator;
             _communicator      = communicator;
             _detourPlanner     = detourPlanner;
             _playerStatus      = playerStatus;

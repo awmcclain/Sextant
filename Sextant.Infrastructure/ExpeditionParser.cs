@@ -22,16 +22,22 @@ namespace Sextant.Infrastructure
 
         public IEnumerable<StarSystem> ParseExpeditionData(string input) {
             try {
-                string[] lines = input.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+                input = input.Replace(Environment.NewLine, "\n");
+                string[] lines = input.Split('\n');
 
                 List<StarSystem> systems = new List<StarSystem>();
                 StarSystem currentSystem = null;
 
-                if (!lines.First().Contains(Header))
+                if (!lines.First().Contains(Header)) {
+                    //_logger.Error($"First line '{lines.First()}' doesn't match header '{Header}'");
                     return null;
+                }
+
+                //_logger.Information($"I found {lines.Count()} lines");
 
                 foreach (var line in lines.Skip(2))
                 {
+                    //_logger.Information($"Processing {line}");
                     if (string.IsNullOrWhiteSpace(line))
                         continue;
 
