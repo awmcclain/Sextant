@@ -33,11 +33,11 @@ namespace Sextant.VoiceAttack
         {
             var basePath = Path.Combine(Environment.CurrentDirectory, "Apps", "Sextant");
 
-            _host = new SextantHost(basePath: basePath, pluginName: VA_DisplayName());
-            _host.Initialize();
-            
             // Re-configure logging
             Log.Logger = VoiceAttackSinkExtensions.VoiceAttack(new LoggerConfiguration().WriteTo, vaProxy).CreateLogger();
+
+            _host = new SextantHost(basePath: basePath, pluginName: VA_DisplayName(), configureLogging: false);
+            
         }
 
         public static void VA_Invoke1(dynamic vaProxy)

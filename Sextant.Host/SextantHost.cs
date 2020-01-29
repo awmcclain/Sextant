@@ -19,10 +19,11 @@ namespace Sextant.Host
         private static Serilog.ILogger _logger;
         private readonly string _pluginName;
 
-        public SextantHost(string basePath, string pluginName)
+        public SextantHost(string basePath, string pluginName, bool configureLogging=true)
         {
             _pluginName = pluginName;
-            InitializeLogging();
+            if (configureLogging)
+                InitializeLogging();
 
             try
             {
