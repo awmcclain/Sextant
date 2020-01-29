@@ -36,6 +36,8 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="Serilog" />
+    <Reference Include="Serilog.Sinks.Console" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />

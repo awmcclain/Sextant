@@ -39,7 +39,9 @@ namespace Sextant.Domain.Commands
 
         }
 
-        public virtual void Handle(IEvent @event)
+        public virtual void Handle(IEvent @event) => HandleDetour();
+
+        protected void HandleDetour()
         {
             if (_navigator.OnExpedition) {
                 _communicator.Communicate(_expeditionExists);

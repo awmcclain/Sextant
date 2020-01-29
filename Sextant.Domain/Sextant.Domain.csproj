@@ -96,6 +96,8 @@
     <Compile Include="CelestialValues.cs" />
     <Compile Include="CelestialData.cs" />
     <Compile Include="Commands\TakeADetourCommand.cs" />
+    <Compile Include="Commands\ShorterDetourCommand.cs" />
+    <Compile Include="Commands\LongerDetourCommand.cs" />
     <Compile Include="IDetourPlanner.cs" />
     <Compile Include="DetourPlanner.cs" />
     <Compile Include="IDetourDataService.cs" />

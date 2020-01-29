@@ -22,8 +22,12 @@ namespace Sextant.Host
         public SextantHost(string basePath, string pluginName, bool configureLogging=true)
         {
             _pluginName = pluginName;
-            if (configureLogging)
+            if (configureLogging) {
                 InitializeLogging();
+            } else {
+                _logger = Log.Logger;
+            }
+            
 
             try
             {
