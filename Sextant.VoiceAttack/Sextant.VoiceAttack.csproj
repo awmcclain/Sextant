@@ -33,10 +33,12 @@
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="Serilog" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VoiceAttackPlugin.cs" />
+    <Compile Include="VoiceAttackSink.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sextant.Host\Sextant.Host.csproj">
