@@ -25,6 +25,9 @@ namespace Sextant.Domain
         public int DetourAmount => _detourAmount;
         public bool DetourPlanned => _detourData != null;
 
+        private string _destination;
+        public void SetDestination(string destination) => _destination = destination;
+
         public void IncreaseDetourAmount() {
             _detourAmount += 5;
             if (_detourAmount > _detourMax)
@@ -68,7 +71,7 @@ namespace Sextant.Domain
                 return false;
             }
 
-            if (String.IsNullOrEmpty(_playerStatus.Destination)) {
+            if (String.IsNullOrEmpty(_destination)) {
                 _logger.Error("No destination found, can't plot detour");
                 return false;
             }
@@ -97,6 +100,12 @@ namespace Sextant.Domain
             }
 
             bool result = _navigator.PlanExpedition(_detourData);
+
+            if (result == true) {
+                _logger.Information($"Saving original destination: {_destination}");
+                _playerStatus.SetDestination(_destination);
+            }
+
             _detourData = null;
             return result;
         }

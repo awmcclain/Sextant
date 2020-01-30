@@ -20,7 +20,7 @@ namespace Sextant.Tests.Commands
             TestCommunicator communicator = CreateCommunicator();
             Navigator navigator           = CreateNavigator();
             TestGalaxyMap galaxyMap       = new TestGalaxyMap();
-            FindNextSystemCommand sut     = new FindNextSystemCommand(communicator, navigator, galaxyMap, TestPhraseBuilder.Build<FindNextSystemPhrases>());
+            FindNextSystemCommand sut     = new FindNextSystemCommand(communicator, navigator, galaxyMap, TestPhraseBuilder.Build<FindNextSystemPhrases>(), CreatePlayerStatusRepository());
 
             TestEvent testEvent = Build.An.Event.WithEvent(sut.SupportedCommand);
 

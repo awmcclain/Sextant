@@ -15,7 +15,6 @@ namespace Sextant.Domain
         protected readonly string _andPhrase = " and ";
         protected readonly string _pluralPhrase = "s";
 
-        private  IEnumerable<StarSystem> _detourData;
         public Navigator(INavigationRepository navigationRepository, CelestialValues celestialValues)
         {
             _navigationRepository = navigationRepository;

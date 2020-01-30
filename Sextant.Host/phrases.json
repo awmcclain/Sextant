@@ -119,6 +119,12 @@
       "Looking for next system",
       "Searching for next system",
       "Searching"
+    ],
+    "FinalDestination": [
+      "Searching for your original destination",
+      "Finding your final destination",
+      "Finding the last stop",
+      "Finding your original destination"
     ]
   },
   "NextScan": {
@@ -245,10 +251,10 @@
       "All system celestials have been scanned commander"
     ],
     "ScansRemaining": [
-      "There are {0} planets we still need to scan. They are {1}",
-      "We need to scan down {0} more planets commander. {1}",
-      "{0} more scans needed in this system commander. {1}",
-      "{0} more to go commander. We just need {1}"
+      "There are {0} planet{3} we still need to {2}scan. They are {1}",
+      "We need to {2}scan {0} more planet{3} commander. {1}",
+      "{0} more {2}scan{3} needed in this system commander. {1}",
+      "{0} more {2}scan{3} to go commander. We just need {1}"
     ],
     "AndPhrase": "and",
     "PlanetPhrase": "planet"

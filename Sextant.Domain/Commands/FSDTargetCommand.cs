@@ -10,15 +10,15 @@ namespace Sextant.Domain.Commands
         public string SupportedCommand => "FSDTarget";
         public bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        private readonly IPlayerStatus _playerStatus;
+        private readonly IDetourPlanner _detourPlanner;
         private readonly INavigator _navigator;
         private readonly ILogger _logger;
 
-        public FSDTargetCommand(IPlayerStatus playerStatus, INavigator navigator, ILogger logger)
+        public FSDTargetCommand(IDetourPlanner detourPlanner, INavigator navigator, ILogger logger)
         {
-            _playerStatus = playerStatus;
-            _navigator    = navigator;
-            _logger       = logger;
+            _detourPlanner = detourPlanner;
+            _navigator     = navigator;
+            _logger        = logger;
         }
 
         public void Handle(IEvent @event)
@@ -29,7 +29,7 @@ namespace Sextant.Domain.Commands
 
             string location = @event.Payload["Name"].ToString();
 
-            _playerStatus.SetDestination(location);
+            _detourPlanner.SetDestination(location);
 
             _logger.Information($"Setting destination to {location}");
         }
