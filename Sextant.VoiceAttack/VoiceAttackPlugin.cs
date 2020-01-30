@@ -34,14 +34,10 @@ namespace Sextant.VoiceAttack
             var basePath = Path.Combine(Environment.CurrentDirectory, "Apps", "Sextant");
 
             // Re-configure logging
-            Log.Logger = VoiceAttackSinkExtensions.VoiceAttack(new LoggerConfiguration().WriteTo, vaProxy)
-                             .Enrich.WithProperty("PluginVersion", VA_DisplayName())
-                             .MinimumLevel.Information()
-                             .WriteTo.RollingFile("log-{Date}.txt", Serilog.Events.LogEventLevel.Information, "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{PluginVersion}][{Level}] {Message}{NewLine}{Exception}")
-                             .CreateLogger();
+            Log.Logger = VoiceAttackSinkExtensions.VoiceAttack(SextantHost.DefaultLoggingConfiguration(VA_DisplayName()).WriteTo, vaProxy).CreateLogger();
 
             _host = new SextantHost(basePath: basePath, pluginName: VA_DisplayName(), configureLogging: false);
-            
+            _host.Initialize();
         }
 
         public static void VA_Invoke1(dynamic vaProxy)

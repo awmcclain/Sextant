@@ -11,7 +11,7 @@ namespace Sextant.TestHarness
     {
         static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+            Log.Logger = SextantHost.DefaultLoggingConfiguration("TestHarness").WriteTo.Console().CreateLogger();
             SextantHost sextant = new SextantHost(basePath: Environment.CurrentDirectory, pluginName: "TestHarness", configureLogging:false);
             sextant.Initialize();
 

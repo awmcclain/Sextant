@@ -11,9 +11,9 @@
     ],
     "ClassificationComplete": [
       "You have scanned all {0}s. ",
-      "You have found every {0}.",
-      "You are done scanning {0}s.",
-      "You have found all the {0}s."
+      "You have found every {0}. ",
+      "You are done scanning {0}s. ",
+      "You have found all the {0}s. "
     ],
     "AllScansComplete": [
       "We've completed discovering the system, commander. ",
@@ -153,9 +153,9 @@
       "All system celestials have been discovered, commander."
     ],
     "NeedToScanSurface": [
-      "We can begin surface scanning",
-      "Ready for surface scans",
-      "Ready to begin surface scanning"
+      "It needs a surface scan",
+      "Ready to scan the surface",
+      "Ready for surface scanning"
     ]
   },
   "Initialized": {
@@ -177,12 +177,12 @@
       "Our trip is approximately {3} percent complete. We have been out here for {0} days, {1} hours and {2} minutes."
     ],
     "SystemsScanned": [
-      "We have finished scanning {0} out of {1} total systems.",
-      "We are done scanning {0} out of {1} total systems. ",
+      "We have finished scanning {0} out of {1} systems.",
+      "We are done scanning {0} out of {1} systems. ",
       "In total we've scanned {0} out of {1} systems. ",
-      "We have finished scanning {0} out of {1} total systems. ",
-      "We've finished scanning {0} out of {1} total systems. ",
-      "In total we have scanned {4} out of {1} systems. "
+      "We have finished scanning {0} out of {1} systems. ",
+      "We've finished scanning {0} out of {1} systems. ",
+      "In total we have scanned {0} out of {1} systems. "
     ],
     "CreditsEarned": [
       "We have earned approximately {0:n0} credits. ",
@@ -210,16 +210,16 @@
       "{0} planet{1} require a scan in this system. There ",
       "{0} celestial{1} require a scan in this system. There ",
       "This system has {0} planet{1} we need to scan. There ",
-      "This system has {0} celestials{1} we need to scan. There "
+      "This system has {0} celestial{1} we need to scan. There "
     ],
     "AlreadyScanned": [
       "We've already been through here, nothing to scan",
       "We've been here before, nothing left to scan"
     ],
     "SystemValue": [
-      "The system is worth roughly {0} credits, {0} if we skip surfaces.",
-      "The system is worth around {0} credits, or {0} if we skip surfaces.",
-      "The system is worth over {0} credits if we scan everything, or {0} credits without surfaces."
+      "The system is worth roughly {0:n0} credits, {1:n0} if we skip surfaces.",
+      "The system is worth around {0:n0} credits, or {1:n0} if we skip surfaces.",
+      "The system is worth over {0:n0} credits if we scan everything, or {1:n0} credits without surfaces."
     ],
     "AndPhrase": "and",
     "IsPhrase": "is",

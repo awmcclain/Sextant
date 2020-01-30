@@ -77,14 +77,17 @@ namespace Sextant.Host
             }
  
         }
+
+        public static LoggerConfiguration DefaultLoggingConfiguration(string pluginName)
+        {
+            return new LoggerConfiguration()
+                             .Enrich.WithProperty("PluginVersion", pluginName)
+                             .MinimumLevel.Information()
+                             .WriteTo.RollingFile("log-{Date}.txt", Serilog.Events.LogEventLevel.Information, "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{PluginVersion}][{Level}] {Message}{NewLine}{Exception}");
+        }
         private void InitializeLogging()
         {
-            Log.Logger = new LoggerConfiguration()
-                             .Enrich.WithProperty("PluginVersion", _pluginName)
-                             .MinimumLevel.Information()
-                             .WriteTo.RollingFile("log-{Date}.txt", Serilog.Events.LogEventLevel.Information, "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{PluginVersion}][{Level}] {Message}{NewLine}{Exception}")
-                             .CreateLogger();
-
+            Log.Logger = DefaultLoggingConfiguration(_pluginName).CreateLogger();
             _logger = Log.Logger;
         }
     }
