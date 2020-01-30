@@ -85,7 +85,7 @@ namespace Sextant.Domain.Commands
                     script += _oneRemainingPhrases.GetRandomPhrase();
                     if (exhaustedCelestialType) {
                         // "1 scan remains, a high metal content planet."
-                        script += "a " + remainingCelestials.First().Classification;
+                        script += " a " + remainingCelestials.First().Classification;
                     }
                 } else {
                     script += _multipleRemainingPhrases.GetRandomPhraseWith(scansRemaining);

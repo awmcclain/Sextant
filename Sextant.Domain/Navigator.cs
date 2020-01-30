@@ -12,8 +12,8 @@ namespace Sextant.Domain
         private readonly INavigationRepository _navigationRepository;
         private readonly CelestialValues _celestialValues;
 
-        protected readonly string _andPhrase;
-        protected readonly string _pluralPhrase;
+        protected readonly string _andPhrase = " and ";
+        protected readonly string _pluralPhrase = "s";
 
         private  IEnumerable<StarSystem> _detourData;
         public Navigator(INavigationRepository navigationRepository, CelestialValues celestialValues)
@@ -25,27 +25,8 @@ namespace Sextant.Domain
         public bool OnExpedition => ExpeditionStarted && !ExpeditionComplete;
         public bool ExpeditionComplete => _navigationRepository.GetSystems().All(s => s.Scanned);
         public bool ExpeditionStarted  => !_navigationRepository.IsEmpty();
-        public bool DetourSaved => _detourData != null;
 
-        public void SaveDetour(IEnumerable<StarSystem> detour) {
-            _detourData = detour;
-        }
         public bool CancelExpedition() => _navigationRepository.Clear();
-
-        public bool PlanDetour()
-        {
-            if (_detourData == null) {
-                return false;
-            }
-
-            if (ExpeditionStarted) {
-                return false;
-            }
-
-            bool result = ExtendExpedition(_detourData);
-            _detourData = null;
-            return result;
-        }
 
         public bool PlanExpedition(IEnumerable<StarSystem> systems)
         {

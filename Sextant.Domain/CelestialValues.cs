@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Collections.Generic;
+using Serilog;
 
 namespace Sextant.Domain
 {
@@ -11,6 +12,7 @@ namespace Sextant.Domain
         public string NameFromClassification(string classification) {
             CelestialData data;
             if (CelestialData != null && CelestialData.TryGetValue(classification, out data)) {
+                Log.Logger.Debug("Getting classification for {classification}: {$data}", classification, data);
                 return data.Name;
             } else {
                 return "Unknown";

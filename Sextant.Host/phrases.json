@@ -16,10 +16,10 @@
       "You have found all the {0}s. "
     ],
     "AllScansComplete": [
-      "We've completed discovering the system, commander. ",
-      "That was the last discovery scan we needed, commander. ",
-      "We've discovered all the celestials we need, commander. ",
-      "All system celestials have now been discovered, commander. "
+      "We've completed discovering the system. ",
+      "That was the last discovery scan we needed. ",
+      "We've discovered all the celestials we need. ",
+      "All system celestials have now been discovered. "
     ],
     "SwitchToSurfaces": [
       "We're ready to scan surfaces.",

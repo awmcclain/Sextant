@@ -22,8 +22,6 @@ namespace Sextant.Domain
         int ValueForSystem(string systemName);
         int ValueForExpedition();
 
-        void SaveDetour(IEnumerable<StarSystem> systems);
-        bool PlanDetour();
         bool PlanExpedition(IEnumerable<StarSystem> systems);
         bool ExtendExpedition(IEnumerable<StarSystem> systems);
 
