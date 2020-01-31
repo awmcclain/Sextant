@@ -57,11 +57,11 @@ namespace Sextant.Domain.Commands
 
             if (String.IsNullOrEmpty(_playerStatus.Destination)) {
                 _logger.Error("No destination found, can't plot detour");
-                _communicator.Communicate("Unable to find detour, no destination known."); 
+                _communicator.Communicate("Unable to find detour, no destination known. Please target your final destination from the galaxy map."); 
                 return;
             }
 
-            _communicator.Communicate($"Searching for high-value systems within {_detourPlanner.DetourAmount} light years of your route to your target: {_playerStatus.Destination}. ");
+            _communicator.Communicate($"Finding high-value systems within {_detourPlanner.DetourAmount} light years on the way to {_playerStatus.Destination}. ");
 
             // try...catch here?
             bool result =  _detourPlanner.PlanDetour();
