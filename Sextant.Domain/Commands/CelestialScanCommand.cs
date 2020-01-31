@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System.Linq;
+using Sextant.Domain;
 using Sextant.Domain.Entities;
 using Sextant.Domain.Events;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Sextant.Domain.Commands
         private readonly INavigator    _navigator;
         private readonly ICommunicator _communicator;
         private readonly IPlayerStatus _playerStatus;
+        private readonly CelestialValues _values;
 
         public string SupportedCommand     => "Scan";
         public bool Handles(IEvent @event) => @event.Event == SupportedCommand;
@@ -27,11 +29,12 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _expeditionCompletePhrases;
         private readonly PhraseBook _classificationCompletePhrases;
 
-        public CelestialScanCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, CelestialScanPhrases phrases)
+        public CelestialScanCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, CelestialScanPhrases phrases, CelestialValues values)
         {
             _communicator              = communicator;
             _navigator                 = navigator;
             _playerStatus              = playerStatus;
+            _values                    = values;
 
             _scanCompletePhrases            = PhraseBook.Ingest(phrases.ScanComplete);
             _allScansCompletePhrases        = PhraseBook.Ingest(phrases.AllScansComplete);
@@ -74,7 +77,7 @@ namespace Sextant.Domain.Commands
 
                         exhaustedCelestialType = true;
                         // "You've completed all the Terraformable water worlds."
-                        script += _classificationCompletePhrases.GetRandomPhraseWith(celestial.Classification);
+                        script += _classificationCompletePhrases.GetRandomPhraseWith(celestial.LongClassification(_values));
                     }
                 }
 
@@ -85,7 +88,7 @@ namespace Sextant.Domain.Commands
                     script += _oneRemainingPhrases.GetRandomPhrase();
                     if (exhaustedCelestialType) {
                         // "1 scan remains, a high metal content planet."
-                        script += " a " + remainingCelestials.First().Classification;
+                        script += " a " + remainingCelestials.First().LongClassification(_values);
                     }
                 } else {
                     script += _multipleRemainingPhrases.GetRandomPhraseWith(scansRemaining);

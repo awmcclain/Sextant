@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using Serilog;
+using Sextant.Domain.Entities;
 
 namespace Sextant.Domain
 {
@@ -35,6 +36,13 @@ namespace Sextant.Domain
                 return 0;
             }
         }
+    }
 
+    internal static class CelestialValueExtensions
+    {
+        internal static string LongClassification(this Celestial celestial, CelestialValues values)
+        {
+            return values.NameFromClassification(celestial.Classification);
+        }
     }
 }
