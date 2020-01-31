@@ -30,12 +30,13 @@ namespace Sextant.Domain.Commands
                 return;
             }
 
-            if (!_detourPlanner.DetourPlanned) {
-                _logger.Information("Checking to see if we have a long route plotted");
+            if (!_detourPlanner.DetourSuggested) {
+                _logger.Information("Checking to see if we have a long route plotted...");
                 object val;
-                @event.Payload.TryGetValue("JumpsRemaining", out val);
+                @event.Payload.TryGetValue("RemainingJumpsInRoute", out val);
                 int jumpsRemaining;
-                if (Int32.TryParse(val.ToString(), out jumpsRemaining) && jumpsRemaining > 5) {
+                if (val != null && Int32.TryParse(val.ToString(), out jumpsRemaining) && jumpsRemaining > 5) {
+                    _detourPlanner.DetourSuggested = true;
                     _communicator.Communicate("Commander, it looks as if you're going on a long route. If you'd like to scan high-value systems on the way, target your final destination and say 'take a detour'");
                 }
             }

@@ -12,6 +12,7 @@ namespace Sextant.Domain
         void DecreaseDetourAmount();
 
         bool DetourPlanned { get; }
+        bool DetourSuggested { get; set; }
         int SystemsInDetour { get; }
         int PlanetsInDetour { get; }
         bool PlanDetour();

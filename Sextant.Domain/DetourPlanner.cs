@@ -21,6 +21,14 @@ namespace Sextant.Domain
     
         private int _detourAmount;
         private IEnumerable<StarSystem> _detourData;
+        
+        private bool _detourSuggested = false;
+        public bool DetourSuggested
+        {
+            get { return DetourPlanned || _detourSuggested; }
+            set { _detourSuggested = value; }
+        }
+        
 
         public int DetourAmount => _detourAmount;
         public bool DetourPlanned => _detourData != null;
@@ -107,6 +115,8 @@ namespace Sextant.Domain
             }
 
             _detourData = null;
+            _detourSuggested = false;
+
             return result;
         }
 
