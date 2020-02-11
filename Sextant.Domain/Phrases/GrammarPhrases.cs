@@ -5,7 +5,11 @@ namespace Sextant.Domain.Phrases
 {
     public class GrammarPhrases
     {
-        public string[] AndPhrase                     { get; set; }
-        public string[] PluralPhrase                  { get; set; }
+        public string AndPhrase                     { get; set; }
+        public string PluralPhrase                  { get; set; }
+
+        public string PluralizePhrase(string phrase, int count) {
+            return count == 1 ? phrase : phrase + PluralPhrase;
+        }
     }
 }

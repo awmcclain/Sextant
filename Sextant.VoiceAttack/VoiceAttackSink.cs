@@ -13,7 +13,7 @@ namespace Sextant.VoiceAttack
     {
         private readonly IFormatProvider _formatProvider;
         private readonly dynamic _vaProxy;
-        public VoiceAttackSink(dynamic vaProxy, IFormatProvider formatProvider)
+        public VoiceAttackSink(dynamic vaProxy, IFormatProvider formatProvider=null)
         {
             _formatProvider = formatProvider;
             _vaProxy = vaProxy;

@@ -34,7 +34,10 @@ namespace Sextant.Domain
         public bool DetourPlanned => _detourData != null;
 
         private string _destination;
-        public void SetDestination(string destination) => _destination = destination;
+        public string Destination {
+            get { return _destination; }
+            set { _destination = value; }
+        }
 
         public void IncreaseDetourAmount() {
             _detourAmount += 5;
@@ -87,7 +90,7 @@ namespace Sextant.Domain
             _logger.Information("Searching for detour...");
 
             // try...catch here?
-            _detourData = _detourDataService.GetExpeditionData(_playerStatus.Location, _playerStatus.Destination, _detourAmount);
+            _detourData = _detourDataService.GetExpeditionData(_playerStatus.Location, _destination, _detourAmount);
             if (_detourData == null) {
                 _logger.Error("Nothing returned from data service");
                 return false;

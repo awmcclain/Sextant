@@ -5,12 +5,12 @@ namespace Sextant.Domain
 {
     public interface IDetourPlanner
     {
-        void SetDestination(string destination);
         int DetourAmount { get; }
 
         void IncreaseDetourAmount();
         void DecreaseDetourAmount();
 
+        string Destination { get; set; }
         bool DetourPlanned { get; }
         bool DetourSuggested { get; set; }
         int SystemsInDetour { get; }

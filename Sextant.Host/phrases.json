@@ -28,16 +28,16 @@
     ],
     "MultipleScansRemaining": [
       "{0} more scans to go. ",
-      "{0} more to go. ",
-      "{0} remaining. ",
-      "we need {0} more. ",
+      "{0} more scans to go. ",
+      "{0} remaining scans. ",
+      "we need {0} more scans. ",
       "{0} more scans remaining. "
     ],
     "SingleScanRemaining": [
       "one more scan to go. ",
-      "one more to go. ",
-      "one remaining. ",
-      "we need one more. ",
+      "one more scan to go. ",
+      "one scan remaining. ",
+      "we need one more scan. ",
       "one more scan remaining. "
     ],
     "SurfaceScanComplete": [

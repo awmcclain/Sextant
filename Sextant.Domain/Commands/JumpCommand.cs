@@ -69,7 +69,6 @@ namespace Sextant.Domain.Commands
         {
             Dictionary<string, object> payload = @event.Payload;
 
-            _logger.Information($"OnlyCommunicate: {_onlyCommunicateDuringExpedition} ExpeditionStarted: {_navigator.ExpeditionStarted}  ExpeditionComplete: {_navigator.ExpeditionComplete}");
             if (payload.ContainsKey("JumpType") && payload["JumpType"].ToString() == "Supercruise")
                 return;
 

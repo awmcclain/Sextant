@@ -6,7 +6,6 @@ using System;
 using System.IO;
 
 using Serilog;
-using Logger = Serilog.Log;
 
 namespace Sextant.VoiceAttack
 {
@@ -34,7 +33,9 @@ namespace Sextant.VoiceAttack
             var basePath = Path.Combine(Environment.CurrentDirectory, "Apps", "Sextant");
 
             // Re-configure logging
-            Log.Logger = VoiceAttackSinkExtensions.VoiceAttack(SextantHost.DefaultLoggingConfiguration(VA_DisplayName()).WriteTo, vaProxy).CreateLogger();
+            Log.Logger = SextantHost.DefaultLoggingConfiguration(VA_DisplayName())
+                            .WriteTo.Sink(new VoiceAttackSink(vaProxy))
+                            .CreateLogger();
 
             _host = new SextantHost(basePath: basePath, pluginName: VA_DisplayName(), configureLogging: false);
             _host.Initialize();

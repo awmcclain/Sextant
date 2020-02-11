@@ -173,9 +173,9 @@ namespace Sextant.Domain
                 if (counter == celestialsByCategory.Count() && celestialsByCategory.Count() > 1)
                     script += $"{_andPhrase} ";
 
-                string pluralized = item.Value.Count == 1 ? string.Empty : _pluralPhrase;
+                string pluralized = item.Value.Count() == 1 ? string.Empty : _pluralPhrase;
                 
-                script += $"{item.Value.Count} {_celestialValues.NameFromClassification(item.Key)}{pluralized}, ";
+                script += $"{item.Value.Count()} {_celestialValues.NameFromClassification(item.Key)}{pluralized}, ";
             }
 
             return script;

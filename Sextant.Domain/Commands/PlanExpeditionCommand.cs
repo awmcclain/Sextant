@@ -44,10 +44,14 @@ namespace Sextant.Domain.Commands
         public virtual void Handle(IEvent @event)
         {
 
-            if (_navigator.OnExpedition)
-            {
-                _communicator.Communicate(_expeditionExists);
-                return;
+            if (_navigator.ExpeditionStarted) {
+                if (_navigator.ExpeditionComplete) {
+                    _communicator.Communicate("I'll clear your earlier expedition.");
+                    _navigator.CancelExpedition();
+                } else {
+                    _communicator.Communicate(_expeditionExists);
+                    return;
+                }
             }
 
             bool success;

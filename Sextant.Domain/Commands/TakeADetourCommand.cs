@@ -17,6 +17,8 @@ namespace Sextant.Domain.Commands
         protected readonly IDetourPlanner _detourPlanner;
         private readonly IPlayerStatus _playerStatus;
         private readonly ILogger _logger;
+
+        private readonly GrammarPhrases _grammar;
     
         protected readonly string _expeditionExists;
         protected readonly string _detourFound;
@@ -26,13 +28,14 @@ namespace Sextant.Domain.Commands
 
         public virtual bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        public TakeADetourCommand(INavigator navigator, ICommunicator communicator, IDetourPlanner detourPlanner, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, ILogger logger)
+        public TakeADetourCommand(INavigator navigator, ICommunicator communicator, IDetourPlanner detourPlanner, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, ILogger logger, GrammarPhrases grammar)
         {
             _navigator         = navigator;
             _communicator      = communicator;
             _detourPlanner     = detourPlanner;
             _playerStatus      = playerStatus;
             _logger            = logger;
+            _grammar           = grammar;
 
             _expeditionExists  = phrases.ExpeditionExists;
             _detourFound       = phrases.ExpeditionPlotted;
@@ -55,13 +58,13 @@ namespace Sextant.Domain.Commands
                 return;
             }
 
-            if (String.IsNullOrEmpty(_playerStatus.Destination)) {
+            if (String.IsNullOrEmpty(_detourPlanner.Destination)) {
                 _logger.Error("No destination found, can't plot detour");
                 _communicator.Communicate("Unable to find detour, no destination known. Please target your final destination from the galaxy map."); 
                 return;
             }
 
-            _communicator.Communicate($"Finding high-value systems within {_detourPlanner.DetourAmount} light years on the way to {_playerStatus.Destination}. ");
+            _communicator.Communicate($"Finding high-value systems within {_detourPlanner.DetourAmount} light years on the way to {_detourPlanner.Destination}. ");
 
             // try...catch here?
             bool result =  _detourPlanner.PlanDetour();
@@ -76,7 +79,7 @@ namespace Sextant.Domain.Commands
             }
             
             string script = string.Format("I found {0} high-value {1} within {2} light years from your route. ", _detourPlanner.SystemsInDetour, 
-                                          PhraseBook.PluralizedEnding(_detourPlanner.SystemsInDetour, "system"),
+                                          _grammar.PluralizePhrase("system", _detourPlanner.SystemsInDetour),
                                           _detourPlanner.DetourAmount);
 
             _communicator.Communicate(script);

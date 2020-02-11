@@ -43,7 +43,7 @@ namespace Sextant.Domain.Commands
 
             string location = @event.Payload["Name"].ToString();
 
-            _detourPlanner.SetDestination(location);
+            _detourPlanner.Destination = location;
 
             _logger.Information($"Setting destination to {location}");
         }

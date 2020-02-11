@@ -82,7 +82,6 @@ namespace Sextant.Host
         {
             return new LoggerConfiguration()
                              .Enrich.WithProperty("PluginVersion", pluginName)
-                             .MinimumLevel.Information()
                              .WriteTo.RollingFile("log-{Date}.txt", Serilog.Events.LogEventLevel.Information, "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{PluginVersion}][{Level}] {Message}{NewLine}{Exception}");
         }
         private void InitializeLogging()
