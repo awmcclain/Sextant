@@ -1,4 +1,8 @@
 {
+  "Grammar": {
+    "PluralPhrase": "s",
+    "AndPhrase": "and"
+  },
   "CelestialScan": {
     "ScanComplete": [
       "Scan complete. ",
@@ -47,7 +51,7 @@
       "Detailed surface scan completed. "
     ],
     "AllSurfaceScansComplete": [
-      "We've completed surface scanning the system, ready to move on, commander. ",
+      "We've completed surface scanning the system. Ready to move on. ",
       "That was the last surface scan we needed, commander. ",
       "And with that we're done in this system. ",
       "We can continue with our journey, commander, we don't need any more scans. ",
@@ -69,8 +73,12 @@
       "one more surface scan remaining. "
     ],
     "ExpeditionComplete": [
-      "We've reached the final destination commander. Our expedition is complete. ",
+      "We've scanned the final destination commander. Our expedition is complete. ",
       "That was the last discovery scan in the expedition. "
+    ],
+    "FinalDestination": [
+      "Our next system is your original destination.",
+      "The next system will be your orignla destination.",
     ],
     "SystemValue": [
       "You have made approximately {0} credits in this system.",
@@ -218,8 +226,8 @@
     ],
     "Scanning": [
       "We need to scan {0} celestial{1} in this system. There ",
-      "{0} planet{1} require a scan in this system. There ",
-      "{0} celestial{1} require a scan in this system. There ",
+      "{0} planet{1} to scan in this system. There ",
+      "{0} celestial{1} to scan in this system. There ",
       "This system has {0} planet{1} we need to scan. There ",
       "This system has {0} celestial{1} we need to scan. There "
     ],
@@ -241,14 +249,14 @@
     "SkipSystem": [
       "This system is not part of the expedition",
       "No scans necessary in this system",
-      "No surface scans are needed in this system",
+      "No scans are needed in this system",
       "This system isn't part of our expedition commander",
       "We're just passing through here, no scans needed",
-      "Surface scans are not required in this system",
+      "Scans are not required in this system",
       "We do not need to scan any of the celestials in this system"
     ],
     "SystemComplete": [
-      "We've completed scanning the system, ready to move on, commander",
+      "We've completed scanning the system, ready to move on",
       "There are no more scans needed in this system commander",
       "Nothing left to scan, we're done here commander",
       "We can continue with our journey commander, we don't need any more scans",

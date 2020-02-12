@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Stickymaddness All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System;
 using System.Linq;
-using Sextant.Domain;
 using Sextant.Domain.Entities;
 using Sextant.Domain.Events;
 using System.Collections.Generic;
@@ -28,6 +28,7 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _multipleRemainingPhrases;
         private readonly PhraseBook _expeditionCompletePhrases;
         private readonly PhraseBook _classificationCompletePhrases;
+        private readonly PhraseBook _finalDestinationPhrases;
 
         public CelestialScanCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, CelestialScanPhrases phrases, CelestialValues values)
         {
@@ -43,6 +44,7 @@ namespace Sextant.Domain.Commands
             _multipleRemainingPhrases       = PhraseBook.Ingest(phrases.MultipleScansRemaining);
             _expeditionCompletePhrases      = PhraseBook.Ingest(phrases.ExpeditionComplete);
             _classificationCompletePhrases  = PhraseBook.Ingest(phrases.ClassificationComplete);
+            _finalDestinationPhrases        = PhraseBook.Ingest(phrases.FinalDestination);
         }
 
         public void Handle(IEvent @event)
@@ -101,8 +103,13 @@ namespace Sextant.Domain.Commands
                 return script;
             }
 
-            if (_navigator.ExpeditionComplete)
-                return script += _expeditionCompletePhrases.GetRandomPhrase();
+            if (_navigator.ExpeditionComplete) {
+                script += _expeditionCompletePhrases.GetRandomPhrase();
+                if (!String.IsNullOrEmpty(_playerStatus.Destination)) {
+                    script += 
+                }
+
+                return script;
 
             script += _allScansCompletePhrases.GetRandomPhrase();
             return script += _switchtoSurfacesPhrases.GetRandomPhrase();

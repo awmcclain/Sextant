@@ -18,5 +18,6 @@ namespace Sextant.Domain.Phrases
         public string[] ExpeditionValue               { get; set; }
         public string[] SystemValue                   { get; set; }
         public string[] ClassificationComplete        { get; set; }
+        public string[] FinalDestination              { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Sextant.Domain.Phrases
             } else if (credits >= 1000000) {
                 return credits.ToString("0,,.## million");
             }
-            return credits.ToString("0:0n");
+            return credits.ToString("0,0");
         }
     }
 }

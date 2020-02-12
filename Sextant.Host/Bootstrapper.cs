@@ -71,6 +71,7 @@ namespace Sextant.Host
 
         private static void RegisterPhrases(Container container, IConfigurationRoot configuration)
         {
+            RegisterPhrase<GrammarPhrases>("Grammar", container, configuration);
             RegisterPhrase<JumpPhrases>("Jump", container, configuration);
             RegisterPhrase<DockSRVPhrases>("DockSRV", container, configuration);
             RegisterPhrase<GameLoadPhrases>("GameLoad", container, configuration);
