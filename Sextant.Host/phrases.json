@@ -73,9 +73,14 @@
       "That was the last discovery scan in the expedition. "
     ],
     "SystemValue": [
-      "You made approximately {0:n0} credits in this system.",
-      "Your scans for this system are worth about {0:n0} credits.",
-      "This system was worth around {0:n0} credits."
+      "You have made approximately {0} credits in this system.",
+      "Your scans for this system are worth about {0} credits.",
+      "This system is worth around {0} credits so far."
+    ],
+    "ExpeditionValue": [
+      "So far you've made around {0} credits.",
+      "You've made about {0} credits so far.",
+      "Your expedition has been worth nearly {0} credits."
     ]
   },
   "DockSRV": {
@@ -191,11 +196,11 @@
       "In total we have scanned {0} out of {1} systems. "
     ],
     "CreditsEarned": [
-      "We have earned approximately {0:n0} credits. ",
-      "We have earned roughly {0:n0} credits. ",
-      "We have made around {0:n0} credits. ",
-      "Our exploration data is worth about {0:n0} credits. ",
-      "In total, we've made around {0:n0} credits. "
+      "We have earned approximately {0} credits. ",
+      "We have earned roughly {0} credits. ",
+      "We have made around {0} credits. ",
+      "Our exploration data is worth about {0} credits. ",
+      "In total, we've made around {0} credits. "
     ]
   },
   "Jump": {
@@ -223,9 +228,9 @@
       "We've been here before, nothing left to scan"
     ],
     "SystemValue": [
-      "The system is worth roughly {0:n0} credits, {1:n0} if we skip surfaces.",
-      "The system is worth around {0:n0} credits, or {1:n0} if we skip surfaces.",
-      "The system is worth over {0:n0} credits if we scan everything, or {1:n0} credits without surfaces."
+      "The system is worth roughly {0} credits, or {1} if we skip surfaces.",
+      "The system is worth around {0} credits, or {1} if we skip surfaces.",
+      "The system is worth over {0} credits if we scan everything, or {1} credits without surfaces."
     ],
     "AndPhrase": "and",
     "IsPhrase": "is",

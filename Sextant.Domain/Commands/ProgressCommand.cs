@@ -47,7 +47,7 @@ namespace Sextant.Domain.Commands
 
             _communicator.Communicate(_progressPhrases.GetRandomPhraseWith(expeditionLength.Days, expeditionLength.Hours, expeditionLength.Minutes, progressPercentage));
             _communicator.Communicate(_systemsScannedPhrases.GetRandomPhraseWith(scannedSystems, totalSystems));
-            _communicator.Communicate(_creditsEarnedPhrases.GetRandomPhraseWith(_navigator.ValueForExpedition()));
+            _communicator.Communicate(_creditsEarnedPhrases.GetRandomPhraseWith(_navigator.ValueForExpedition().ToSpeakableString()));
         }
     }
 }

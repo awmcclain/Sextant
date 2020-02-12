@@ -13,8 +13,8 @@ namespace Sextant.Domain.Commands
 
         public override string SupportedCommand => "shorter_detour";
         
-        public ShorterDetourCommand(INavigator navigator, ICommunicator communicator, IDetourPlanner detourPlanner, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, ILogger logger)
-            : base(navigator, communicator, detourPlanner, playerStatus, phrases, logger)
+        public ShorterDetourCommand(INavigator navigator, ICommunicator communicator, IDetourPlanner detourPlanner, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, ILogger logger, GrammarPhrases grammar)
+            : base(navigator, communicator, detourPlanner, playerStatus, phrases, logger, grammar)
         { }
 
         public override void Handle(IEvent @event)

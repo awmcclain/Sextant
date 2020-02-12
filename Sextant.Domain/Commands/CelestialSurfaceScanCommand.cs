@@ -25,7 +25,7 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _allSurfaceScansCompletePhrases;
         private readonly PhraseBook _multipleSurfacesRemainingPhrases;
         private readonly PhraseBook _expeditionCompletePhrases;
-        private readonly PhraseBook _systemValuePhrases;
+        private readonly PhraseBook _expeditionValuePhrases;
 
         public CelestialSurfaceScanCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, CelestialScanPhrases phrases)
         {
@@ -38,7 +38,7 @@ namespace Sextant.Domain.Commands
             _oneSurfaceRemainingPhrases       = PhraseBook.Ingest(phrases.SingleSurfaceScanRemaining);
             _multipleSurfacesRemainingPhrases = PhraseBook.Ingest(phrases.MultipleSurfaceScansRemaining);
             _expeditionCompletePhrases        = PhraseBook.Ingest(phrases.ExpeditionComplete);
-            _systemValuePhrases               = PhraseBook.Ingest(phrases.SystemValue);
+            _expeditionValuePhrases           = PhraseBook.Ingest(phrases.ExpeditionValue);
         }
 
         public void Handle(IEvent @event)
@@ -89,11 +89,11 @@ namespace Sextant.Domain.Commands
 
             if (_navigator.ExpeditionComplete) {
                 script += _expeditionCompletePhrases.GetRandomPhrase();
-                return script += _systemValuePhrases.GetRandomPhraseWith(_navigator.ValueForSystem(currentSystem));
+                return script += _expeditionValuePhrases.GetRandomPhraseWith(_navigator.ValueForExpedition().ToSpeakableString());
             }
 
             script += _allSurfaceScansCompletePhrases.GetRandomPhrase();
-            return script += _systemValuePhrases.GetRandomPhraseWith(_navigator.ValueForSystem(currentSystem));
+            return script += _expeditionValuePhrases.GetRandomPhraseWith(_navigator.ValueForExpedition().ToSpeakableString());
         }
     }
 }

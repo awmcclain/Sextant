@@ -151,7 +151,7 @@ namespace Sextant.Domain.Commands
                                     .Where(c => !c.Scanned)
                                     .Sum(c => _values.SurfaceScanValue(c.Classification));
 
-            return _systemValueBook.GetRandomPhraseWith(totalValue, scanOnlyValue);
+            return _systemValueBook.GetRandomPhraseWith(totalValue.ToSpeakableString(), scanOnlyValue.ToSpeakableString());
         }
 
     }
