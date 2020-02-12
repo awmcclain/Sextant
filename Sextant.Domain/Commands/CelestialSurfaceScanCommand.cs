@@ -26,6 +26,8 @@ namespace Sextant.Domain.Commands
         private readonly PhraseBook _multipleSurfacesRemainingPhrases;
         private readonly PhraseBook _expeditionCompletePhrases;
         private readonly PhraseBook _expeditionValuePhrases;
+        private readonly PhraseBook _finalDestinationPhrases;
+
 
         public CelestialSurfaceScanCommand(ICommunicator communicator, INavigator navigator, IPlayerStatus playerStatus, CelestialScanPhrases phrases)
         {
@@ -39,6 +41,7 @@ namespace Sextant.Domain.Commands
             _multipleSurfacesRemainingPhrases = PhraseBook.Ingest(phrases.MultipleSurfaceScansRemaining);
             _expeditionCompletePhrases        = PhraseBook.Ingest(phrases.ExpeditionComplete);
             _expeditionValuePhrases           = PhraseBook.Ingest(phrases.ExpeditionValue);
+            _finalDestinationPhrases          = PhraseBook.Ingest(phrases.FinalDestination);
         }
 
         public void Handle(IEvent @event)
@@ -87,9 +90,14 @@ namespace Sextant.Domain.Commands
                 return script += _multipleSurfacesRemainingPhrases.GetRandomPhraseWith(scansRemaining);
             }
 
-            if (_navigator.ExpeditionComplete) {
+            if (_navigator.ExpeditionComplete) { 
                 script += _expeditionCompletePhrases.GetRandomPhrase();
-                return script += _expeditionValuePhrases.GetRandomPhraseWith(_navigator.ValueForExpedition().ToSpeakableString());
+                script += _expeditionValuePhrases.GetRandomPhraseWith(_navigator.ValueForExpedition().ToSpeakableString());
+                if (!String.IsNullOrEmpty(_playerStatus.Destination)) {
+                    script += _finalDestinationPhrases.GetRandomPhrase();
+                }
+
+                return script;
             }
 
             script += _allSurfaceScansCompletePhrases.GetRandomPhrase();

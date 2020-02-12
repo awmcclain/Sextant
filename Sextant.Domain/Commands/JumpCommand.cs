@@ -7,6 +7,8 @@ using Sextant.Domain.Phrases;
 using System.Collections.Generic;
 using System.Linq;
 
+using Serilog.Log;
+
 namespace Sextant.Domain.Commands
 {
     public class JumpCommand : ICommand
@@ -122,6 +124,7 @@ namespace Sextant.Domain.Commands
 
             bool single = celestialsByCategory.First().Value == 1;
 
+            Log.Debug("Single celestial: {@single} {@celestialsByCategory}", single, celestialsByCategory);
             script += single ? $"{_isPhrase} " : $"{_arePhrase} ";
 
             foreach (var item in celestialsByCategory)

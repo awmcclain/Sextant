@@ -186,6 +186,9 @@
       "Sextant activated"
     ]
   },
+  "Detour": {
+
+  },
   "Progress": {
     "Progress": [
       "We have been out in the black for {0} days, {1} hours and {2} minutes. and are about {3} percent of the way.",
