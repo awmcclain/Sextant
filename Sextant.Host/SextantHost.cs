@@ -53,11 +53,11 @@ namespace Sextant.Host
             _logger.Information($"{_pluginName} Initialized");
         }
 
-        public void Handle(string context)
+        public void Handle(string context, Dictionary<string, object> payload=null)
         {
             try
             {
-                _executor.Handle(EventFactory.FromVoiceAttack(context));
+                _executor.Handle(EventFactory.FromVoiceAttack(context, payload));
             }
             catch (Exception ex)
             {

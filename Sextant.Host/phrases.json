@@ -78,17 +78,17 @@
     ],
     "FinalDestination": [
       "Our next system is your original destination.",
-      "The next system will be your orignla destination.",
+      "The next system will be your original destination."
     ],
     "SystemValue": [
       "You have made approximately {0} credits in this system.",
       "Your scans for this system are worth about {0} credits.",
-      "This system is worth around {0} credits so far."
+      "Your scans are worth around {0} credits so far."
     ],
     "ExpeditionValue": [
-      "So far you've made around {0} credits.",
-      "You've made about {0} credits so far.",
-      "Your expedition has been worth nearly {0} credits."
+      "You've now made around {0} credits.",
+      "You've made about {0} credits in total.",
+      "Your expedition has been worth over {0} credits."
     ]
   },
   "DockSRV": {

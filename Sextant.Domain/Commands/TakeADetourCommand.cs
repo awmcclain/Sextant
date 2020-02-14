@@ -42,9 +42,12 @@ namespace Sextant.Domain.Commands
 
         }
 
-        public virtual void Handle(IEvent @event) => HandleDetour();
+        public virtual void Handle(IEvent @event) {
+            int? detourAmount = @event.Payload.GetIntValue("intValue");
+            HandleDetour(detourAmount);
+        }
 
-        protected void HandleDetour()
+        protected void HandleDetour(int? detourAmount=null)
         {
             if (_navigator.OnExpedition) {
                 _communicator.Communicate(_expeditionExists);
@@ -62,6 +65,10 @@ namespace Sextant.Domain.Commands
                 _logger.Error("No destination found, can't plot detour");
                 _communicator.Communicate("Unable to find detour, no destination known. Please target your final destination from the galaxy map."); 
                 return;
+            }
+
+            if (detourAmount.HasValue) {
+                _detourPlanner.DetourAmount = detourAmount.Value;
             }
 
             _communicator.Communicate($"Finding high-value systems within {_detourPlanner.DetourAmount} light years on the way to {_detourPlanner.Destination}. ");

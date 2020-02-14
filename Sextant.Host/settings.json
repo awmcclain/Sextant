@@ -15,7 +15,7 @@
   },
   "Preferences": {
     "CommunicateSkippableSystems": "true",
-    "EnableSRVCommands": "true",
+    "EnableSRVCommands": "false",
     "OnlyCommunicateDuringExpedition": "true"
   }
 }

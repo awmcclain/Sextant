@@ -4,6 +4,8 @@
 using Sextant.Host;
 using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 using Serilog;
 
@@ -15,7 +17,7 @@ namespace Sextant.VoiceAttack
 
         public static string VA_DisplayName()
         {
-            return "Sextant v1.1.0";
+            return "Sextant v2.0";
         }
 
         public static string VA_DisplayInfo()
@@ -44,8 +46,8 @@ namespace Sextant.VoiceAttack
         public static void VA_Invoke1(dynamic vaProxy)
         {
             string context = vaProxy.Context;
-
-            _host?.Handle(context);
+            var payload = new Dictionary<string, object> { { "intValue", (object)vaProxy.GetInt("intValue") } };
+            _host?.Handle(context, payload);
         }
 
         public static void VA_Exit1(dynamic vaProxy) { }

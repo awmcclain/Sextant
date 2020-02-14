@@ -5,7 +5,7 @@ namespace Sextant.Domain
 {
     public interface IDetourPlanner
     {
-        int DetourAmount { get; }
+        int DetourAmount { get; set; }
 
         void IncreaseDetourAmount();
         void DecreaseDetourAmount();

@@ -30,7 +30,11 @@ namespace Sextant.Domain
         }
         
 
-        public int DetourAmount => _detourAmount;
+        public int DetourAmount 
+        {
+            get { return _detourAmount; }
+            set { _detourAmount = value; }
+        }
         public bool DetourPlanned => _detourData != null;
 
         private string _destination;
