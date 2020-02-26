@@ -74,21 +74,21 @@
     ],
     "ExpeditionComplete": [
       "We've scanned the final destination commander. Our expedition is complete. ",
-      "That was the last discovery scan in the expedition. "
+      "That was the last scan in the expedition. "
     ],
     "FinalDestination": [
-      "Our next system is your original destination.",
-      "The next system will be your original destination."
+      "Our next system is your original destination. ",
+      "The next system will be your original destination. "
     ],
     "SystemValue": [
-      "You have made approximately {0} credits in this system.",
-      "Your scans for this system are worth about {0} credits.",
-      "Your scans are worth around {0} credits so far."
+      " You have made approximately {0} credits in this system. ",
+      " Your scans for this system are worth about {0} credits. ",
+      " Your scans are worth around {0} credits so far. "
     ],
     "ExpeditionValue": [
-      "You've now made around {0} credits.",
-      "You've made about {0} credits in total.",
-      "Your expedition has been worth over {0} credits."
+      " You've now made around {0} credits. ",
+      " You've made about {0} credits in total. ",
+      " Your expedition has been worth over {0} credits. "
     ]
   },
   "DockSRV": {
