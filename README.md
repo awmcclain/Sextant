@@ -2,9 +2,13 @@
 
 ![Sextant](https://github.com/awmcclain/Sextant/raw/master/Documentation/Images/sextant-logo.png)
 
-Sextant 2.0 is an exploration assistant for [Elite Dangerous](https://www.elitedangerous.com/), and runs as a [VoiceAttack](https://voiceattack.com/) plugin. It was originally created by [StickyMadness](https://github.com/StickyMaddness) and updated by [grumpyfish](http://github.com/awmcclain).
+Sextant 2.0 is an exploration assistant for [Elite Dangerous](https://www.elitedangerous.com/), and runs as a [VoiceAttack](https://voiceattack.com/) plugin. 
+
+When you plot a long route, Sextant 2.0 will automatically ask you if you'd like to take a detour to visit high-value systems near your route.
 
 Using navigation data provided from the [Road to Riches](http://edtools.ddns.net/expl.php) tool, Sextant will classify which planets you need to scan, which system you need to visit next, which planet needs to be scanned next, which surfaces you need to scan, and updates on what needs to be scanned when jumping into a system or on request.
+
+Sextant was originally created by [StickyMaddness](https://github.com/StickyMaddness) and updated by [CMDR grumpyfish](http://github.com/awmcclain).
 
 # Features
 
