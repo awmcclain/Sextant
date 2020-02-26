@@ -24,4 +24,4 @@ Sextant was originally created by [StickyMaddness](https://github.com/StickyMadd
 
 # Getting started
 
-Check [the wiki](https://github.com/awmcclain/Sextant/wiki) for installation and configuration.
+Check [the wiki](https://github.com/awmcclain/Sextant/wiki/Getting-Started) for installation and configuration.
