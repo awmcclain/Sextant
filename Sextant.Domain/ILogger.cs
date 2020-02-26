@@ -8,6 +8,7 @@ namespace Sextant.Domain
     public interface ILogger
     {
         void Information(string message);
+        void Error(string message);
         void Error(Exception exception, string message);
     }
 }

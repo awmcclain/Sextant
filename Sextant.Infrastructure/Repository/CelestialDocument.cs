@@ -12,24 +12,28 @@ namespace Sextant.Infrastructure.Repository
         public string System { get; set; }
         public string Clasification { get; set; }
         public bool Scanned { get; set; }
+        public bool SurfaceScanned { get; set; }
         public bool Landable { get; set; }
+        public bool Efficient { get; set; }
 
         public CelestialDocument()
         { }
 
-        public CelestialDocument(Celestial celetial)
+        public CelestialDocument(Celestial celestial)
         {
-            Id            = celetial.Id;
-            Name          = celetial.Name;
-            System        = celetial.System;
-            Clasification = celetial.Clasification;
-            Scanned       = celetial.Scanned;
-            Landable      = celetial.Landable;
+            Id             = celestial.Id;
+            Name           = celestial.Name;
+            System         = celestial.System;
+            Clasification  = celestial.Classification;
+            Scanned        = celestial.Scanned;
+            SurfaceScanned = celestial.SurfaceScanned;
+            Landable       = celestial.Landable;
+            Efficient      = celestial.Efficient;
         }
 
         public Celestial ToEntity()
         {
-            return new Celestial(Name, Clasification, System, Scanned, Id);
+            return new Celestial(Name, Clasification, System, Scanned, Id, SurfaceScanned, Efficient);
         }
     }
 }

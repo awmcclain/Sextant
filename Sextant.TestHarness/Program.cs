@@ -3,6 +3,7 @@
 
 using Sextant.Host;
 using System;
+using Serilog;
 
 namespace Sextant.TestHarness
 {
@@ -10,10 +11,28 @@ namespace Sextant.TestHarness
     {
         static void Main(string[] args)
         {
-            SextantHost sextant = new SextantHost(basePath: Environment.CurrentDirectory, pluginName: "TestHarness");
+            Log.Logger = SextantHost.DefaultLoggingConfiguration("TestHarness").WriteTo.Console().CreateLogger();
+            SextantHost sextant = new SextantHost(basePath: Environment.CurrentDirectory, pluginName: "TestHarness", configureLogging:false);
             sextant.Initialize();
 
-            Console.ReadKey();
+
+            string input;
+
+            while(true) {
+                input = Console.ReadLine();
+                if (input.StartsWith("q")) {
+                    break;
+                }
+
+                string[] parts = input.Split(' ');
+                if (parts.Length > 1) {
+                    // Create a journal entry
+                    sextant.HandleDebug(parts);
+                } else {
+                    sextant.Handle(input);
+                }
+
+            } 
         }
     }
 }

@@ -11,10 +11,14 @@ namespace Sextant.Domain.Commands
 
         internal override PhraseBook _phraseBook { get; }
 
-        public LaunchSRVCommand(ICommunicator communicator, LaunchSRVPhrases phrases) 
+        public LaunchSRVCommand(ICommunicator communicator, LaunchSRVPhrases phrases, Preferences preferences) 
             : base(communicator)
         {
-            _phraseBook = PhraseBook.Ingest(phrases.Phrases);
+            if (preferences.EnableSRVCommands) {
+                _phraseBook = PhraseBook.Ingest(phrases.Phrases);
+            } else {
+                _phraseBook = PhraseBook.Ingest(new string[] {string.Empty});
+            }
         }
     }
 }

@@ -32,7 +32,10 @@ namespace Sextant.Host
             container.Register<INavigator, Navigator>(Lifestyle.Singleton);
             container.Register<ICommunicator, VoiceCommunicator>(Lifestyle.Singleton);
 
+            container.Register<IExpeditionParser, ExpeditionParser>(Lifestyle.Singleton);
             container.Register<IUserDataService, ClipboardDataService>(Lifestyle.Singleton);
+            container.Register<IDetourDataService, RoadToRichesDataService>(Lifestyle.Singleton);
+            container.Register<IDetourPlanner, DetourPlanner>(Lifestyle.Singleton);
             container.Register<INavigationRepository, NavigationRepository>(Lifestyle.Singleton);
             container.Register<IPlayerStatus, PlayerStatusRepository>(Lifestyle.Singleton);
 
@@ -54,6 +57,7 @@ namespace Sextant.Host
             IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(basePath)
                                                                          .AddJsonFile("settings.json")
                                                                          .AddJsonFile("phrases.json")
+                                                                         .AddJsonFile("celestials.json")
                                                                          .Build();
 
             RegisterPhrases(container, configuration);
@@ -62,10 +66,12 @@ namespace Sextant.Host
             container.Register(() => configuration.LoadSettings<GalaxyMapInteractorSettings>("GalaxyMapInteractor"));
             container.Register(() => configuration.LoadSettings<VoiceCommunicatorSettings>("VoiceCommunicator"), Lifestyle.Singleton);
             container.Register(() => configuration.LoadSettings<Preferences>("Preferences"), Lifestyle.Singleton);
+            container.Register(() => configuration.LoadSettings<CelestialValues>("CelestialValues"), Lifestyle.Singleton);
         }
 
         private static void RegisterPhrases(Container container, IConfigurationRoot configuration)
         {
+            RegisterPhrase<GrammarPhrases>("Grammar", container, configuration);
             RegisterPhrase<JumpPhrases>("Jump", container, configuration);
             RegisterPhrase<DockSRVPhrases>("DockSRV", container, configuration);
             RegisterPhrase<GameLoadPhrases>("GameLoad", container, configuration);

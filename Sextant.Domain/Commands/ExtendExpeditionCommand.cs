@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Stickymaddness All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using Sextant.Domain;
 using Sextant.Domain.Entities;
 using Sextant.Domain.Events;
 using Sextant.Domain.Phrases;
@@ -14,8 +15,8 @@ namespace Sextant.Domain.Commands
 
         public override bool Handles(IEvent @event) => @event.Event == SupportedCommand;
 
-        public ExtendExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, PlotExpeditionPhrases phrases)
-            : base(communicator, navigator, userDataService, phrases)
+        public ExtendExpeditionCommand(ICommunicator communicator, INavigator navigator, IUserDataService userDataService, IPlayerStatus playerStatus, PlotExpeditionPhrases phrases, CelestialValues values, IDetourPlanner detourPlanner)
+            : base(communicator, navigator, userDataService, playerStatus, phrases, values, detourPlanner)
         { }
 
         public override void Handle(IEvent @event)

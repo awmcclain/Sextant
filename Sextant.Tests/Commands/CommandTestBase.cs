@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Stickymaddness All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
+using System.Collections.Generic;
 using Sextant.Domain;
 using Sextant.Infrastructure.Repository;
 using Sextant.Tests.Builders;
@@ -13,7 +14,8 @@ namespace Sextant.Tests.Commands
         protected TestCommunicator CreateCommunicator()                               => new TestCommunicator();
         protected PlayerStatusRepository CreatePlayerStatusRepository()               => new PlayerStatusRepository(new MemoryDataStore<PlayerStatus>());
         protected IDataStore<StarSystemDocument> CreateDataStore()                    => new MemoryDataStore<StarSystemDocument>();
-        protected Navigator CreateNavigator()                                         => new Navigator(new NavigationRepository(CreateDataStore()));
-        protected Navigator CreateNavigator(IDataStore<StarSystemDocument> dataStore) => new Navigator(new NavigationRepository(dataStore));
+        protected Navigator CreateNavigator()                                         => new Navigator(new NavigationRepository(CreateDataStore()), CreateCelestialValues());
+        protected Navigator CreateNavigator(IDataStore<StarSystemDocument> dataStore) => new Navigator(new NavigationRepository(dataStore), CreateCelestialValues());
+        protected CelestialValues CreateCelestialValues()                             => new CelestialValues() { CelestialData = new Dictionary<string, CelestialData>() };
     }
 }

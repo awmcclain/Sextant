@@ -7,5 +7,6 @@ namespace Sextant.Domain.Phrases
     {
         public string[] Progress { get; set; }
         public string[] SystemsScanned { get; set; }
+        public string[] CreditsEarned { get; set; }
     }
 }

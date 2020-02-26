@@ -17,7 +17,7 @@ namespace Sextant.Tests.Commands
     public class CelestialScanCommandTests : CommandTestBase
     {
         private CelestialScanCommand CreateSut(Navigator navigator, PlayerStatusRepository playerStatusRepository, CelestialScanPhrases phrases) 
-            => new CelestialScanCommand(CreateCommunicator(), navigator, playerStatusRepository, phrases);
+            => new CelestialScanCommand(CreateCommunicator(), navigator, playerStatusRepository, phrases, new CelestialValues());
 
         private const string _payloadKey = "BodyName";
 

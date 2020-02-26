@@ -1,38 +1,94 @@
 {
+  "Grammar": {
+    "PluralPhrase": "s",
+    "AndPhrase": "and"
+  },
   "CelestialScan": {
     "ScanComplete": [
       "Scan complete. ",
-      "Surface scan complete. ",
+      "Discovery scan complete. ",
       "Scan completed. ",
-      "Surface scan completed. ",
+      "Discovery scan completed. ",
       "Celestial scan complete. ",
       "Celestial scan completed. ",
       "I've completed scanning. "
     ],
+    "ClassificationComplete": [
+      "You have scanned all {0}s. ",
+      "You have found every {0}. ",
+      "You are done scanning {0}s. ",
+      "You have found all the {0}s. "
+    ],
     "AllScansComplete": [
-      "We've completed scanning the system, ready to move on commander",
-      "That was the last scan we needed commander",
-      "And with that we're done in this system",
-      "We've scanned all the celestials we need commander",
-      "All system celestial have now been scanned commander"
+      "We've completed discovering the system. ",
+      "That was the last discovery scan we needed. ",
+      "We've discovered all the celestials we need. ",
+      "All system celestials have now been discovered. "
+    ],
+    "SwitchToSurfaces": [
+      "We're ready to scan surfaces.",
+      "Ready to scan surfaces.",
+      "We can scan surfaces if you'd like."
     ],
     "MultipleScansRemaining": [
       "{0} more scans to go. ",
-      "{0} more to go. ",
-      "{0} remaining. ",
-      "we need {0} more. ",
+      "{0} more scans to go. ",
+      "{0} remaining scans. ",
+      "we need {0} more scans. ",
       "{0} more scans remaining. "
     ],
     "SingleScanRemaining": [
       "one more scan to go. ",
-      "one more to go. ",
-      "one remaining. ",
-      "we need one more. ",
+      "one more scan to go. ",
+      "one scan remaining. ",
+      "we need one more scan. ",
       "one more scan remaining. "
     ],
+    "SurfaceScanComplete": [
+      "Surface Scan complete. ",
+      "Detailed surface scan complete. ",
+      "Surface scan completed. ",
+      "Detailed surface scan completed. "
+    ],
+    "AllSurfaceScansComplete": [
+      "We've completed surface scanning the system. Ready to move on. ",
+      "That was the last surface scan we needed, commander. ",
+      "And with that we're done in this system. ",
+      "We can continue with our journey, commander, we don't need any more scans. ",
+      "We've scanned all the celestial surfaces we need, commander. ",
+      "All celestial surfaces have now been scanned commander. "
+    ],
+    "MultipleSurfaceScansRemaining": [
+      "{0} more surface scans to go. ",
+      "{0} more surfaces to go. ",
+      "{0} surfaces remaining. ",
+      "we need {0} more surfaces. ",
+      "{0} more surface scans remaining. "
+    ],
+    "SingleSurfaceScanRemaining": [
+      "one more surface scan to go. ",
+      "one more surface to go. ",
+      "one surface remaining. ",
+      "we need one more surface. ",
+      "one more surface scan remaining. "
+    ],
     "ExpeditionComplete": [
-      "We've reached the final destination commander. Our expedition is complete.",
-      "That was the last scan in the expedition. Always the journey, never the destination."
+      "We've scanned the final destination commander. Our expedition is complete. ",
+      "That was the last scan in the expedition. "
+    ],
+    "FinalDestination": [
+      "Our next system is your original destination. ",
+      "The next system will be your original destination. "
+    ],
+    "SystemValue": [
+      " You have made approximately {0} credits in this system. ",
+      " Your scans for this system are worth about {0} credits. ",
+      " Your scans are worth around {0} credits so far. "
+    ],
+    "ExpeditionValue": [
+      " You've now made around {0} credits. ",
+      " You've made about {0} credits in total. ",
+      " Your expedition has been worth over {0} credits. "
     ]
   },
   "DockSRV": {
@@ -76,24 +132,28 @@
       "Looking for next system",
       "Searching for next system",
       "Searching"
+    ],
+    "FinalDestination": [
+      "Searching for your original destination",
+      "Finding your final destination",
+      "Finding the last stop",
+      "Finding your original destination"
     ]
   },
   "NextScan": {
     "NextScan": [
-      "Planet {0} is next to be scanned",
-      "We need to scan planet {0} next",
-      "Next on our list is planet {0}",
-      "Next stop planet {0}",
-      "Lets take a look at planet {0} next",
-      "Planet {0} is just dying to be scanned",
-      "Planet {0} is our next stop commander",
-      "I believe planet {0} is next commander",
-      "Planet {0} is the next on our list",
-      "Planet {0} needs a scan next",
-      "Next up, planet {0}",
-      "Lets head to planet {0} next",
-      "We need to head to planet {0} next",
-      "So many scans, so little time. We ought to head to planet {0} next"
+      "Planet {0} is next to be scanned. ",
+      "We need to scan planet {0} next. ",
+      "Next on our list is planet {0}. ",
+      "Next stop planet {0}. ",
+      "Lets take a look at planet {0} next. ",
+      "Planet {0} is our next stop commander. ",
+      "I believe planet {0} is next commander. ",
+      "Planet {0} is the next on our list. ",
+      "Planet {0} needs a scan next. ",
+      "Next up, planet {0}. ",
+      "Lets head to planet {0} next. ",
+      "We need to head to planet {0} next. "
     ],
     "SkipSystem": [
       "This system is not part of the expedition",
@@ -105,12 +165,16 @@
       "We do not need to scan any of the celestials in this system"
     ],
     "ScansComplete": [
-      "We've completed scanning the system, ready to move on commander",
-      "There are no more scans needed in this system commander",
-      "Nothing left to scan, we're done here commander",
-      "We can continue with our journey commander, we don't need any more scans",
-      "We've scanned all the planets in this system commander",
-      "All system celestials have been scanned commander"
+      "We've completed FSS scans in the system.",
+      "There are no more discovery scans needed in this system commander",
+      "Nothing left to discover commander",
+      "We've identified all the planets in this system, commander.",
+      "All system celestials have been discovered, commander."
+    ],
+    "NeedToScanSurface": [
+      "It needs a surface scan",
+      "Ready to scan the surface",
+      "Ready for surface scanning"
     ]
   },
   "Initialized": {
@@ -122,6 +186,9 @@
       "Sextant activated"
     ]
   },
+  "Detour": {
+
+  },
   "Progress": {
     "Progress": [
       "We have been out in the black for {0} days, {1} hours and {2} minutes. and are about {3} percent of the way.",
@@ -132,19 +199,26 @@
       "Our trip is approximately {3} percent complete. We have been out here for {0} days, {1} hours and {2} minutes."
     ],
     "SystemsScanned": [
-      "We have finished scanning {0} out of {1} total systems",
-      "We are done scanning {0} out of {1} total systems",
-      "In total we've scanned {0} out of {1} systems",
-      "We have finished scanning {0} out of {1} total systems",
-      "We've finished scanning {0} out of {1} total systems",
-      "In total we have scanned {4} out of {1} systems"
+      "We have finished scanning {0} out of {1} systems.",
+      "We are done scanning {0} out of {1} systems. ",
+      "In total we've scanned {0} out of {1} systems. ",
+      "We have finished scanning {0} out of {1} systems. ",
+      "We've finished scanning {0} out of {1} systems. ",
+      "In total we have scanned {0} out of {1} systems. "
+    ],
+    "CreditsEarned": [
+      "We have earned approximately {0} credits. ",
+      "We have earned roughly {0} credits. ",
+      "We have made around {0} credits. ",
+      "Our exploration data is worth about {0} credits. ",
+      "In total, we've made around {0} credits. "
     ]
   },
   "Jump": {
     "Jumping": [
       "Jumping to {0}",
       "On route to {0}",
-      "Folding space to {0}"
+      "Proceeding to {0}"
     ],
     "Skipping": [
       "This system is not part of the expedition",
@@ -154,15 +228,20 @@
       "We do not need to scan any of the celestials in this system"
     ],
     "Scanning": [
-      "We need to scan {0} celestial in this system. There ",
-      "{0} planets require a scan in this system. There ",
-      "{0} celestials require a scan in this system. There ",
-      "This system has {0} planets we need to scan. There ",
-      "This system has {0} celestial we need to scan. There "
+      "We need to scan {0} celestial{1} in this system. There ",
+      "{0} planet{1} to scan in this system. There ",
+      "{0} celestial{1} to scan in this system. There ",
+      "This system has {0} planet{1} we need to scan. There ",
+      "This system has {0} celestial{1} we need to scan. There "
     ],
     "AlreadyScanned": [
       "We've already been through here, nothing to scan",
-      "We've been here before, nothing left to scan",
+      "We've been here before, nothing left to scan"
+    ],
+    "SystemValue": [
+      "The system is worth roughly {0} credits, or {1} if we skip surfaces.",
+      "The system is worth around {0} credits, or {1} if we skip surfaces.",
+      "The system is worth over {0} credits if we scan everything, or {1} credits without surfaces."
     ],
     "AndPhrase": "and",
     "IsPhrase": "is",
@@ -173,14 +252,14 @@
     "SkipSystem": [
       "This system is not part of the expedition",
       "No scans necessary in this system",
-      "No surface scans are needed in this system",
+      "No scans are needed in this system",
       "This system isn't part of our expedition commander",
       "We're just passing through here, no scans needed",
-      "Surface scans are not required in this system",
+      "Scans are not required in this system",
       "We do not need to scan any of the celestials in this system"
     ],
     "SystemComplete": [
-      "We've completed scanning the system, ready to move on commander",
+      "We've completed scanning the system, ready to move on",
       "There are no more scans needed in this system commander",
       "Nothing left to scan, we're done here commander",
       "We can continue with our journey commander, we don't need any more scans",
@@ -188,10 +267,10 @@
       "All system celestials have been scanned commander"
     ],
     "ScansRemaining": [
-      "There are {0} planets we still need to scan. They are {1}",
-      "We need to scan down {0} more planets commander. {1}",
-      "{0} more scans needed in this system commander. {1}",
-      "{0} more to go commander. We just need {1}"
+      "There are {0} planet{3} we still need to {2}scan. They are {1}",
+      "We need to {2}scan {0} more planet{3} commander. {1}",
+      "{0} more {2}scan{3} needed in this system commander. {1}",
+      "{0} more {2}scan{3} to go commander. We just need {1}"
     ],
     "AndPhrase": "and",
     "PlanetPhrase": "planet"
@@ -222,7 +301,7 @@
   },
   "CancelExpedition": {
     "Warning": "Warning. Cancelling the expedition will result in permanent loss of all expedition data. Please repeat the command to confirm",
-    "Complete": "Expedition data deleted. Ready to plot new expedition",
+    "Complete": "Expedition data deleted. Ready to plan new expedition",
     "Error": "Error deleting expedition data"
   },
   "Greeting": {

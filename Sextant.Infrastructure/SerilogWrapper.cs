@@ -10,6 +10,7 @@ namespace Sextant.Infrastructure
     public class SerilogWrapper : ILogger
     {
         public void Information(string message)                => Logger.Information(message);
+        public void Error(string message)                      => Logger.Error(message);
         public void Error(Exception exception, string message) => Logger.Error(exception, message);
     }
 }

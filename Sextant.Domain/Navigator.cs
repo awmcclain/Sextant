@@ -10,12 +10,18 @@ namespace Sextant.Domain
     public class Navigator : INavigator
     {
         private readonly INavigationRepository _navigationRepository;
+        private readonly CelestialValues _celestialValues;
 
-        public Navigator(INavigationRepository navigationRepository)
+        protected readonly string _andPhrase = " and ";
+        protected readonly string _pluralPhrase = "s";
+
+        public Navigator(INavigationRepository navigationRepository, CelestialValues celestialValues)
         {
             _navigationRepository = navigationRepository;
+            _celestialValues = celestialValues;
         }
 
+        public bool OnExpedition => ExpeditionStarted && !ExpeditionComplete;
         public bool ExpeditionComplete => _navigationRepository.GetSystems().All(s => s.Scanned);
         public bool ExpeditionStarted  => !_navigationRepository.IsEmpty();
 
@@ -42,14 +48,23 @@ namespace Sextant.Domain
             return _navigationRepository.GetFirstUnscannedSystem();
         }
 
-        public Celestial GetNextCelestial()
+        public Celestial GetNextCelestial(StarSystem system)
         {
-            return GetNextSystem()?.Celestials.FirstOrDefault(c => c.Scanned == false);
+            var nextCelestial = system?.Celestials.FirstOrDefault(c => c.Scanned == false);
+            if (nextCelestial == null) {
+                nextCelestial = system?.Celestials.FirstOrDefault(c => c.SurfaceScanned == false);
+            }
+            return nextCelestial;
         }
 
         public bool ScanCelestial(string celestial)
         {
             return _navigationRepository.ScanCelestial(celestial);
+        }
+
+        public bool ScanCelestialSurface(string celestial, bool efficient)
+        {
+            return _navigationRepository.ScanCelestialSurface(celestial, efficient);
         }
 
         public bool ScanSystem(string system)
@@ -92,14 +107,81 @@ namespace Sextant.Domain
             return _navigationRepository.GetAllExpeditionStarSystems();
         }
 
-        public List<Celestial> GetRemainingCelestials(string systemName)
+        public List<Celestial> GetRemainingCelestials(string systemName, bool onlySurfaceScans=false)
         {
-            return _navigationRepository.GetSystem(systemName).Celestials.Where(c => c.Scanned == false).ToList();
+            if (onlySurfaceScans) {
+                return _navigationRepository.GetSystem(systemName).Celestials.Where(c => c.SurfaceScanned == false).ToList();
+            } else {
+                return _navigationRepository.GetSystem(systemName).Celestials.Where(c => c.Scanned == false).ToList();
+            }
         }
 
         public bool SystemInExpedition(string system)
         {
             return _navigationRepository.GetSystem(system) != null;
         }
-    }
+
+        private int ValueForCelestial(Celestial celestial)
+        {
+            CelestialData data;
+            if (_celestialValues.CelestialData.TryGetValue(celestial.Classification, out data) == false) {
+                return 0;
+            }
+
+            if (celestial.Scanned) {
+                if (celestial.SurfaceScanned) {
+                    if (celestial.Efficient) {
+                        return data.FSSPlusDSSEfficient;
+                    } else {
+                        return data.FSSPlusDSS;
+                    }
+                } else {
+                    return data.FSS;
+                }
+            }
+            return 0;
+        }
+  
+        public int ValueForSystem(string systemName)
+        {
+            var system = _navigationRepository.GetSystem(systemName);
+            if (system == null) {
+                return 0;
+            }
+
+            return system.Celestials.Sum(c => ValueForCelestial(c));
+        }
+
+        public int ValueForExpedition()
+        {
+            return _navigationRepository.GetSystems().SelectMany(s => s.Celestials.Where(c => c.Scanned == true)).Sum(c => ValueForCelestial(c));
+        }
+
+        public string SpokenCelestialList(List<Celestial> celestials)
+        {
+            string script = string.Empty;
+ 
+            var celestialsByCategory = celestials.GroupBy(c => c.Classification)
+                                                 .ToDictionary(grp => grp.Key, grp => grp.ToList());
+
+            int counter = 0;
+
+            foreach (var item in celestialsByCategory)
+            {
+                counter++;
+
+                if (counter == celestialsByCategory.Count() && celestialsByCategory.Count() > 1)
+                    script += $"{_andPhrase} ";
+
+                string pluralized = item.Value.Count() == 1 ? string.Empty : _pluralPhrase;
+                
+                script += $"{item.Value.Count()} {_celestialValues.NameFromClassification(item.Key)}{pluralized}, ";
+            }
+
+            return script;
+
+
+        }
+
+   }
 }

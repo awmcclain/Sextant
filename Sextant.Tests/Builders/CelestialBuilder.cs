@@ -10,11 +10,13 @@ namespace Sextant.Tests.Builders
     {
         private int Id;
         private bool Scanned;
+        private bool SurfaceScanned;
         private string Name;
         private string System;
         private string Classification;
+        private bool Efficient;
 
-        public static implicit operator Celestial(CelestialBuilder b) => new Celestial(b.Name, b.Classification, b.System, b.Scanned, b.Id);
+        public static implicit operator Celestial(CelestialBuilder b) => new Celestial(b.Name, b.Classification, b.System, b.Scanned, b.Id, b.SurfaceScanned, b.Efficient);
 
         public CelestialBuilder()
         {
@@ -24,15 +26,35 @@ namespace Sextant.Tests.Builders
             Classification = Guid.NewGuid().ToString();
         }
 
+        public CelestialBuilder WithClassification(string classification)
+        {
+            Classification = classification;
+            return this;
+        }
         public CelestialBuilder ThatHasBeenScanned()
         {
             Scanned = true;
+            SurfaceScanned = false;
+            return this;
+        }
+
+        public CelestialBuilder ThatHasBeenTotallyScanned()
+        {
+            Scanned = true;
+            SurfaceScanned = true;
+            return this;
+        }
+
+        public CelestialBuilder Efficiently()
+        {
+            Efficient = true;
             return this;
         }
 
         public CelestialBuilder ThatHasNotBeenScanned()
         {
             Scanned = false;
+            SurfaceScanned = false;
             return this;
         }
     }

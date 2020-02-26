@@ -47,6 +47,8 @@ namespace Sextant.Domain.Commands
                                                          .Where(c => c.Scanned == false)
                                                          .OrderBy(r => r.ShortName);
 
+
+            bool surfaceScansRemain = false;
             if (remaining == null)
             {
                 _communicator.Communicate(_skipPhraseBook.GetRandomPhrase());
@@ -55,8 +57,17 @@ namespace Sextant.Domain.Commands
 
             if (!remaining.Any())
             {
-                _communicator.Communicate(_completePhrases.GetRandomPhrase());
-                return;
+                remaining = _navigator.GetSystem(currentSystem)?
+                                      .Celestials
+                                      .Where(c => c.SurfaceScanned == false)
+                                      .OrderBy(r => r.ShortName);
+
+                if (!remaining.Any()) {
+                    _communicator.Communicate(_completePhrases.GetRandomPhrase());
+                    return;
+                } else {
+                    surfaceScansRemain = true;
+                }
             }
 
             string script = string.Empty;
@@ -69,7 +80,10 @@ namespace Sextant.Domain.Commands
                 script += $"{_planetPhrase} {celestial.ShortName}. ";
             }
 
-            string finalScript = string.Format(_remainingPhrases.GetRandomPhrase(), remaining.Count(), script);
+            string finalScript = string.Format(_remainingPhrases.GetRandomPhrase(),
+                                                remaining.Count(), script,
+                                                surfaceScansRemain ? "surface " : "",
+                                                PhraseBook.PluralizedEnding(remaining.Count(), "s"));
 
             _communicator.Communicate(finalScript);
         } 

@@ -67,6 +67,7 @@
     <Reference Include="xunit.execution.desktop, Version=2.3.1.3858, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.extensibility.execution.2.3.1\lib\net452\xunit.execution.desktop.dll</HintPath>
     </Reference>
+    <Reference Include="netstandard" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\Build.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="CommandExecutorTests.cs" />
     <Compile Include="CommandRegistryTests.cs" />
     <Compile Include="Commands\CancelExpeditionCommandTests.cs" />
+    <Compile Include="Commands\CelestialSurfaceScanCommandTests.cs" />
     <Compile Include="Commands\CelestialScanCommandTests.cs" />
     <Compile Include="Commands\CommandTestBase.cs" />
     <Compile Include="Commands\DockSRVCommandTests.cs" />
@@ -117,9 +119,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

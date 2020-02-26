@@ -8,6 +8,7 @@ using Sextant.Infrastructure;
 using Sextant.Infrastructure.Journal;
 using SimpleInjector;
 using System;
+using System.Collections.Generic;
 
 namespace Sextant.Host
 {
@@ -18,10 +19,15 @@ namespace Sextant.Host
         private static Serilog.ILogger _logger;
         private readonly string _pluginName;
 
-        public SextantHost(string basePath, string pluginName)
+        public SextantHost(string basePath, string pluginName, bool configureLogging=true)
         {
             _pluginName = pluginName;
-            InitializeLogging();
+            if (configureLogging) {
+                InitializeLogging();
+            } else {
+                _logger = Log.Logger;
+            }
+            
 
             try
             {
@@ -47,11 +53,11 @@ namespace Sextant.Host
             _logger.Information($"{_pluginName} Initialized");
         }
 
-        public void Handle(string context)
+        public void Handle(string context, Dictionary<string, object> payload=null)
         {
             try
             {
-                _executor.Handle(EventFactory.FromVoiceAttack(context));
+                _executor.Handle(EventFactory.FromVoiceAttack(context, payload));
             }
             catch (Exception ex)
             {
@@ -59,14 +65,28 @@ namespace Sextant.Host
             }
         }
 
+        public void HandleDebug(string[] parts)
+        {
+            try
+            {
+                _executor.Handle(new JournalEvent(parts[0], new Dictionary<string, object> { { parts[1], parts[2]} }));
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, $"Exception handling Journal command. Context : {String.Join(" ", parts)}");
+            }
+ 
+        }
+
+        public static LoggerConfiguration DefaultLoggingConfiguration(string pluginName)
+        {
+            return new LoggerConfiguration()
+                             .Enrich.WithProperty("PluginVersion", pluginName)
+                             .WriteTo.RollingFile("log-{Date}.txt", Serilog.Events.LogEventLevel.Information, "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{PluginVersion}][{Level}] {Message}{NewLine}{Exception}");
+        }
         private void InitializeLogging()
         {
-            Log.Logger = new LoggerConfiguration()
-                             .Enrich.WithProperty("PluginVersion", _pluginName)
-                             .MinimumLevel.Information()
-                             .WriteTo.RollingFile("log-{Date}.txt", Serilog.Events.LogEventLevel.Information, "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{PluginVersion}][{Level}] {Message}{NewLine}{Exception}")
-                             .CreateLogger();
-
+            Log.Logger = DefaultLoggingConfiguration(_pluginName).CreateLogger();
             _logger = Log.Logger;
         }
     }

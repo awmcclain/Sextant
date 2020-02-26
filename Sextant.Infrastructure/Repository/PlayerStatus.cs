@@ -9,6 +9,7 @@ namespace Sextant.Infrastructure.Repository
     {
         public int Id { get; set; }
         public string Location { get; set; }
+        public string Destination { get; set; }
         public double FuelCapacity { get; set; }
         public DateTimeOffset ExpeditionStart { get; set; }
 

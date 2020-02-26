@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using Xunit;
+using Xunit.Abstractions;
 using Sextant.Tests.Builders;
 using Sextant.Tests;
 using Sextant.Infrastructure.Repository;
@@ -15,7 +16,29 @@ namespace Sextant.Infrastructure.Tests
 {
     public class NavigatorTests
     {
-        Navigator CreateSut() => new Navigator(new NavigationRepository(new MemoryDataStore<StarSystemDocument>()));
+        Navigator CreateSut() => new Navigator(new NavigationRepository(new MemoryDataStore<StarSystemDocument>()), TestCelestialValues());
+
+        private CelestialData CreateCelestialData(string name)
+            => new CelestialData() { Name = name, FSS = _FSSValue, FSSPlusDSS = _DSSValue, FSSPlusDSSEfficient = _DSSEfficientValue};
+        private CelestialValues TestCelestialValues()
+        {
+            return new CelestialValues() { 
+                CelestialData = new Dictionary<string, CelestialData>() {
+                    { _Classification, CreateCelestialData(_Classification + "Name") },
+                },
+            };
+        }
+
+        private const int _FSSValue = 10;
+        private const int _DSSValue = 25;
+        private const int  _DSSEfficientValue = 43;
+        private const string _Classification = "TestClassification";
+
+        private ITestOutputHelper _output;
+
+        public NavigatorTests(ITestOutputHelper output) {
+            _output = output;
+        }
 
         [Fact]
         public void GetNextSystem_Returns_First_Unscanned_System()
@@ -31,7 +54,7 @@ namespace Sextant.Infrastructure.Tests
         }
 
         [Fact]
-        public void GetNextCelestial_Returns_First_Unscanned_Celestial()
+        public void GetNextCelestial_Returns_First_Unscanned_Celestial_In_System()
         {
             Navigator sut = CreateSut();
 
@@ -41,7 +64,7 @@ namespace Sextant.Infrastructure.Tests
 
             sut.PlanExpedition(starSystems);
 
-            sut.GetNextCelestial().Name.Should().Be(unscannedCelestial.Name);
+            sut.GetNextCelestial(starSystems.First()).Name.Should().Be(unscannedCelestial.Name);
         }
 
         [Fact]
@@ -53,9 +76,38 @@ namespace Sextant.Infrastructure.Tests
 
             sut.PlanExpedition(starSystems);
 
-            sut.GetNextCelestial().Should().BeNull();
+            sut.GetNextCelestial(starSystems.First()).Should().BeNull();
             sut.ExpeditionComplete.Should().BeTrue();
         }
+
+        [Fact]
+        public void GetNextCelestial_Returns_Surface_Scan_When_All_Celestials_Have_Been_Scanned()
+        {
+            Navigator sut = CreateSut();
+
+            Celestial firstScannedCelestial = Build.A.Celestial.ThatHasBeenScanned();
+            Celestial secondScannedCelestial   = Build.A.Celestial.ThatHasBeenScanned();
+
+            List<StarSystem> starSystems = Build.A.StarSystem.WithCelestials(firstScannedCelestial, secondScannedCelestial).InAList();
+ 
+            sut.PlanExpedition(starSystems);
+            sut.GetNextCelestial(starSystems.First()).Name.Should().Be(firstScannedCelestial.Name);
+        }
+
+        [Fact]
+        public void GetNextCelestial_Returns_Null_When_All_Celestials_Have_Been_Surface_Scanned()
+        {
+            Navigator sut = CreateSut();
+
+            Celestial firstScannedCelestial = Build.A.Celestial.ThatHasBeenTotallyScanned();
+            Celestial secondScannedCelestial   = Build.A.Celestial.ThatHasBeenTotallyScanned();
+
+            List<StarSystem> starSystems = Build.A.StarSystem.WithCelestials(firstScannedCelestial, secondScannedCelestial).InAList();
+ 
+            sut.PlanExpedition(starSystems);
+            sut.GetNextCelestial(starSystems.First()).Should().BeNull();
+        }
+
 
         [Fact]
         public void ExpeditionComplete_With_All_Systems_Scanned_Returns_True()
@@ -195,6 +247,56 @@ namespace Sextant.Infrastructure.Tests
             sut.SystemsRemaining().Should().Be(0);
             sut.CelestialsRemaining().Should().Be(0);
             sut.GetAllRemainingCelestials().Should().BeEmpty();
+        }
+
+        [Fact]
+        public void ValueForSystem_Returns_Correct_Value()
+        {
+
+            Navigator sut = CreateSut();
+            Celestial unscannedCelestial = Build.A.Celestial.ThatHasNotBeenScanned();
+            Celestial scannedCelestial   = Build.A.Celestial.WithClassification(_Classification).ThatHasBeenScanned();
+            Celestial scannedCelestial2   = Build.A.Celestial.WithClassification(_Classification).ThatHasBeenTotallyScanned();
+            List<Celestial> celestials   = Build.Many.Celestials.With(unscannedCelestial, scannedCelestial, scannedCelestial2);
+            List<StarSystem> starSystems = Build.A.StarSystem.WithCelestials(celestials).InAList();
+
+            sut.PlanExpedition(starSystems);
+
+            int correctValue = _FSSValue + _DSSValue;
+
+            sut.ValueForSystem(starSystems.First().Name).Should().Be(correctValue);
+        }
+
+        [Fact]
+        public void ValueForExpedition_Returns_Correct_Value()
+        {
+
+            Navigator sut = CreateSut();
+            Celestial unscannedCelestial = Build.A.Celestial.ThatHasNotBeenScanned();
+            Celestial scannedCelestial   = Build.A.Celestial.WithClassification(_Classification).ThatHasBeenScanned();
+            Celestial scannedCelestial2   = Build.A.Celestial.WithClassification(_Classification).ThatHasBeenTotallyScanned();
+            StarSystem firstSystem       = Build.A.StarSystem.WithCelestial(scannedCelestial);
+            StarSystem secondSystem      = Build.A.StarSystem.WithCelestials(Build.Many.Celestials.With(scannedCelestial, scannedCelestial2));
+            StarSystem thirdSystem       = Build.A.StarSystem.WithCelestial(unscannedCelestial);
+            List<StarSystem> starSystems = Build.Many.StarSystems(firstSystem, secondSystem, thirdSystem);
+
+            sut.PlanExpedition(starSystems);
+
+            int correctValue = _FSSValue*2 + _DSSValue;
+
+            sut.ValueForExpedition().Should().Be(correctValue);
+        }
+
+        [Fact]
+        public void ValueForSystem_Uses_EfficiencyMultiplier()
+        {
+            Navigator sut = CreateSut();
+            Celestial efficientCelestial = Build.A.Celestial.WithClassification(_Classification).ThatHasBeenTotallyScanned().Efficiently();
+
+            List<StarSystem> starSystems = Build.A.StarSystem.WithCelestial(efficientCelestial).InAList();
+
+            sut.PlanExpedition(starSystems);
+            sut.ValueForSystem(starSystems.First().Name).Should().Be(_DSSEfficientValue);
         }
     }
 }

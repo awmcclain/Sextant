@@ -6,5 +6,6 @@ namespace Sextant.Domain.Phrases
     public class FindNextSystemPhrases
     {
         public string[] Phrases { get; set; }
+        public string[] FinalDestination { get; set; }
     }
 }

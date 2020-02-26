@@ -11,10 +11,10 @@ namespace Sextant.Infrastructure
         public string Event { get; private set; }
         public Dictionary<string, object> Payload { get; }
 
-        public VoiceAttackEvent(string command)
+        public VoiceAttackEvent(string command, Dictionary<string, object>payload=null)
         {
             Event   = command;
-            Payload = null;
+            Payload = payload;
         }
     }
 }

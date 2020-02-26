@@ -11,6 +11,7 @@ namespace Sextant.Domain
         bool Clear();
         bool IsEmpty();
         bool ScanCelestial(string celestial);
+        bool ScanCelestialSurface(string celestial, bool efficient);
         bool ScanSystem(string system);
         bool UnscanSystem(string system);
         bool Store(IEnumerable<StarSystem> starSystem);

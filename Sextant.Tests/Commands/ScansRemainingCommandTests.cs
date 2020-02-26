@@ -44,7 +44,7 @@ namespace Sextant.Tests.Commands
         [Fact]
         public void ScansRemaining_With_System_In_Expedition_But_No_Scans_Remaining_Communicates_Skip_Phrase()
         {
-            Celestial celestial      = Build.A.Celestial.ThatHasBeenScanned();
+            Celestial celestial      = Build.A.Celestial.ThatHasBeenTotallyScanned();
             List<StarSystem> systems = Build.A.StarSystem.WithCelestial(celestial).InAList();
 
             _playerStatus.SetLocation(systems.Single().Name);
@@ -57,6 +57,24 @@ namespace Sextant.Tests.Commands
 
             _communicator.MessagesCommunicated.Single().Should().Be(_scansRemainingPhrases.SystemComplete.Single());
         }
+
+        [Fact]
+        public void ScansRemaining_With_System_In_Expedition_And_Surfaces_Remaining_Communicates_Remaining_Phrase()
+        {
+            Celestial celestial      = Build.A.Celestial.ThatHasBeenScanned();
+            List<StarSystem> systems = Build.A.StarSystem.WithCelestial(celestial).InAList();
+
+            _playerStatus.SetLocation(systems.Single().Name);
+
+            _navigator.PlanExpedition(systems);
+
+            TestEvent testEvent = Build.An.Event.WithEvent(_sut.SupportedCommand);
+
+            _sut.Handle(testEvent);
+
+            _communicator.MessagesCommunicated.Single().Should().Be(_scansRemainingPhrases.ScansRemaining.Single());
+        }
+
 
         [Fact]
         public void ScansRemaining_With_System_In_Expedition_Communicates_Remaining_Phrase()

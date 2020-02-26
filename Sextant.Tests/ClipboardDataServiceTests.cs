@@ -21,14 +21,15 @@ namespace Sextant.Tests
             protected override string GetClipboard() => _clipboardText;
 
             public ClipboardDataServiceStub(string clipboardText)
-                : base(new SerilogWrapper())
+                : base(new SerilogWrapper(), new ExpeditionParser(new SerilogWrapper()))
             {
                 Log.Logger = new LoggerConfiguration().WriteTo.TestCorrelator().CreateLogger();
                 _clipboardText = clipboardText;
             }
         }
 
-        [Fact(Skip = "appveyor incorrectly parsing expeditionText")]
+        //[Fact(Skip = "appveyor incorrectly parsing expeditionText")]
+        [Fact]
         public void GetExpeditionData_With_Valid_ExpeditionText_Returns_StarSystems()
         {
             const string expeditionText =
@@ -36,7 +37,7 @@ namespace Sextant.Tests
 --- ------ ---------------
   1  69.53 Test System One
 	           1 (79) TWW
-  2  3.62  Test System Two
+  2  3.62  Test System Two *
 	           1 (267) ELW
   3  56.80 Test System Three
 	           2 (393) TWW
@@ -65,15 +66,15 @@ namespace Sextant.Tests
 
             planetOne.Name.Should().Be("Test System One 1");
             planetOne.Scanned.Should().BeFalse();
-            planetOne.Clasification.Should().Be("Water World");
+            planetOne.Classification.Should().Be("TWW");
 
             planetTwo.Name.Should().Be("Test System Two 1");
             planetTwo.Scanned.Should().BeFalse();
-            planetTwo.Clasification.Should().Be("Earth world");
+            planetTwo.Classification.Should().Be("ELW");
 
            planetThree.Name.Should().Be("Test System Three 3");
            planetThree.Scanned.Should().BeFalse();
-           planetThree.Clasification.Should().Be("High metal content world");
+           planetThree.Classification.Should().Be("HMC");
         }
 
         [Fact]

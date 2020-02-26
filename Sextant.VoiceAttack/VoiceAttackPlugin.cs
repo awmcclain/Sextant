@@ -4,6 +4,10 @@
 using Sextant.Host;
 using System;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+
+using Serilog;
 
 namespace Sextant.VoiceAttack
 {
@@ -13,7 +17,7 @@ namespace Sextant.VoiceAttack
 
         public static string VA_DisplayName()
         {
-            return "Sextant v1.0.2";
+            return "Sextant v2.0";
         }
 
         public static string VA_DisplayInfo()
@@ -30,15 +34,20 @@ namespace Sextant.VoiceAttack
         {
             var basePath = Path.Combine(Environment.CurrentDirectory, "Apps", "Sextant");
 
-            _host = new SextantHost(basePath: basePath, pluginName: VA_DisplayName());
+            // Re-configure logging
+            Log.Logger = SextantHost.DefaultLoggingConfiguration(VA_DisplayName())
+                            .WriteTo.Sink(new VoiceAttackSink(vaProxy))
+                            .CreateLogger();
+
+            _host = new SextantHost(basePath: basePath, pluginName: VA_DisplayName(), configureLogging: false);
             _host.Initialize();
         }
 
         public static void VA_Invoke1(dynamic vaProxy)
         {
             string context = vaProxy.Context;
-
-            _host?.Handle(context);
+            var payload = new Dictionary<string, object> { { "intValue", (object)vaProxy.GetInt("intValue") } };
+            _host?.Handle(context, payload);
         }
 
         public static void VA_Exit1(dynamic vaProxy) { }

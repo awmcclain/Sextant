@@ -18,6 +18,11 @@ namespace Sextant.Domain
             return new PhraseBook(phrases);
         }
 
+        internal static string PluralizedEnding(int count, string pluralPhrase) 
+        {
+            return count == 1 ? string.Empty : pluralPhrase;
+        }
+
         public PhraseBook(IEnumerable<string> phrases)
         {
             _phrases = phrases.ToList();
